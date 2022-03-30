@@ -1,0 +1,33 @@
+
+#wrapper{
+    width:800px;
+    border: 1px solid;
+    overflow: hidden;
+    position: relative;
+}
+
+#toolboxDiv{
+    height: 600px;
+    width: 500px;
+    float : left;
+    border: 1px solid;
+    position: inherit;
+    background-color: #eee;
+}
+
+
+#workspace{
+    float:left;
+    width: 400px;
+    height : 600px;
+    border: 1px solid;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+#output{
+    float: left;
+    width: 250px;
+    height: 600px;
+    border: 1px solid;
+}
