@@ -35,7 +35,7 @@
         </div>
         <body>
             <div class="button">
-                <button id="makeCode" onclick="makecode()"> generateCode </button>
+                <button id="makeCode" onclick="writeCode()"> generateCode </button>
                 <button id="btn" onclick="handleplay()"> Run </button>
             </div>
         </body>
@@ -56,20 +56,11 @@
       </div>
 
     <script src="https://unpkg.com/blockly"></script>
-    <script src="/block-definition.js">
-     
-          </script> 
-      
-    
-      <script src="../writeExecutable.js"></script>
-    <script>
-    var workspace = Blockly.inject('toolboxDiv', {toolbox: toolbox});
+    <script src="/block-definition.js"></script> 
+    <script src="../writeExecutable.js"></script>
+    <script src="/main.js"></script> 
+    <script src="../sketch.js"></script>
 
-function makecode(){
-  var code = Blockly.JavaScript.workspaceToCode(workspace);
-  console.log("i am here:", code);
-  writeCode();
-}
 </script>
 </body>
 </html>

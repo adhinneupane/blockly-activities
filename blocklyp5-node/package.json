@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/adhinneupane/blocklyp5js#readme",
   "dependencies": {
-    "express": "^4.17.3"
+    "express": "^4.17.3",
+    "file-save": "^0.2.0"
   }
 }

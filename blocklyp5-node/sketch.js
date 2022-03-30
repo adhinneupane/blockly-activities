@@ -1,10 +1,9 @@
-import {writeCode} from 'writeExecutable'
+writecode = function(){
+  var workspace = Blockly.inject('toolboxDiv', {toolbox: toolbox});
+  var code = Blockly.JavaScript.workspaceToCode(workspace);
+}
 
-function setup() {
-    createCanvas(400, 400);
-  }
+
+
+
   
-  function draw() {
-    rect(50,50,50,50)
-   writeCode();
-  }
