@@ -8,6 +8,3 @@ function setup() {
     rect(50,50,50,50)
    writeCode();
   }
-
-
-

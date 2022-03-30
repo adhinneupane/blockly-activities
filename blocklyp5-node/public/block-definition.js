@@ -5,7 +5,7 @@ Blockly.defineBlocksWithJsonArray([
         "args0": [
           {
             "type": "field_number",
-            "name": "userenter1",
+            "name": "width",
             "value": 0
           },
           {
@@ -15,7 +15,7 @@ Blockly.defineBlocksWithJsonArray([
           },
           {
             "type": "field_number",
-            "name": "userenter2",
+            "name": "breadth",
             "value": 0
           },
           {
@@ -123,17 +123,27 @@ Blockly.defineBlocksWithJsonArray([
 
 Blockly.JavaScript['add'] = function(block) {
 
-        var number_userenter1 = block.getFieldValue('userenter1');
+        var number_userenter1 = block.getFieldValue('width');
         // var value_num1 = Blockly.JavaScript.valueToCode(block, 'num1', Blockly.JavaScript.ORDER_ATOMIC);
-        var number_userenter2 =  block.getFieldValue('userenter2');
+        var number_userenter2 =  block.getFieldValue('breadth');
         // var value_num2 = Blockly.JavaScript.valueToCode(block, 'num2', Blockly.JavaScript.ORDER_ATOMIC);
         // let value = '\'' + block.getFieldValue('number1') + '\'';
         let code = ''
-        code +=  number_userenter1 + '+' + number_userenter2 + ';\n';
-        console.log('code returned is', code);
+        code +='function setup(){\ncreateCanvas(400, 400);\n}\nfunction draw(){\nrect(' + number_userenter1 + ',' + number_userenter1 + ',' + number_userenter2 + ',' + number_userenter2 + ')\n}' 
         // return 'Object.execute(' + code + ');\n';
-        return ObjectMaker.writeandexecute(code);
+        console.log(code);
+        return code;
 }   
+
+
+//     function setup() {
+//   createCanvas(400, 400);
+// }
+
+// function draw() {
+//   rect(50,50,50,50)
+// }
+
 
 
 Blockly.JavaScript['sum'] = function(block) {

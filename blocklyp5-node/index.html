@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Introduction to Computing</title>
+  </head>
+
+
+<!-- central section of screen where blockly workspace and toolbox will be displayed -->
+
+</head>
+<body>
+    <div class="wrapper" style="width: 800px; border:1 px solid; overflow:hidden; position:relative">
+   
+        <!-- creating blockly toolbox div here -->
+        <div id="toolboxDiv" style="height:600px; width: 500px; float: left; border: 1px solid; position:inherit; background-color: aqua;"></div>
+            Tool Box
+            <xml id="toolbox">
+                <block type="add"></block>
+              </xml>
+        </div>
+        <!-- creating blockly workspace div here -->
+        <div id = "codespace">
+            JS Code
+        </div>
+        <!-- creating blockly Output space div here -->
+        <div id = "output" style="float: left;
+        width: 250px;
+        height: 600px;
+        border: 1px solid;">
+           <h2> <div id="printscreen">output</div> </h2> 
+        </div>
+        <body>
+            <div class="button">
+                <button id="makeCode" onclick="makecode()"> generateCode </button>
+                <button id="btn" onclick="handleplay()"> Run </button>
+            </div>
+        </body>
+    </div>
+   <div id = "ps5">eee
+        <script src="https://cdn.jsdelivr.net/npm/p5@1.4.1/lib/p5.js"></script>
+        <script>
+          function setup() {
+    createCanvas(400, 400);
+  }
+  
+  function draw() {
+    rect(50,50,50,50)
+  }
+
+  
+        </script>
+      </div>
+
+    <script src="https://unpkg.com/blockly"></script>
+    <script src="/block-definition.js">
+     
+          </script> 
+      
+    
+      <script src="../writeExecutable.js"></script>
+    <script>
+    var workspace = Blockly.inject('toolboxDiv', {toolbox: toolbox});
+
+function makecode(){
+  var code = Blockly.JavaScript.workspaceToCode(workspace);
+  console.log("i am here:", code);
+  writeCode();
+}
+</script>
+</body>
+</html>
+

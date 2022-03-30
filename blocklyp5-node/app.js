@@ -1,17 +1,11 @@
 var express = require('express');
 const path = require('path');
 var app = express();
-var PORT = 3000;
+var PORT = 8080;
  
-
-app.use('/', function(req, res){
-    
-    var options = {
-        root: path.join(__dirname,'/public')
-    };
-     
-    var fileName = '/index.html';
-    res.sendFile(fileName, options);
+app.use(express.static('public'))
+app.use('/', function(request, response){    
+    response.sendFile(__dirname + '/index.html');
 });
  
 app.get('/', function(req, res){

@@ -9,8 +9,7 @@
    ```sh
    node --version 
    ```
-4. Enter your API in `config.js`
-   ```js
+4.  ```js
     cd brbytes/exercise2 &&
     node app.js
    ```

@@ -5,8 +5,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hello</title>
+    <title>ICT Lessons</title>
   </head>
+
 <!-- central section of screen where blockly workspace and toolbox will be displayed -->
 
 </head>
@@ -38,7 +39,7 @@
             </div>
         </body>
     </div>
-   <div id = "ps5">eee
+   <div id = "ps5">
         <script src="https://cdn.jsdelivr.net/npm/p5@1.4.1/lib/p5.js"></script>
         <script>
           function setup() {
@@ -193,14 +194,7 @@
       }   
       
 
-  //     function setup() {
-  //   createCanvas(400, 400);
-  // }
-  
-  // function draw() {
-  //   rect(50,50,50,50)
-  // }
-
+ 
   
       
       Blockly.JavaScript['sum'] = function(block) {
@@ -236,21 +230,9 @@
           </script> 
       
     
-      <script src="../writeExecutable.js"></script>
-    <script>
-    var workspace = Blockly.inject('toolboxDiv', {toolbox: toolbox});
+    <script src="main.js">
 
-function makecode(){
-  var code = Blockly.JavaScript.workspaceToCode(workspace);
-  console.log("i am here:", code);
-  writeCode();
-}
 </script>
-
-
-
-
-
 </body>
 </html>
 
