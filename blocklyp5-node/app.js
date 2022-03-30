@@ -8,10 +8,9 @@ app.use('/', function(request, response){
     response.sendFile(__dirname + '/index.html');
 });
  
-app.get('/', function(req, res){
-    console.log("File Sent")
-    res.send();
-});
+app.post("/url", (request, response) => {
+    response.send(["Tony","Lisa","Michael","Ginger","Food"]);
+   });
  
 app.listen(PORT, function(err){
     if (err) console.log(err);
