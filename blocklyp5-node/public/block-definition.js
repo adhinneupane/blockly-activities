@@ -131,7 +131,6 @@ Blockly.JavaScript['add'] = function(block) {
         let code = ''
         code +='function setup(){\ncreateCanvas(400, 400);\n}\nfunction draw(){\nrect(' + number_userenter1 + ',' + number_userenter1 + ',' + number_userenter2 + ',' + number_userenter2 + ')\n}' 
         // return 'Object.execute(' + code + ');\n';
-        console.log(code);
         return code;
 }   
 
