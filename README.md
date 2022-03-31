@@ -7,10 +7,11 @@
    ```
     
 2. Make sure you have nodejs and express
-   ```sh
-   node --version 
+   ```
+   node --version
+   npm install express 
    ```
 3.  ```js
-    cd ICT-blockly-P5/blocklyp5-node/exercise2 &&
+    cd ICT-blockly-P5/blocklyp5-node/ &&
     node app.js
    ```
