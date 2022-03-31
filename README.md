@@ -15,3 +15,7 @@
     cd ICT-blockly-P5/blocklyp5-node/ &&
     node app.js
    ```
+
+4. ```
+   visit server on port 8080/home
+   ```
