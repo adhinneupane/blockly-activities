@@ -1,15 +1,20 @@
 var express = require('express');
 const path = require('path');
+
+const router = express.Router;
+
 var app = express();
 var PORT = 8080;
- 
+
 app.use(express.static('public'))
-app.use('/', function(request, response){    
+app.use('/home', function(request, response){    
     response.sendFile(__dirname + '/index.html');
 });
  
-app.post("/url", (request, response) => {
-    response.send(["Tony","Lisa","Michael","Ginger","Food"]);
+app.post("/run", (request, response) => {
+    
+    response.send("posted");
+    console.log("recieved");
    });
  
 app.listen(PORT, function(err){
