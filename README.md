@@ -11,7 +11,7 @@
    node --version
    npm install express 
    ```
-3.  ```js
+3.  ```
     cd ICT-blockly-P5/blocklyp5-node/ &&
     node app.js
    ```
