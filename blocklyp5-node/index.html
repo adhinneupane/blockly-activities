@@ -7,49 +7,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Introduction to Computing</title>
   </head>
-
-
 <!-- central section of screen where blockly workspace and toolbox will be displayed -->
-
 </head>
 <body>
-    <div class="wrapper" style="width: 800px; border:1 px solid; overflow:hidden; position:relative">
+    <div class="wrapper" style="height: 700px ; width: 1000px; border:1 px solid; overflow:hidden; position:relative">
    
         <!-- creating blockly toolbox div here -->
-        <div id="toolboxDiv" style="height:600px; width: 500px; float: left; border: 1px solid; position:inherit; background-color: aqua;"></div>
-            Tool Box
+        <div id="toolboxDiv" style="height:600px; width: 700px; float: left; border: 1px solid; position:inherit; background-color: aqua;"></div>
             <xml id="toolbox">
                 <block type="add"></block>
+                <block type="create_table"></block>
+                <block type="show"></block>
+                <block type="sum"></block>
+                <block type="row_input"></block>
+                <block type="input_row"></block>
               </xml>
         </div>
-        <!-- creating blockly workspace div here -->
-        <div id = "codespace">
-            JS Code
-        </div>
-        <!-- creating blockly Output space div here -->
-        <div id = "output" style="float: left;
-        width: 250px;
-        height: 600px;
-        border: 1px solid;">
-           <h2> <div id="printscreen">output</div> </h2> 
-        </div>
-        <body>
-            <div class="button">
-                <button id="makeCode" onclick="makeCode()"> generateCode </button>
-                <button id="makeCode" onclick="runCode()"> RunCode </button>
-            </div>
 
-        </body>
-    </div>
-   <div id = "ps5">eee
-        <script src="https://cdn.jsdelivr.net/npm/p5@1.4.1/lib/p5.js"></script>
-        <script>
-          function setup() {
-    createCanvas(400, 400);
-  }
-  
-        </script>
+        <div style="top:inherit; bottom:inherit; height: 600px; width: 200px; float: right; border: 1px solid; background-color: aqua;">
+          <script src="https://cdn.jsdelivr.net/npm/p5@1.4.1/lib/p5.js"></script>
+          <script>
+            function setup() {
+            createCanvas(200, 200);
+            background(220);  
+            }</script>
+        </div>
+        <div class="button">
+          <button id="makeCode" onclick="makeCode()"> generateCode </button>
+          <button id="makeCode" onclick="runCode()"> RunCode </button>
       </div>
+        <!-- creating blockly Output space div here -->
+     </body>
+    </div>
+    <div id="printscreen">O/P</div> 
+    </div>
+    <body>
 
     <script src="https://unpkg.com/blockly"></script>
     <script src="/block-definition.js"></script> 

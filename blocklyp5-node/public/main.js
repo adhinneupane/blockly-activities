@@ -10,8 +10,9 @@ document.getElementById("printscreen").innerHTML=code;
 
 function runCode(){
     const script = document.createElement('script');
-    var executable = document.getElementById('printscreen').innerHTML;
-    script.innerText= executable;
+    var code = Blockly.JavaScript.workspaceToCode(workspace);
+    var executable = code;
+    script.innerText= '' + executable;
     console.log(executable);
     script.setAttribute('async','true');
     script.onload = function handleScriptLoad(){
