@@ -6,13 +6,17 @@ document.getElementById("printscreen").innerHTML=code;
 }
 
 
+const executable={
+    codeString : ''
+}
+
 
 function runCode(){
     const script = document.createElement('script');
     var code = Blockly.JavaScript.workspaceToCode(workspace);
-    var executable = code;
-    script.innerText= '' + executable;
-    console.log(executable);
+    var compiler = code;
+    script.innerText= '' + compiler;
+    console.log("executable string is:",executable.codeString );
     script.setAttribute('async','true');
     script.onload = function handleScriptLoad(){
         console.log('The p5 script has loaded')      

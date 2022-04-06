@@ -1,3 +1,5 @@
+
+
 Blockly.defineBlocksWithJsonArray([
   {
     "type": "input_row",
@@ -237,8 +239,9 @@ Blockly.JavaScript['create_table'] = function(block) {
   var statements_name = Blockly.JavaScript.statementToCode(block, 'NAME');
   // TODO: Assemble JavaScript into code variable.
   let code = ''
-  code +='function setup(){\ncreateCanvas(500, 500);noLoop();}\n function draw(){\n \ntextSize(20);\ntable=new p5.Table();\nnumber_of_rows=5;\n number_of_columns = 3;\nuser_entry_column1="Caterpillars";\nuser_entry_column2="Leaves";\ncolumn_names=["S.No",user_entry_column1,user_entry_column2];\nnumber_of_caterpillars_in_each_row=2;\nnumber_of_leaves_eaten_by_caterpillars=5;\nshow_sum=true;\nshow_enabled=true;\n slideshow=true;\nif(slideshow==true){text("click to begin slideshow",20,20);\nsetBtn=createButton("Next Slide");\nsetBtn.position(220,5);\nsetBtn.mouseClicked(nextSlide);\n}\nfor(let i=0;i<number_of_columns;i++)\n{table.addColumn(column_names[i]);\n}\nfor(let i=0;i<number_of_rows;i++){\nUserRow();\n}\nif(show_enabled==true)\n{ printTable();\n}\n}function UserRow(){\nlet newRow=table.addRow();\nnewRow.setString(column_names[0],"");\nnewRow.setString(column_names[1],""+number_of_caterpillars_in_each_row);\n newRow.setString(column_names[2],""+number_of_leaves_eaten_by_caterpillars);\n }\n function printTable()\n{ for(let c=0;c<1;c++){\n text(table.columns,20 + 80*c,80);\n }for(let rows=0; rows<number_of_rows; rows++){\nfor(let columns=0; columns<3;columns++) {\ntext(table.getString(rows,columns),20+80*columns,100+20*rows);\n}\n}if(show_sum==true)\n{ Total();\n }\n } function Total(){\n let newRow = table.addRow();\n newRow.setString(column_names[0], "Total");\n newRow.setString(column_names[1],""+""+number_of_rows*number_of_caterpillars_in_each_row);\n newRow.setString(column_names[2],""+number_of_leaves_eaten_by_caterpillars*number_of_rows);\n for (let rows = 0; rows < number_of_rows+1; rows++) { for (let columns = 0; columns < 3; columns++)\n{ text(table.getString(rows, columns), 20 + 80 * columns, 100 + 20 * rows);\n }\n }\n }\n function nextSlide(){\n clear();\n text("slideshow has started", 20,20);\n printTable();\n }';
+  code += 'string added from: create_table\n';
   return code;
+  
 };
 
 
@@ -247,7 +250,9 @@ Blockly.JavaScript['input_row'] = function(block) {
   var text_col1 = block.getFieldValue('col1');
   var text_col2 = block.getFieldValue('col2');
   // TODO: Assemble JavaScript into code variable.
-  var code = '...;\n';
+  let code = '';
+  code += 'string added from: input_row\n';
+  executable.codeString += code;
   return code;
 };
 
