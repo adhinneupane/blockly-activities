@@ -2,9 +2,11 @@
 
 ### Installation and usage
 
+
+
 1.  
    ```
-   git clone git@github.com:adhinneupane/brbytes.git
+   git clone git@github.com:ashutoshneupane/brbytes.git
    ```
     
 2. Make sure you have nodejs and express installed
