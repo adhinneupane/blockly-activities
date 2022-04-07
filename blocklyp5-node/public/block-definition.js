@@ -2,7 +2,7 @@
 
 Blockly.defineBlocksWithJsonArray([
   {
-    "type": "input_row",
+    "type": "input_header",
     "message0": "Table Header %1 %2",
     "args0": [
       {
@@ -28,12 +28,12 @@ Blockly.defineBlocksWithJsonArray([
     "args0": [
       {
         "type": "field_input",
-        "name": "NAME",
+        "name": "COLUMNVALUE1",
         "text": "value"
       },
       {
         "type": "field_input",
-        "name": "NAME",
+        "name": "COLUMNVALUE2",
         "text": "value"
       }
     ],
@@ -119,85 +119,10 @@ Blockly.defineBlocksWithJsonArray([
         "args0": [
           {
             "type": "field_checkbox",
-            "name": "NAME",
+            "name": "SUMENABLED",
             "checked": true
           }
         ],
-        "previousStatement": null,
-        "nextStatement": null,
-        "colour": 230,
-        "tooltip": "",
-        "helpUrl": ""
-      },
-      {
-        "type": "row",
-        "message0": "%1 %2",
-        "args0": [
-          {
-            "type": "field_input",
-            "name": "NAME",
-            "text": "row1"
-          },
-          {
-            "type": "field_input",
-            "name": "NAME",
-            "text": "row2"
-          }
-        ],
-        "output": null,
-        "colour": 230,
-        "tooltip": "",
-        "helpUrl": ""
-      },
-      {
-        "type": "numeric_input",
-        "message0": "number of leaves %1",
-        "args0": [
-          {
-            "type": "field_number",
-            "name": "number_of_leaves_input_by_user",
-            "value": 0
-          }
-        ],
-        "inputsInline": false,
-        "output": null,
-        "colour": 120,
-        "tooltip": "",
-        "helpUrl": ""
-      },
-      {
-        "type": "table_information",
-        "message0": "Table Header %1 Rows  %2",
-        "args0": [
-          {
-            "type": "input_value",
-            "name": "NAME"
-          },
-          {
-            "type": "input_statement",
-            "name": "NAME"
-          }
-        ],
-        "colour": 230,
-        "tooltip": "",
-        "helpUrl": ""
-      },
-      {
-        "type": "table_rows",
-        "message0": "%1 %2",
-        "args0": [
-          {
-            "type": "field_input",
-            "name": "NAME",
-            "text": "row1"
-          },
-          {
-            "type": "field_input",
-            "name": "NAME",
-            "text": "row2"
-          }
-        ],
-        "inputsInline": true,
         "previousStatement": null,
         "nextStatement": null,
         "colour": 230,
@@ -207,98 +132,50 @@ Blockly.defineBlocksWithJsonArray([
 ]);
  
 Blockly.JavaScript['add'] = function(block) {
- 
         var number_userenter1 = block.getFieldValue('width');
         // var value_num1 = Blockly.JavaScript.valueToCode(block, 'num1', Blockly.JavaScript.ORDER_ATOMIC);
         var number_userenter2 =  block.getFieldValue('breadth');
         // var value_num2 = Blockly.JavaScript.valueToCode(block, 'num2', Blockly.JavaScript.ORDER_ATOMIC);
         // let value = '\'' + block.getFieldValue('number1') + '\'';
         let code = ''
-        code +='function setup(){\ncreateCanvas(4000000, 400000);\n}\nfunction draw(){\nrect(' + number_userenter1 + ',' + number_userenter1 + ',' + number_userenter2 + ',' + number_userenter2 + ')\n}'
+        code +='function setup(){\ncreateCanvas(500, 500);\n}\nfunction draw(){\nrect(' + number_userenter1 + ',' + number_userenter1 + ',' + number_userenter2 + ',' + number_userenter2 + ')\n}'
         // return 'Object.execute(' + code + ');\n';
         return code;
 }  
  
 
-Blockly.JavaScript['block_type'] = function(block) {
-  var checkbox_name = block.getFieldValue('NAME') === 'TRUE';
-  // TODO: Assemble JavaScript into code variable.
-  var code = '...;\n';
-  return code;
-};
-
 Blockly.JavaScript['row_input'] = function(block) {
-  var text_name = block.getFieldValue('NAME');
-  var text_name = block.getFieldValue('NAME');
-  // TODO: Assemble JavaScript into code variable.
-  var code = '...;\n';
-  return code;
+  var columnValue1  = block.getFieldValue('COLUMNVALUE1');
+  var columnValue2 = block.getFieldValue('COLUMNVALUE2');
+  executable.rowvalue1 = columnValue1;
+  executable.rowvalue2 = columnValue2; 
+  return executable.rowvalue1, executable.rowvalue2;
 };
 
 Blockly.JavaScript['create_table'] = function(block) {
-  var statements_name = Blockly.JavaScript.statementToCode(block, 'NAME');
-  // TODO: Assemble JavaScript into code variable.
-  let code = ''
-  code += 'string added from: create_table\n';
-  return code;
-  
+  var boolCreateTable = Blockly.JavaScript.statementToCode(block, 'NAME');
+  executable.createtable = '';
+  return executable.createtable;
 };
 
-
-
-Blockly.JavaScript['input_row'] = function(block) {
-  var text_col1 = block.getFieldValue('col1');
-  var text_col2 = block.getFieldValue('col2');
+Blockly.JavaScript['input_header'] = function(block) {
+  var tableHeader1 = block.getFieldValue('col1');
+  var tableHeader2 = block.getFieldValue('col2');
   // TODO: Assemble JavaScript into code variable.
-  let code = '';
-  code += 'string added from: input_row\n';
-  executable.codeString += code;
-  return code;
+  executable.user_entry_column1 += tableHeader1;
+  executable.user_entry_column2 += tableHeader2;
+  return executable.user_entry_column1, executable.user_entry_column2;
 };
 
 Blockly.JavaScript['sum'] = function(block) {
-  var checkbox_name = block.getFieldValue('NAME') === 'TRUE';
-  // TODO: Assemble JavaScript into code variable.
-  var code = '...;\n';
-  return code;
+  var checkSum = block.getFieldValue('SUMENABLED');
+  executable.sum = checkSum;
+  return executable.sum;
 };
  
-
-//     function setup() {
-//   createCanvas(400, 400);
-// }
- 
-// function draw() {
-//   rect(50,50,50,50)
-// }
- 
-Blockly.JavaScript['row'] = function(block) {
-  var text_name = block.getFieldValue('NAME');
-  var text_name = block.getFieldValue('NAME');
-  // TODO: Assemble JavaScript into code variable.
-  var code = '...';
-  // TODO: Change ORDER_NONE to the correct strength.
-  return [code, Blockly.JavaScript.ORDER_NONE];
-};
- 
-Blockly.JavaScript['numeric_input'] = function(block) {
-  var number_number_of_leaves_input_by_user = block.getFieldValue('number_of_leaves_input_by_user');
-  // TODO: Assemble JavaScript into code variable.
-  var code = '...';
-  // TODO: Change ORDER_NONE to the correct strength.
-  return [code, Blockly.JavaScript.ORDER_NONE];
-};
-
 Blockly.JavaScript['show'] = function(block) {
-  var checkbox_name = block.getFieldValue('NAME') === 'TRUE';
+  var checkShow = block.getFieldValue('NAME');
   // TODO: Assemble JavaScript into code variable.
-  var code = '...;\n';
-  return code;
-};
-
-Blockly.JavaScript['table_rows'] = function(block) {
-  var text_name1 = block.getFieldValue('NAME');
-  var text_name2 = block.getFieldValue('NAME');
-  var tableheader = '' + text_name1 + '%' + text_name2 + ''
-  return tableheader;
+  executable.show_enabled = checkShow;
+  return executable.show_enabled;
 };
