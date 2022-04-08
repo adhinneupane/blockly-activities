@@ -162,6 +162,8 @@ Blockly.JavaScript['input_header'] = function(block) {
   var tableHeader1 = block.getFieldValue('col1');
   var tableHeader2 = block.getFieldValue('col2');
   // TODO: Assemble JavaScript into code variable.
+  executable.user_entry_column1 = ''; 
+  executable.user_entry_column2 = '';
   executable.user_entry_column1 += tableHeader1;
   executable.user_entry_column2 += tableHeader2;
   return executable.user_entry_column1, executable.user_entry_column2;
