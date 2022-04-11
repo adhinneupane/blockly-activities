@@ -2,6 +2,15 @@
 
 Blockly.defineBlocksWithJsonArray([
   {
+    "type": "repeat_row",
+    "message0": "Repeat above row",
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": 230,
+    "tooltip": "",
+    "helpUrl": ""
+  },
+  {
     "type": "input_header",
     "message0": "Table Header %1 %2",
     "args0": [
@@ -156,6 +165,11 @@ Blockly.JavaScript['create_table'] = function(block) {
   var boolCreateTable = Blockly.JavaScript.statementToCode(block, 'NAME');
   executable.createtable = '';
   return executable.createtable;
+};
+
+Blockly.JavaScript['repeat_row'] = function(block) {
+  // TODO: Assemble JavaScript into code variable.
+  var counter = 0;
 };
 
 Blockly.JavaScript['input_header'] = function(block) {
