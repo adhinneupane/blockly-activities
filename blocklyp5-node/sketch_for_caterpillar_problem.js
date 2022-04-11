@@ -8,7 +8,6 @@ function draw(){
   clear();
   textSize(20); 
   table=new p5.Table();
-  copy_row = ["3"]
   slideCounter=-1;
   number_of_rows=2; 
   number_of_columns = 3;
@@ -16,7 +15,7 @@ function draw(){
   checkTrue="TRUE";
   user_entry_column2="leaves";
   column_names=["RowNo",user_entry_column1,user_entry_column2];
-  user_entries= ["added","this","and","more","will","come"];
+  user_entries= ["added","this","and","more","will","come","lets","see","what","happens","added","this","and","more","will","come","lets","see","what","happens"];
   rowvalue1=2;
   rowvalue2=5; 
   show_sum="TRUE";
@@ -42,15 +41,17 @@ for(let i=0;i<number_of_columns;i++) {
     printTable();
   }
   addRow();
-  CopyRow(); 
+  CopyRow("4"); 
+  CopyRow("5");
+  CopyRow("6");
 }
 
-function CopyRow(){
+function CopyRow(row_to_be_copied){
   RepeatBuffer = []  
         serialnumber = serialnumber + 1;
         let i =0;
         for(let columns=0; columns<3;columns++) {  
-         RepeatBuffer[i]= table.getString(copy_row[0]-1,columns),20+80*columns,100+20*copy_row[0]-1;
+         RepeatBuffer[i]= table.getString(row_to_be_copied-1,columns),20+80*columns,100+20*row_to_be_copied-1;
          console.log("CONTNET",RepeatBuffer[i]);
          i = i + 1;
         }    
