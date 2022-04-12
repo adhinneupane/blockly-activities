@@ -6,9 +6,11 @@ Blockly.defineBlocksWithJsonArray([
       {
         "type": "field_input",
         "name": "row_to_be_copied",
-        "text": "default"
+        "text": "row number"
       }
     ],
+    "previousStatement":null,
+    "nextStatement":null,
     "colour": 230,
     "tooltip": "",
     "helpUrl": ""
@@ -96,35 +98,6 @@ Blockly.defineBlocksWithJsonArray([
     "tooltip": "",
     "helpUrl": ""
   },
-  {
-        "type": "add",
-        "message0": "length %1 %2 breadth %3 %4",
-        "args0": [
-          {
-            "type": "field_number",
-            "name": "width",
-            "value": 0
-          },
-          {
-            "type": "input_value",
-            "name": "num1",
-            "align": "CENTRE"
-          },
-          {
-            "type": "field_number",
-            "name": "breadth",
-            "value": 0
-          },
-          {
-            "type": "input_value",
-            "name": "num2",
-            "align": "CENTRE"
-          }
-        ],
-        "colour": 230,
-        "tooltip": "",
-        "helpUrl": ""
-      },
       {
         "type": "sum",
         "message0": "Sum %1",
@@ -143,25 +116,15 @@ Blockly.defineBlocksWithJsonArray([
       }
 ]);
  
-Blockly.JavaScript['add'] = function(block) {
-        var number_userenter1 = block.getFieldValue('width');
-        // var value_num1 = Blockly.JavaScript.valueToCode(block, 'num1', Blockly.JavaScript.ORDER_ATOMIC);
-        var number_userenter2 =  block.getFieldValue('breadth');
-        // var value_num2 = Blockly.JavaScript.valueToCode(block, 'num2', Blockly.JavaScript.ORDER_ATOMIC);
-        // let value = '\'' + block.getFieldValue('number1') + '\'';
-        let code = ''
-        code +='function setup(){\ncreateCanvas(500, 500);\n}\nfunction draw(){\nrect(' + number_userenter1 + ',' + number_userenter1 + ',' + number_userenter2 + ',' + number_userenter2 + ')\n}'
-        // return 'Object.execute(' + code + ');\n';
-        return code;
-}  
- 
 
 Blockly.JavaScript['row_input'] = function(block) {
   var columnValue1  = block.getFieldValue('COLUMNVALUE1');
   var columnValue2 = block.getFieldValue('COLUMNVALUE2');
-  executable.rowvalue1 = columnValue1;
-  executable.rowvalue2 = columnValue2; 
+  executable.rowvalue1 += columnValue1;
+  executable.rowvalue2 += columnValue2; 
+  console.log("first elements to be pushed from row input", executable.columnValue1, executable.columnValue2)
   return executable.rowvalue1, executable.rowvalue2;
+  // executable.user_entries.push[columnValue1, columnValue2]
 };
 
 Blockly.JavaScript['create_table'] = function(block) {
@@ -173,7 +136,10 @@ Blockly.JavaScript['create_table'] = function(block) {
 Blockly.JavaScript['repeat_row'] = function(block) {
   var text_row_to_be_copied = block.getFieldValue('row_to_be_copied');
   // TODO: Assemble JavaScript into code variable.
-  executable.row_to_be_copied.push[text_row_to_be_copied];
+  let repeat_code = '';
+  repeat_code += 'CopyRow(' + text_row_to_be_copied +')'
+  executable.row_to_be_copied += repeat_code;
+  console.log("code for copyrow", repeat_code )
   return executable.row_to_be_copied;
 };
 Blockly.JavaScript['input_header'] = function(block) {
