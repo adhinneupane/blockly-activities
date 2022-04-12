@@ -1,231 +1,207 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ICT Lessons</title>
-  </head>
-
-<!-- central section of screen where blockly workspace and toolbox will be displayed -->
-
+    <title>Introduction to Computation Technology</title>
 </head>
-<body>
-    <div class="wrapper" style="width: 800px; border:1 px solid; overflow:hidden; position:relative">
-   
-        <!-- creating blockly toolbox div here -->
-        <div id="toolboxDiv" style="height:600px; width: 500px; float: left; border: 1px solid; position:inherit; background-color: aqua;"></div>
-            Tool Box
-            <xml id="toolbox">
-                <block type="add"></block>
-              </xml>
-        </div>
-        <!-- creating blockly workspace div here -->
-        <div id = "codespace">
-            JS Code
-        </div>
-        <!-- creating blockly Output space div here -->
-        <div id = "output" style="float: left;
-        width: 250px;
-        height: 600px;
-        border: 1px solid;">
-           <h2> <div id="printscreen">output</div> </h2> 
-        </div>
-        <body>
-            <div class="button">
-                <button id="makeCode" onclick="makecode()"> generateCode </button>
-                <button id="btn" onclick="handleplay()"> Run </button>
-            </div>
-        </body>
-    </div>
-   <div id = "ps5">
-        <script src="https://cdn.jsdelivr.net/npm/p5@1.4.1/lib/p5.js"></script>
-        <script>
- function setup() { createCanvas(500, 500); textSize(18); table = new p5.Table(); number_of_rows = 5; number_of_columns = 3; user_entry_column1 = "Caterpillars"; user_entry_column2 = "Leaves"; column_names = ["S.No",user_entry_column1,user_entry_column2]; number_of_caterpillars_in_each_row = 2; number_of_leaves_eaten_by_caterpillars=5; show_sum = true; show_enabled = true; slideshow = true; if (slideshow==true){ text("click to begin slideshow", 20,20); setBtn = createButton("Next Slide"); setBtn.position(220,05); setBtn.mouseClicked(nextSlide); } for (let i=0; i < number_of_columns; i++) { table.addColumn(column_names[i]); } for(let i =0; i < number_of_rows; i++){ UserRow(); } if (show_enabled==true) { printTable(); } } function UserRow(){ let newRow = table.addRow(); newRow.setString(column_names[0],""); newRow.setString(column_names[1],""+number_of_caterpillars_in_each_row); newRow.setString(column_names[2],""+number_of_leaves_eaten_by_caterpillars); } function printTable() { for (let c = 0; c < 1; c++) { text(table.columns, 20 + 80 * c, 80); } for (let rows = 0; rows < number_of_rows; rows++) { for (let columns = 0; columns < 3; columns++) { text(table.getString(rows, columns), 20 + 80 * columns, 100 + 20 * rows); } } if (show_sum==true) { Total(); } } function Total(){ let newRow = table.addRow(); newRow.setString(column_names[0], "Total"); newRow.setString(column_names[1],""+""+number_of_rows*number_of_caterpillars_in_each_row); newRow.setString(column_names[2],""+number_of_leaves_eaten_by_caterpillars*number_of_rows); for (let rows = 0; rows < number_of_rows+1; rows++) { for (let columns = 0; columns < 3; columns++) { text(table.getString(rows, columns), 20 + 80 * columns, 100 + 20 * rows); } } } function nextSlide(){ clear(); text("slideshow has started", 20,20); printTable(); }
 
-        </script>
-      </div>
 
-    <script src="https://unpkg.com/blockly"></script>
-    <script>
-        Blockly.defineBlocksWithJsonArray([
-          {
-              "type": "add",
-              "message0": "number 1 %1 %2 number 2 %3 %4",
-              "args0": [
-                {
-                  "type": "field_number",
-                  "name": "width",
-                  "value": 0
-                },
-                {
-                  "type": "input_value",
-                  "name": "num1",
-                  "align": "CENTRE"
-                },
-                {
-                  "type": "field_number",
-                  "name": "breadth",
-                  "value": 0
-                },
-                {
-                  "type": "input_value",
-                  "name": "num2",
-                  "align": "CENTRE"
-                }
-              ],
-              "colour": 230,
-              "tooltip": "",
-              "helpUrl": ""
-            },
-            {
-              "type": "sum",
-              "message0": "Sum %1",
-              "args0": [
-                {
-                  "type": "input_value",
-                  "name": "NAME"
-                }
-              ],
-              "inputsInline": false,
-              "previousStatement": null,
-              "nextStatement": null,
-              "colour": 195,
-              "tooltip": "",
-              "helpUrl": ""
-            },
-            {
-              "type": "row",
-              "message0": "%1 %2",
-              "args0": [
-                {
-                  "type": "field_input",
-                  "name": "NAME",
-                  "text": "row1"
-                },
-                {
-                  "type": "field_input",
-                  "name": "NAME",
-                  "text": "row2"
-                }
-              ],
-              "output": null,
-              "colour": 230,
-              "tooltip": "",
-              "helpUrl": ""
-            },
-            {
-              "type": "numeric_input",
-              "message0": "number of leaves %1",
-              "args0": [
-                {
-                  "type": "field_number",
-                  "name": "number_of_leaves_input_by_user",
-                  "value": 0
-                }
-              ],
-              "inputsInline": false,
-              "output": null,
-              "colour": 120,
-              "tooltip": "",
-              "helpUrl": ""
-            },
-            {
-              "type": "table_information",
-              "message0": "Table Header %1 Rows  %2",
-              "args0": [
-                {
-                  "type": "input_value",
-                  "name": "NAME"
-                },
-                {
-                  "type": "input_statement",
-                  "name": "NAME"
-                }
-              ],
-              "colour": 230,
-              "tooltip": "",
-              "helpUrl": ""
-            },
-            {
-              "type": "table_rows",
-              "message0": "%1 %2",
-              "args0": [
-                {
-                  "type": "field_input",
-                  "name": "NAME",
-                  "text": "row1"
-                },
-                {
-                  "type": "field_input",
-                  "name": "NAME",
-                  "text": "row2"
-                }
-              ],
-              "inputsInline": true,
-              "previousStatement": null,
-              "nextStatement": null,
-              "colour": 230,
-              "tooltip": "",
-              "helpUrl": ""
-            }
-      ]); 
-      
-      Blockly.JavaScript['add'] = function(block) {
-      
-              var number_userenter1 = block.getFieldValue('width');
-              // var value_num1 = Blockly.JavaScript.valueToCode(block, 'num1', Blockly.JavaScript.ORDER_ATOMIC);
-              var number_userenter2 =  block.getFieldValue('breadth');
-              // var value_num2 = Blockly.JavaScript.valueToCode(block, 'num2', Blockly.JavaScript.ORDER_ATOMIC);
-              // let value = '\'' + block.getFieldValue('number1') + '\'';
-              let code = ''
-              code +='function setup(){\ncreateCanvas(400, 400);\n}\nfunction draw(){\nrect(' + number_userenter1 + ',' + number_userenter1 + ',' + number_userenter2 + ',' + number_userenter2 + ')\n}' 
-              // return 'Object.execute(' + code + ');\n';
-              console.log(code);
-              return code;
-      }   
-      
-
+<body>  
  
-  
-      
-      Blockly.JavaScript['sum'] = function(block) {
-        var value_name = Blockly.JavaScript.valueToCode(block, 'NAME', Blockly.JavaScript.ORDER_ATOMIC);
-        // TODO: Assemble JavaScript into code variable.
-        var code = '...;\n';
-        return code;
-      };
-      
-      Blockly.JavaScript['row'] = function(block) {
-        var text_name = block.getFieldValue('NAME');
-        var text_name = block.getFieldValue('NAME');
-        // TODO: Assemble JavaScript into code variable.
-        var code = '...';
-        // TODO: Change ORDER_NONE to the correct strength.
-        return [code, Blockly.JavaScript.ORDER_NONE];
-      };
-      
-      Blockly.JavaScript['numeric_input'] = function(block) {
-        var number_number_of_leaves_input_by_user = block.getFieldValue('number_of_leaves_input_by_user');
-        // TODO: Assemble JavaScript into code variable.
-        var code = '...';
-        // TODO: Change ORDER_NONE to the correct strength.
-        return [code, Blockly.JavaScript.ORDER_NONE];
-      };
-      
-      Blockly.JavaScript['table_rows'] = function(block) {
-        var text_name1 = block.getFieldValue('NAME');
-        var text_name2 = block.getFieldValue('NAME');
-        var tableheader = '' + text_name1 + '%' + text_name2 + ''
-        return tableheader;
-      };
-          </script> 
-      
-    
-    <script src="scripts/main.js">
 
-</script>
+      <div id="toolboxDiv" style="height:600px; width: 600px; float: left; border: 1px solid; margin-top: 2px; margin-left: 35px;"></div>
+            <xml id="toolbox">
+                <block type="create_table"></block>
+                <block type="input_header"></block>
+                <block type="row_input"></block>
+                <block type="repeat_row"></block>
+                <block type="sum"></block>
+                <block type="show"></block>
+              </xml>
+        </div> 
+        <script src="https://cdn.jsdelivr.net/npm/p5@1.4.1/lib/p5.js"></script>    
+         <script>
+        function setup(){
+  createCanvas(500, 500);
+  noLoop(); 
+} 
+
+
+function draw(){
+  clear();
+  textSize(20); 
+  table=new p5.Table();
+  slideCounter=-1;
+  number_of_rows=2; 
+  number_of_columns=3;
+  user_entry_column1="caterpillar";
+  checkTrue="TRUE";
+  user_entry_column2="leaves";
+  column_names=["RowNo",user_entry_column1,user_entry_column2];
+  user_entries= ["added","this","and","more","will","come","lets","see","what","happens","added","this","and","more","will","come","lets","see","what","happens"];
+  rowvalue1=2;
+  rowvalue2=5; 
+  show_sum="TRUE";
+  show_enabled="TRUE";
+  slideshow=true;
+  serialnumber=0;  
+if(slideshow==true){
+    text("click to begin slideshow",20,20); 
+    setBtn=createButton("Next Slide"); 
+    setBtn.position(220,5); 
+    setBtn.mouseClicked(nextSlide);
+}
+for(let i=0;i<number_of_columns;i++) {
+    table.addColumn(column_names[i]); 
+  }
+   for(let i=0;i<number_of_rows;i++){
+     serialnumber=serialnumber+1;
+     UserRow(); 
+  }
+   if(show_enabled.localeCompare(checkTrue)>-1 ) {
+    printTable();
+  }
+  addRow();
+  CopyRow("4"); 
+  CopyRow("5");
+  CopyRow("6");
+}
+function CopyRow(row_to_be_copied){
+  RepeatBuffer=[];  
+        serialnumber = serialnumber + 1;
+        let i =0;
+        for(let columns=0; columns<3;columns++) {  
+         RepeatBuffer[i]= table.getString(row_to_be_copied-1,columns),20+80*columns,100+20*row_to_be_copied-1;
+         console.log("CONTNET",RepeatBuffer[i]);
+         i = i + 1;
+        }    
+    
+ 
+let newRow=table.addRow();
+k = 0;
+newRow.setString(column_names[0],""+serialnumber);  
+newRow.setString(column_names[1],""+RepeatBuffer[k+1]);
+newRow.setString(column_names[2],""+RepeatBuffer[k+2]);  
+  }
+
+function UserRow()
+{ let newRow=table.addRow();
+   newRow.setString(column_names[0],"");
+newRow.setString(column_names[0],""+serialnumber)  
+newRow.setString(column_names[1],""+rowvalue1); 
+newRow.setString(column_names[2],""+rowvalue2); } 
+
+function printTable(slideCounter) {
+  
+ for(let c=0;c<1;c++){
+      text(table.columns,20 + 80*c,80); 
+  }
+ if (slideshow==false){
+  for(let rows=0; rows<number_of_rows; rows++){ 
+      for(let columns=0; columns<3;columns++) { 
+          text(table.getString(rows,columns),20+80*columns,100+20*rows); 
+      }
+  }
+  if(show_sum.localeCompare(checkTrue) > -1) {
+    Total(); 
+  }      
+ }
+ if (slideshow==true){
+   slideCounter = slideCounter + 1;
+   // print one row at a time
+     clear();
+  // print columns in anycase 
+  for(let c=0;c<1;c++){
+      text(table.columns,20 + 80*c,80); 
+  }
+     for(let rows=0; rows<slideCounter; rows++){ 
+      for(let columns=0; columns<3;columns++) { 
+          text(table.getString(rows,columns),20+80*columns,100+20*rows); 
+      }
+  }
+   
+if (slideCounter == number_of_rows){
+  Total();
+}
+if (slideCounter > number_of_rows + user_entries.length){
+  console.log("user to be notifide");
+}
+ }
+}
+
+
+function Total(){ 
+  let newRow = table.addRow();
+  newRow.setString(column_names[0], "Total");
+  newRow.setString(column_names[1],""+""+number_of_rows*rowvalue1);
+  newRow.setString(column_names[2],""+rowvalue2*number_of_rows);
+  let rows=number_of_rows; 
+  for (let columns = 0; columns < 3; columns++) { 
+      text(table.getString(rows, columns), 20 + 80 * columns, 100 + 20 * rows); 
+  } 
+   } 
+function nextSlide(){
+  text("Mode: Slideshow", 20,20); 
+  slideCounter = slideCounter + 1;
+  printTable(slideCounter);
+  console.log("Slide count is:", slideCounter);
+  setBtn=createButton("Next Slide"); 
+  setBtn.position(220,5); 
+  setBtn.mouseClicked(nextSlide);
+  alert_end_of_slide = number_of_rows + user_entries.length/2 + 1;
+  if (slideCounter>alert_end_of_slide){
+    alert("End of slide show");
+  }
+}
+
+function addRow(){
+for(let i=0; i<user_entries.length; i++){
+serialnumber = serialnumber + 1;
+let addRow=table.addRow();
+addRow.setString(column_names[0],""+serialnumber);  
+addRow.setString(column_names[1],""+user_entries[i]); addRow.setString(column_names[2],""+user_entries[i+1]);
+i = i + 1; 
+}  
+}
+        </script> 
+
+<ul>
+  <style>
+    
+ul {
+  list-style-type: none;
+  margin-top: 0 px;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+} 
+
+li a:hover {
+  background-color: #111;
+} 
+   </style>
+  <li><a href="#home">BellRinger 01: Caterpillar problem</a></li>
+  <li style="float:right; margin-top: 10px; margin-left: 10px; margin-right: 20 px; padding-right: 20px;"><button id="makeCode" onclick="runCode()">Run Code</button></li>
+  <li style="float:right; margin-top: 10px; margin-left: 10px; "><button id="generateCode" onclick="makeCode()">View Code in p5 JS</button></li>
+</ul>
+  
+      <script src="https://unpkg.com/blockly"></script>
+    <script src="block-definition.js"></script> 
+    <script src="main.js"></script> 
 </body>
 </html>
 
