@@ -120,11 +120,9 @@ Blockly.defineBlocksWithJsonArray([
 
 
 Blockly.JavaScript['row_input'] = function(block) {
-  var CV1  = block.getFieldValue('COLUMNVALUE1');
-  var CV2 = block.getFieldValue('COLUMNVALUE2');
-  let outputString = ''; 
-  outputString += ',' + '"' + CV1 + '"' + ',' + '"' + CV2 + '"';
-  executable.hold += outputString;
+  var CV1 = '"' + block.getFieldValue('COLUMNVALUE1') + '"';
+  var CV2 = '"' + block.getFieldValue('COLUMNVALUE2') + '"';
+  executable.insert(CV1,CV2);
   return 'jibberish';  
 };
 

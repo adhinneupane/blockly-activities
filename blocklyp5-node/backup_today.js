@@ -11,7 +11,7 @@ function setup() {
     sumEnabled = true;
     showEnabled = true;
     tableCreated = true;
-    slideShow = false;
+    slideShow = true;
     serialNumber = 0;
     
     
