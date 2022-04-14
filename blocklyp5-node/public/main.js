@@ -19,7 +19,9 @@ const executable={
     rowvalue2 : '',
     copy_row_counter: 0,
     rows_to_be_copied: "",
-    hold: ''
+    hold: '',
+    sum_left_column: 0,
+    sum_right_column: 0,
 } 
 
 function runCode(){
