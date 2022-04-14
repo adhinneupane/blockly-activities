@@ -1,11 +1,16 @@
-
-
 Blockly.defineBlocksWithJsonArray([
   {
     "type": "repeat_row",
-    "message0": "Repeat above row",
-    "previousStatement": null,
-    "nextStatement": null,
+    "message0": "Copy Row Number %1",
+    "args0": [
+      {
+        "type": "field_input",
+        "name": "row_to_be_copied",
+        "text": "row number"
+      }
+    ],
+    "previousStatement":null,
+    "nextStatement":null,
     "colour": 230,
     "tooltip": "",
     "helpUrl": ""
@@ -93,35 +98,6 @@ Blockly.defineBlocksWithJsonArray([
     "tooltip": "",
     "helpUrl": ""
   },
-  {
-        "type": "add",
-        "message0": "length %1 %2 breadth %3 %4",
-        "args0": [
-          {
-            "type": "field_number",
-            "name": "width",
-            "value": 0
-          },
-          {
-            "type": "input_value",
-            "name": "num1",
-            "align": "CENTRE"
-          },
-          {
-            "type": "field_number",
-            "name": "breadth",
-            "value": 0
-          },
-          {
-            "type": "input_value",
-            "name": "num2",
-            "align": "CENTRE"
-          }
-        ],
-        "colour": 230,
-        "tooltip": "",
-        "helpUrl": ""
-      },
       {
         "type": "sum",
         "message0": "Sum %1",
@@ -139,26 +115,17 @@ Blockly.defineBlocksWithJsonArray([
         "helpUrl": ""
       }
 ]);
- 
-Blockly.JavaScript['add'] = function(block) {
-        var number_userenter1 = block.getFieldValue('width');
-        // var value_num1 = Blockly.JavaScript.valueToCode(block, 'num1', Blockly.JavaScript.ORDER_ATOMIC);
-        var number_userenter2 =  block.getFieldValue('breadth');
-        // var value_num2 = Blockly.JavaScript.valueToCode(block, 'num2', Blockly.JavaScript.ORDER_ATOMIC);
-        // let value = '\'' + block.getFieldValue('number1') + '\'';
-        let code = ''
-        code +='function setup(){\ncreateCanvas(500, 500);\n}\nfunction draw(){\nrect(' + number_userenter1 + ',' + number_userenter1 + ',' + number_userenter2 + ',' + number_userenter2 + ')\n}'
-        // return 'Object.execute(' + code + ');\n';
-        return code;
-}  
- 
+
+
+
 
 Blockly.JavaScript['row_input'] = function(block) {
-  var columnValue1  = block.getFieldValue('COLUMNVALUE1');
-  var columnValue2 = block.getFieldValue('COLUMNVALUE2');
-  executable.rowvalue1 = columnValue1;
-  executable.rowvalue2 = columnValue2; 
-  return executable.rowvalue1, executable.rowvalue2;
+  var CV1  = block.getFieldValue('COLUMNVALUE1');
+  var CV2 = block.getFieldValue('COLUMNVALUE2');
+  let outputString = ''; 
+  outputString += ',' + '"' + CV1 + '"' + ',' + '"' + CV2 + '"';
+  executable.hold += outputString;
+  return 'jibberish';  
 };
 
 Blockly.JavaScript['create_table'] = function(block) {
@@ -168,9 +135,14 @@ Blockly.JavaScript['create_table'] = function(block) {
 };
 
 Blockly.JavaScript['repeat_row'] = function(block) {
+  var number_copy = block.getFieldValue('row_to_be_copied');
   // TODO: Assemble JavaScript into code variable.
-  var counter = 0;
+  var repeat_code = '';
+  repeat_code += 'CopyRow(' + number_copy +');';
+  executable.rows_to_be_copied += repeat_code;
+  return 'whatever';
 };
+
 
 Blockly.JavaScript['input_header'] = function(block) {
   var tableHeader1 = block.getFieldValue('col1');
@@ -182,6 +154,9 @@ Blockly.JavaScript['input_header'] = function(block) {
   executable.user_entry_column2 += tableHeader2;
   return executable.user_entry_column1, executable.user_entry_column2;
 };
+
+
+
 
 Blockly.JavaScript['sum'] = function(block) {
   var checkSum = block.getFieldValue('SUMENABLED');
