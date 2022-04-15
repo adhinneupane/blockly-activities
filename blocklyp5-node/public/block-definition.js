@@ -116,20 +116,18 @@ Blockly.defineBlocksWithJsonArray([
       }
 ]);
 
-
-
-
 Blockly.JavaScript['row_input'] = function(block) {
   var CV1 = '"' + block.getFieldValue('COLUMNVALUE1') + '"';
   var CV2 = '"' + block.getFieldValue('COLUMNVALUE2') + '"';
-  executable.insert(CV1,CV2);
-  return 'jibberish';  
+  executable.userEntries.push(CV1);
+  executable.userEntries.push(CV2);
+  return 'done';  
 };
 
 Blockly.JavaScript['create_table'] = function(block) {
   var boolCreateTable = Blockly.JavaScript.statementToCode(block, 'NAME');
-  executable.createtable = '';
-  return executable.createtable;
+  executable.createtable =  true;
+  return 'done'
 };
 
 Blockly.JavaScript['repeat_row'] = function(block) {
@@ -145,26 +143,22 @@ Blockly.JavaScript['repeat_row'] = function(block) {
 Blockly.JavaScript['input_header'] = function(block) {
   var tableHeader1 = block.getFieldValue('col1');
   var tableHeader2 = block.getFieldValue('col2');
-  // TODO: Assemble JavaScript into code variable.
-  executable.user_entry_column1 = ''; 
-  executable.user_entry_column2 = '';
-  executable.user_entry_column1 += tableHeader1;
-  executable.user_entry_column2 += tableHeader2;
-  return executable.user_entry_column1, executable.user_entry_column2;
+  tableHeader1 = '"' + tableHeader1 + '"';
+  tableHeader2 = '"' + tableHeader2 + '"';
+  executable.columnNames[1] = tableHeader1;
+  executable.columnNames[2] = tableHeader2;
+  return 'done'
 };
-
-
-
 
 Blockly.JavaScript['sum'] = function(block) {
   var checkSum = block.getFieldValue('SUMENABLED');
-  executable.sum = checkSum;
-  return executable.sum;
+  executable.sumEnabled =  true ;
+  return 'done'
 };
  
 Blockly.JavaScript['show'] = function(block) {
   var checkShow = block.getFieldValue('NAME');
   // TODO: Assemble JavaScript into code variable.
-  executable.show_enabled = checkShow;
-  return executable.show_enabled;
+  executable.showEnabled = true ;
+  return 'done'
 };
