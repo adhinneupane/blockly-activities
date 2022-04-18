@@ -1,5 +1,22 @@
 Blockly.defineBlocksWithJsonArray([
   {
+    "type": "slide_show",
+    "message0": "SlideShow %1",
+    "args0": [
+      {
+        "type": "field_checkbox",
+        "name": "slideShow",
+        "checked": true
+      }
+    ],
+    "inputsInline": true,
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": 230,
+    "tooltip": "",
+    "helpUrl": ""
+  },
+  {
     "type": "repeat_row",
     "message0": "Copy Row Number %1",
     "args0": [
@@ -134,9 +151,9 @@ Blockly.JavaScript['repeat_row'] = function(block) {
   var number_copy = block.getFieldValue('row_to_be_copied');
   // TODO: Assemble JavaScript into code variable.
   var repeat_code = '';
-  repeat_code += 'CopyRow(' + number_copy +');';
-  executable.rows_to_be_copied += repeat_code;
-  return 'whatever';
+  repeat_code += 'copyRow(' + number_copy +');';
+  executable.rowstoCopy += repeat_code;
+  return 'done';
 };
 
 
@@ -161,4 +178,12 @@ Blockly.JavaScript['show'] = function(block) {
   // TODO: Assemble JavaScript into code variable.
   executable.showEnabled = true ;
   return 'done'
+};
+
+Blockly.JavaScript['slide_show'] = function(block) {
+  var checkbox_slideshow = block.getFieldValue('slideShow') === 'TRUE';
+  // TODO: Assemble JavaScript into code variable.
+  var code = '...;\n';
+  executable.slideShow = checkbox_slideshow; 
+  return code;
 };

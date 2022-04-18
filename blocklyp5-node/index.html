@@ -9,12 +9,13 @@
   </head>
 
 <body>  
+  
   <!-- <ul>
     <style>
       
 ul {
     list-style-type: none;
-    margin-top: 0 px;
+    margin-top: 0 px; 
     padding: 0;
     overflow: hidden;
     background-color: #333;
@@ -38,9 +39,12 @@ ul {
   } -->
     <!-- </style> -->
     <!-- <li><a href="#home">Introduction to Computation Technology</a></li> -->
+
+
     <li style="float:right; margin-top: 10px; margin-left: 10px; margin-right: 20 px; padding-right: 20px;"><button id="makeCode" onclick="runCode()">Run Code</button></li>
-    <li style="float:right; margin-top: 10px; margin-left: 10px; "><button id="generateCode" onclick="makeCode()">View Code in p5 JS</button></li>
+    <li style="float:right; margin-top: 10px; margin-left: 10px; "><button id="refresh"  onclick="reload()" disabled>Refresh</button></li>
   </ul>
+
 
     <div id="toolboxDiv" style="height:600px; width: 700px; float: left; border: 1px solid; margin-top: 20px; margin-left: 35px;"></div>
             <xml id="toolbox">
@@ -50,9 +54,10 @@ ul {
               <block type="repeat_row"></block>
               <block type="sum"></block>
               <block type="show"></block>
+              <block type="slide_show"></block>
               </xml>
         </div>
-        <!-- creating blockly Output space div here -->
+
 
     <div id="printscreen"></div> 
 
@@ -65,10 +70,7 @@ ul {
 function draw(){
   point(40, 50); // point(x, y)
 }
-    </script>
-
-    
-
+    </script> 
     <body>
 
     <script src="https://unpkg.com/blockly"></script>
