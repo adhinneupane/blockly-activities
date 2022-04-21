@@ -1,5 +1,22 @@
 Blockly.defineBlocksWithJsonArray([
   {
+    "type": "slide_show",
+    "message0": "SlideShow %1",
+    "args0": [
+      {
+        "type": "field_checkbox",
+        "name": "slideShow",
+        "checked": true
+      }
+    ],
+    "inputsInline": true,
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": 230,
+    "tooltip": "",
+    "helpUrl": ""
+  },
+  {
     "type": "repeat_row",
     "message0": "Copy Row Number %1",
     "args0": [
@@ -115,53 +132,58 @@ Blockly.defineBlocksWithJsonArray([
         "helpUrl": ""
       }
 ]);
- 
 
 Blockly.JavaScript['row_input'] = function(block) {
-  var columnValue1  = block.getFieldValue('COLUMNVALUE1');
-  var columnValue2 = block.getFieldValue('COLUMNVALUE2');
-  executable.rowvalue1 += columnValue1;
-  executable.rowvalue2 += columnValue2; 
-  console.log("first elements to be pushed from row input", executable.columnValue1, executable.columnValue2)
-  return executable.rowvalue1, executable.rowvalue2;
-  // executable.user_entries.push[columnValue1, columnValue2]
+  var CV1 = '"' + block.getFieldValue('COLUMNVALUE1') + '"';
+  var CV2 = '"' + block.getFieldValue('COLUMNVALUE2') + '"';
+  executable.userEntries.push(CV1);
+  executable.userEntries.push(CV2);
+  return 'done';  
 };
 
 Blockly.JavaScript['create_table'] = function(block) {
   var boolCreateTable = Blockly.JavaScript.statementToCode(block, 'NAME');
-  executable.createtable = '';
-  return executable.createtable;
+  executable.createtable =  true;
+  return 'done'
 };
 
 Blockly.JavaScript['repeat_row'] = function(block) {
-  var text_row_to_be_copied = block.getFieldValue('row_to_be_copied');
+  var number_copy = block.getFieldValue('row_to_be_copied');
   // TODO: Assemble JavaScript into code variable.
-  let repeat_code = '';
-  repeat_code += 'CopyRow(' + text_row_to_be_copied +')'
-  executable.row_to_be_copied += repeat_code;
-  console.log("code for copyrow", repeat_code )
-  return executable.row_to_be_copied;
+  var repeat_code = '';
+  repeat_code += 'copyRow(' + number_copy +');';
+  executable.rowstoCopy += repeat_code;
+  return 'done';
 };
+
+
 Blockly.JavaScript['input_header'] = function(block) {
   var tableHeader1 = block.getFieldValue('col1');
   var tableHeader2 = block.getFieldValue('col2');
-  // TODO: Assemble JavaScript into code variable.
-  executable.user_entry_column1 = ''; 
-  executable.user_entry_column2 = '';
-  executable.user_entry_column1 += tableHeader1;
-  executable.user_entry_column2 += tableHeader2;
-  return executable.user_entry_column1, executable.user_entry_column2;
+  tableHeader1 = '"' + tableHeader1 + '"';
+  tableHeader2 = '"' + tableHeader2 + '"';
+  executable.columnNames[1] = tableHeader1;
+  executable.columnNames[2] = tableHeader2;
+  return 'done'
 };
 
 Blockly.JavaScript['sum'] = function(block) {
   var checkSum = block.getFieldValue('SUMENABLED');
-  executable.sum = checkSum;
-  return executable.sum;
+  executable.sumEnabled =  true ;
+  return 'done'
 };
  
 Blockly.JavaScript['show'] = function(block) {
   var checkShow = block.getFieldValue('NAME');
   // TODO: Assemble JavaScript into code variable.
-  executable.show_enabled = checkShow;
-  return executable.show_enabled;
+  executable.showEnabled = true ;
+  return 'done'
+};
+
+Blockly.JavaScript['slide_show'] = function(block) {
+  var checkbox_slideshow = block.getFieldValue('slideShow') === 'TRUE';
+  // TODO: Assemble JavaScript into code variable.
+  var code = '...;\n';
+  executable.slideShow = checkbox_slideshow; 
+  return code;
 };

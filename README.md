@@ -1,8 +1,22 @@
 
 
-### Installation and usage
+### Blockly + p5
+### Interactive Bellringers for Introduction to Computing Courses
 
+The repository can be used with/without server setup. 
 
+### Blockly + p5 - (JS/HTML/CSS)
+1.  
+   ```
+   git clone git@github.com:ashutoshneupane/brbytes.git
+   ```
+    
+2. 
+   ```
+   Visit index.html
+   ```
+
+### Blockly + p5 - (Node/JS/HTML/CSS)
 
 1.  
    ```
@@ -23,7 +37,5 @@
 
 4. 
    ```
-   visit server on port 8080/home
+   visit server on port http://localhost:8080/home
    ```
-
-["2","5","2","5","2","5","lets","see","what","happens","added","this","and","more","will","come","lets","see","what","happens"];
