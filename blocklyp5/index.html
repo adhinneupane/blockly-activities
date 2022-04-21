@@ -1,81 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Introduction to Computation Technology</title>
-</head>
+    <title>Introduction to Computing</title>
+  </head>
 
 <body>  
- 
+  <ul>
+      <style>
+      ul {
+          list-style-type: none;
+          margin-top: 0 px; 
+          padding: 0;
+          overflow: hidden;
+          background-color: #333;
+        }
+  
+      li {
+        float: left;
+      }
+  
+      li a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+      }    
+      /* Change the link color to #111 (black) on hover */
+      li a:hover {
+        background-color: #111;
+      } 
 
-      <div id="toolboxDiv" style="height:600px; width: 600px; float: left; border: 1px solid; margin-top: 20px; margin-left: 35px;"></div>
+    </style>
+
+    <li><a href="#home">Introduction to Computation Technology</a></li>
+    <li style="float:left; margin-top: 10px; margin-left: 300px; margin-right: 20 px; padding-right: 20px;">
+      <select name="lessons" id="lessonNumber">
+        <option value="1">Lesson 1: Caterpillar Problem</option>
+        <option value="2">Lesson 2: </option>
+        <option value="3">Lesson 3: </option>
+        <option value="4">Lesson 4: </option>
+      </select>
+    </li>
+    <li style="float:right; margin-top: 10px; margin-left: 10px; margin-right: 20 px; padding-right: 20px;"><button id="makeCode" onclick="runCode()">Run Code</button></li>
+    <li style="float:right; margin-top: 10px; margin-left: 10px; "><button id="refresh"  onclick="reload()" disabled>Refresh</button></li>
+  
+  </ul>
+
+    <div id="toolboxDiv" style="height:600px; width: 700px; float: left; border: 1px solid; margin-top: 20px; margin-left: 35px;"></div>
             <xml id="toolbox">
-                <block type="create_table"></block>
-                <block type="input_header"></block>
-                <block type="row_input"></block>
-                <block type="repeat_row"></block>
-                <block type="sum"></block>
-                <block type="show"></block>
+              <block type="create_table"></block>
+              <block type="input_header"></block>
+              <block type="row_input"></block>
+              <block type="repeat_row"></block>
+              <block type="sum"></block>
+              <block type="show"></block>
+              <block type="slide_show"></block>
               </xml>
-        </div>  
-
-        
-         
-          <script src="https://cdn.jsdelivr.net/npm/p5@1.4.1/lib/p5.js"></script>   
-          <script>
-
-function setup() {
-      // Create Canvas of given size
-      createCanvas(400, 300);
-  }
-  function draw() {       
-      background(220);
-      
-}            
-          </script>   
-         
-
-<ul>
-  <style>
-    
-ul {
-  list-style-type: none;
-  margin-top: 25 px;
-  padding: 0;
-  overflow: hidden;
-  background-color: #333;
-}
-
-li {
-  float: left;
-}
-
-li a {
-  display: block;
-  color: white;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-} 
-
-li a:hover {
-  background-color: #111;
-} 
-   </style>
-  <li><a href="#home">BellRinger 01: Caterpillar problem</a></li>
-  <li style="float:right; margin-top: 10px; margin-left: 10px; margin-right: 20 px; padding-right: 20px;"><button id="makeCode" onclick="runCode()">Run Code</button></li>
-  <li style="float:right; margin-top: 10px; margin-left: 10px; "><button id="generateCode" onclick="makeCode()">View Code in p5 JS</button></li>
-</ul>
+        </div>
 
 
+    <div id="printscreen" style="margin-left: 10px; padding-left: 10 px;">
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.4.1/lib/p5.js"></script>     
+    <script>
+      function setup(){
+      createCanvas(500, 500);  
+      background(255,255,255);
+    } 
+      function draw(){
+        point(40, 50);
+         // point(x, y)
+      }
+    </script> 
+</div> 
+<body>
 
-<button id="makeCode" onclick="runCode()">Run Code</button>
+    <script src="https://unpkg.com/blockly"></script>
+    <script src="./block-definition.js"></script> 
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js">  </script>
+    <script src="./main.js"></script> 
 
-      <script src="https://unpkg.com/blockly"></script>
-    <script src="block-definition.js"></script> 
-    <script src="main.js"></script> 
+</script>
 </body>
 </html>
 

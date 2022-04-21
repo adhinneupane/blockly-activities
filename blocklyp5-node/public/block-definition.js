@@ -147,9 +147,11 @@ Blockly.JavaScript['create_table'] = function(block) {
   return 'done'
 };
 
+
 Blockly.JavaScript['repeat_row'] = function(block) {
   var number_copy = block.getFieldValue('row_to_be_copied');
-  // TODO: Assemble JavaScript into code variable.
+  // row count starts from 0 in p5
+  number_copy = number_copy - 1; 
   var repeat_code = '';
   repeat_code += 'copyRow(' + number_copy +');';
   executable.rowstoCopy += repeat_code;

@@ -1,3 +1,5 @@
+// Block definitions for blocks that are injected in the workspace are defined here
+
 Blockly.defineBlocksWithJsonArray([
   {
     "type": "slide_show",
@@ -134,6 +136,7 @@ Blockly.defineBlocksWithJsonArray([
 ]);
 
 Blockly.JavaScript['row_input'] = function(block) {
+  // get the input for rows entered by the user
   var CV1 = '"' + block.getFieldValue('COLUMNVALUE1') + '"';
   var CV2 = '"' + block.getFieldValue('COLUMNVALUE2') + '"';
   executable.userEntries.push(CV1);
@@ -143,13 +146,15 @@ Blockly.JavaScript['row_input'] = function(block) {
 
 Blockly.JavaScript['create_table'] = function(block) {
   var boolCreateTable = Blockly.JavaScript.statementToCode(block, 'NAME');
+  // set flag create table to true
   executable.createtable =  true;
   return 'done'
 };
 
 Blockly.JavaScript['repeat_row'] = function(block) {
   var number_copy = block.getFieldValue('row_to_be_copied');
-  // TODO: Assemble JavaScript into code variable.
+  // row count starts from 0 in p5
+  number_copy = number_copy - 1; 
   var repeat_code = '';
   repeat_code += 'copyRow(' + number_copy +');';
   executable.rowstoCopy += repeat_code;
@@ -158,6 +163,7 @@ Blockly.JavaScript['repeat_row'] = function(block) {
 
 
 Blockly.JavaScript['input_header'] = function(block) {
+  // get the input headers for the table
   var tableHeader1 = block.getFieldValue('col1');
   var tableHeader2 = block.getFieldValue('col2');
   tableHeader1 = '"' + tableHeader1 + '"';
