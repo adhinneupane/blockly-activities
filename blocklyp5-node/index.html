@@ -9,42 +9,39 @@
   </head>
 
 <body>  
+  <ul>
+      <style>
+      ul {
+          list-style-type: none;
+          margin-top: 0 px; 
+          padding: 0;
+          overflow: hidden;
+          background-color: #333;
+        }
   
-  <!-- <ul>
-    <style>
-      
-ul {
-    list-style-type: none;
-    margin-top: 0 px; 
-    padding: 0;
-    overflow: hidden;
-    background-color: #333;
-  }
+      li {
+        float: left;
+      }
   
-  li {
-    float: left;
-  }
-  
-  li a {
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-  } -->
-<!--   
-  /* Change the link color to #111 (black) on hover */
-  li a:hover {
-    background-color: #111;
-  } -->
-    <!-- </style> -->
-    <!-- <li><a href="#home">Introduction to Computation Technology</a></li> -->
+      li a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+      }    
+      /* Change the link color to #111 (black) on hover */
+      li a:hover {
+        background-color: #111;
+      } 
 
+    </style>
 
+    <li><a href="#home">Introduction to Computation Technology</a></li>
     <li style="float:right; margin-top: 10px; margin-left: 10px; margin-right: 20 px; padding-right: 20px;"><button id="makeCode" onclick="runCode()">Run Code</button></li>
     <li style="float:right; margin-top: 10px; margin-left: 10px; "><button id="refresh"  onclick="reload()" disabled>Refresh</button></li>
+  
   </ul>
-
 
     <div id="toolboxDiv" style="height:600px; width: 700px; float: left; border: 1px solid; margin-top: 20px; margin-left: 35px;"></div>
             <xml id="toolbox">
@@ -59,19 +56,20 @@ ul {
         </div>
 
 
-    <div id="printscreen"></div> 
-
-
+    <div id="printscreen" style="margin-left: 10px; padding-left: 10 px;">
     <script src="https://cdn.jsdelivr.net/npm/p5@1.4.1/lib/p5.js"></script>     
     <script>
       function setup(){
-  createCanvas(500, 1000);
-}
-function draw(){
-  point(40, 50); // point(x, y)
-}
+      createCanvas(500, 500);  
+      background(255,255,255);
+    } 
+      function draw(){
+        point(40, 50);
+         // point(x, y)
+      }
     </script> 
-    <body>
+</div> 
+<body>
 
     <script src="https://unpkg.com/blockly"></script>
     <script src="/block-definition.js"></script> 

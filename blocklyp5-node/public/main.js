@@ -5,6 +5,7 @@ function reload(){
 }
 
 const executable={
+
     userEntries: [],
     tableCreated : "true",
     columnNames : ['"SerialNo"'],
@@ -21,6 +22,7 @@ const executable={
 } 
 
 function runCode(){
+    document.getElementById("refresh").disabled = false;
     const script = document.createElement('script');
 
     var code = Blockly.JavaScript.workspaceToCode(workspace);
@@ -53,9 +55,9 @@ function runCode(){
     executable.countCopies= 0;
     executable.showEnabled= "false";
     executable.rowstoCopy = "";
+    document.getElementById("makeCode").disabled = true;
     document.getElementById("refresh").disabled = false;
-    // document.getElementById("").disabled = true;
-    document.getElementById("");
+    
 }
 
 
