@@ -143,7 +143,7 @@ Blockly.JavaScript['row_input'] = function(block) {
 
 Blockly.JavaScript['create_table'] = function(block) {
   var boolCreateTable = Blockly.JavaScript.statementToCode(block, 'NAME');
-  executable.createtable =  true;
+  executable.tableCreated =  boolCreateTable;
   return 'done'
 };
 

@@ -1,11 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
+    <link rel="stylesheet" href="css/style.css">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Introduction to Computing</title>
+    <style>
+      body {font-family: Arial, Helvetica, sans-serif;}
+      
+      /* The Modal (background) */
+      .modal {
+        display: none; /* Hidden by default */
+        position: absolute; /* Stay in place */
+        z-index: 1; /* Sit on top */
+        padding-top: 100px; /* Location of the box */
+        left: 0;
+        top: 0;
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        overflow: auto; /* Enable scroll if needed */
+        background-color: rgb(0,0,0); /* Fallback color */
+        background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+      }
+      
+      /* Modal Content */
+      .modal-content {
+        background-color: #fefefe;
+        margin: auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%;
+      }
+      
+      /* The Close Button */
+      .close {
+        color: #aaaaaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+      }
+      
+      .close:hover,
+      .close:focus {
+        color: #000;
+        text-decoration: none;
+        cursor: pointer;
+      }
+      </style>
   </head>
 
 <body>  
@@ -37,7 +79,7 @@
 
     </style>
 
-    <li><a href="#home">Introduction to Computation Technology</a></li>
+    <li><a href="#home">Introduction to Computation Thinking</a></li>
     <li style="float:left; margin-top: 10px; margin-left: 300px; margin-right: 20 px; padding-right: 20px;">
       <select name="lessons" id="lessonNumber">
         <option value="1">Lesson 1: Caterpillar Problem</option>
@@ -51,7 +93,17 @@
   
   </ul>
 
-    <div id="toolboxDiv" style="height:600px; width: 700px; float: left; border: 1px solid; margin-top: 20px; margin-left: 35px;"></div>
+  <div id="myModal" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <p id="modal-paragraph">Some text in the Modal..</p>
+    </div>
+  
+  </div>
+
+    <div id="toolboxDiv" style="height:600px; z-index: 0; position:relative ; width: 700px; float: left; border: 1px solid; margin-top: 20px; margin-left: 35px;"></div>
             <xml id="toolbox">
               <block type="create_table"></block>
               <block type="input_header"></block>
@@ -63,6 +115,15 @@
               </xml>
         </div>
 
+        <div id="myModal" class="modal">
+
+          <!-- Modal content -->
+          <div class="modal-content">
+            <span class="close">&times;</span>
+            <p>Some text in the Modal..</p>
+          </div>
+        
+        </div>
 
     <div id="printscreen" style="margin-left: 10px; padding-left: 10 px;">
     <script src="https://cdn.jsdelivr.net/npm/p5@1.4.1/lib/p5.js"></script>     

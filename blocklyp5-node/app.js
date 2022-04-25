@@ -7,15 +7,20 @@ var app = express();
 var PORT = 8080;
 
 app.use(express.static('public'))
-app.use('/home', function(request, response){    
+app.use('/home', function(request, response){  
     response.sendFile(__dirname + '/index.html');
 });
+app.use('/react', function(request,response){
+    response.sendFile(__dirname + '/react.js')
+})
  
 app.post("/run", (request, response) => {
     
     response.send("posted");
     console.log("recieved");
    });
+
+
  
 app.listen(PORT, function(err){
     if (err) console.log(err);

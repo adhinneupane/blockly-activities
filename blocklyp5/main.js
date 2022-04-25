@@ -18,7 +18,6 @@ const executable={
         this.userEntries.push(key1);
         this.userEntries.push(key2);
     }
-
 } 
 
 function runCode(){
