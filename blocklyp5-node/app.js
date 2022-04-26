@@ -15,7 +15,6 @@ app.use('/react', function(request,response){
 })
  
 app.post("/run", (request, response) => {
-    
     response.send("posted");
     console.log("recieved");
    });

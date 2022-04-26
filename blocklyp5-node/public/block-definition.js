@@ -34,17 +34,17 @@ Blockly.defineBlocksWithJsonArray([
   },
   {
     "type": "input_header",
-    "message0": "Table Header %1 %2",
+    "message0": "Input %1 %2",
     "args0": [
       {
         "type": "field_input",
         "name": "col1",
-        "text": "column1"
+        "text": "columnName"
       },
       {
         "type": "field_input",
         "name": "col2",
-        "text": "column2"
+        "text": "value"
       }
     ],
     "previousStatement": null,
