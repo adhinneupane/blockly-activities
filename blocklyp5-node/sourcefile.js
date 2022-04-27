@@ -5,7 +5,6 @@ function setup() {
 } 
 
 function draw() {
- 
  background(220);
  columnNames = ["serial No","caterpillar","leaves","leaves1","leaves2"];
  userEntries = [99,98,94,93];
@@ -20,6 +19,8 @@ function draw() {
  table = new p5.Table();
  rowCount = 0;
  copiedRow = 0;
+let rowsToAdd = [];
+let copyValues = [];
 
  for(let i=0;i<columnNames.length;i++){
      table.addColumn(columnNames[i]);
@@ -49,28 +50,26 @@ function draw() {
           }
      } 
  } 
-
+  
 function copyRow(copiedRow){
 countCopies = countCopies + 1;
 serialNumber = serialNumber + 1;
-let copyValues = [];
 for (let i =1; i<table.getColumnCount(); i++){
- copyvalues[i] = table.getString(copiedRow,i);
+ copyValues[i] = table.getString(copiedRow,i);
 }
+  
 let newRow=table.addRow();
 newRow.setString(columnNames[0],""+ serialNumber); 
 for (let i =1; i<table.getColumnCount(); i++){
- newRow.setString(columnNames[i],""+ copyValues[i-1]);   
+ newRow.setString(columnNames[i],""+ copyValues[i]);   
 }
 } 
 
-
-var value1 = table.getString(copiedRow,1); 
-var value2 = table.getString(copiedRow,2);
-let newRow=table.addRow(); 
-newRow.setString(columnNames[0],""+serialNumber); newRow.setString(columnNames[1],""+value1); newRow.setString(columnNames[2],""+value2);  
-
-function Total(){
+copyRow('0');
+copyRow('1');
+copyRow('2');
+  
+function Total(rowsToAdd){
 let sum = [];
 let placeholder = 0;
 for (let i = 1; i <table.getColumnCount(); i++){
@@ -79,7 +78,6 @@ for (let i = 1; i <table.getColumnCount(); i++){
    placeholder = '' 
  }
 }
-
 }
 
 Total();
