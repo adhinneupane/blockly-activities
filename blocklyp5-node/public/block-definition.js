@@ -75,7 +75,7 @@ Blockly.defineBlocksWithJsonArray([
     "helpUrl": ""
   },{
     "type": "create_table",
-    "message0": "Create Table %1",
+    "message0": " Table %1",
     "args0": [
       {
         "type": "input_statement",

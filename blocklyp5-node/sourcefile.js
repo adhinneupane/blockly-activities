@@ -1,13 +1,40 @@
 function setup() {
-  createCanvas(900, 900);
+  let cnv;
+  cnv = createCanvas(600, 600);
   noLoop();
   textSize(20); 
+  slideCounter = 0;
+function nextSlide(){
+  clear();
+       slideCounter = slideCounter + 1;
+       print ("click",slideCounter);
+       for (let c = 0; c < 1; c++) {
+       text(table.columns, 20 + 80 * c, 80);
+         
+     } 
+     for (let r = 0; r < slideCounter; r++){
+      if (slideCounter == table.getRowCount()+1){
+        clear();
+       for (let c = 0; c < 1; c++) {
+       text(table.columns, 20 + 80 * c, 80); 
+     } 
+        slideCounter = 1;
+      }
+     for (let c = 0; c < columnNames.length; c++) { 
+             text(table.getString(r, c), 20 + 80 * c, 100 + 20 * r);
+          }
+     } 
+}  
+  cnv.mouseClicked(nextSlide);
 } 
 
 function draw() {
- background(220);
- columnNames = ["serial No","caterpillar","leaves","leaves1","leaves2","leaves3","leaves4"];
- userEntries = [10,20,30,40,50,60];
+ background(255, 255, 255);
+  text("*******************************",50,95)
+  text("Click to begin SlideShow",60,105)
+  text("*******************************",50,125)
+  columnNames = ["SNo","caterpillar","leaves","leaves1"];
+ userEntries = [10,20,30];
  sumEnabled = true;
  showEnabled = true;
  rowstoCopy = 0;
@@ -32,7 +59,7 @@ let copyValues = [];
  let addRow = table.addRow();  
  rowCount = rowCount + 1 ;
  serialNumber = 1;
- addRow.setString("serial No", ""+1);
+ addRow.setString(columnNames[0], ""+1);
  j = 0;
  for (let i=1; i<columnNames.length; i++){  
    addRow.setString(columnNames[i], "" + userEntries[j]);
@@ -92,14 +119,12 @@ for (let j = 0 ; j < table.getColumnCount()-1; j++)  {
   }
   print ("rows", table.getRowCount())
   print ("columns",table.getColumnCount())
-  for (let j = 0 ; j <= table.getColumnCount()-1; j++)  {
-    print(table.getString(table.getRowCount()-1, j));
-  text(table.getString(table.getRowCount()-1, j), 20 + 80 * 7, 100 + 20 * 7);
-  }
 }
+  
 
+  
 Total();
 
-showTable();
-
+// showTable();
+noLoop();
 }
