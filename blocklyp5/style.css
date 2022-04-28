@@ -1,15 +1,39 @@
-#workspace{
-    float:left;
-    width: 400px;
-    height : 600px;
-    border: 1px solid;
-    margin: 0 auto;
-    overflow: hidden;
+
+.toolboxDiv{
+    background-color: aqua;
 }
 
-#output{
+.wrapperCanvas{
+    border: 200px solid;
+    height: 800 px;
+    width: 700 px;
     float: right;
-    width: 250px;
-    height: 600px;
-    border: 1px solid;
+    background-color: rgb(255, 32, 32);
 }
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+  }
+  
+  li {
+    float: left;
+  }
+  
+  li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+  
+  /* Change the link color to #111 (black) on hover */
+  li a:hover {
+    background-color: #111;
+  }
+
+  

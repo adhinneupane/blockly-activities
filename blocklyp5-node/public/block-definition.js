@@ -4,7 +4,7 @@ var addedCount = 0;
 Blockly.defineBlocksWithJsonArray([
   {
     "type": "repeat_row",
-    "message0": "Copy Row Number %1",
+    "message0": "Copy Row %1",
     "args0": [
       {
         "type": "field_input",
@@ -14,7 +14,7 @@ Blockly.defineBlocksWithJsonArray([
     ],
     "previousStatement":null,
     "nextStatement":null,
-    "colour": 230,
+    "colour": 180,
     "tooltip": "",
     "helpUrl": ""
   },
@@ -51,7 +51,7 @@ Blockly.defineBlocksWithJsonArray([
     ],
     "previousStatement": null,
     "nextStatement": null,
-    "colour": 230,
+    "colour": 110,
     "tooltip": "",
     "helpUrl": ""
   },
@@ -72,7 +72,7 @@ Blockly.defineBlocksWithJsonArray([
     ],
     "previousStatement": null,
     "nextStatement": null,
-    "colour": 230,
+    "colour": 250,
     "tooltip": "",
     "helpUrl": ""
   },{
@@ -115,7 +115,7 @@ Blockly.JavaScript['row_input'] = function(block) {
 
 Blockly.JavaScript['create_table'] = function(block) {
   var boolCreateTable = Blockly.JavaScript.statementToCode(block, 'NAME');
-  executable.tableCreated =  boolCreateTable;
+  executable.tableCreated =  true;
   return 'done'
 };
 
@@ -133,6 +133,7 @@ Blockly.JavaScript['repeat_row'] = function(block) {
 Blockly.JavaScript['total_row'] = function(block) {
   var rowsAdd = block.getFieldValue('row_to_be_added');
   executable.rowsToAdd[addedCount] = rowsAdd;
+  executable.sumEnabled = true;
   return 'done';
 };
 
