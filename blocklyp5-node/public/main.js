@@ -4,13 +4,13 @@ var span = document.getElementsByClassName("close")[0];
 let executableString = ''
 
 function reload(){
-    document.getElementById("defaultCanvas0").remove()
+    document.getElementById('printscreen').appendChild(script); 
     emptyCanvas = document.createElement(script)
     emptyCanvas.innerText = ''
 }
  
 const executable={
-    // disabled all object properties before executing conversion of blockly workspace to p5 code.
+    // object to process blockly inputs as it's properties
     userEntries: [],
     tableCreated : "false",
     columnNames : ['"SerialNo"'],
@@ -56,26 +56,39 @@ window.onclick = function(event) {
     }
   }
 
-function runCode(){
-    // Reset executable properties for program rerun
-    executable.userEntries= [],
-    executable.tableCreated = "false",
-    executable.columnNames = ['"SerialNo"'],
+function flushObject(){
+    // flush the properties of executable object
+    executable.userEntries.splice(0,executable.userEntries.length);
+    console.log("flushed exec is", executable.userEntries)
+    executable.columnNames.splice(0,executable.columnNames.length);
+    console.log("flushed exec is", executable.columnNames)
+    executable.tableCreated = false; 
     executable.sumEnabled= "false", 
     executable.slideShow = "false", 
     executable.countCopies= 0,
     executable.showEnabled= "false",
     executable.rowstoCopy = "";
-    console.log("executablefluished", executable.columnNames,executable.tableCreated)
-    var code = Blockly.JavaScript.workspaceToCode(workspace);    
+}
+
+function runCode(){
+    // // flush the object properties from previous run
+    // flushObject();
+    var code = Blockly.JavaScript.workspaceToCode(workspace); 
+    
+    
+    // check constraints and execute compressed code
     if (executable.tableCreated==true & executable.showEnabled == true)    {
+        
         document.getElementById("refresh").disabled = false;
         const script = document.createElement('script');
-        console.log("array",executable.columnNames);
-        console.log("entries array",executable.userEntries);
+
         executableString = 'function setup() { createCanvas(600, 600); noLoop(); textSize(20); } function draw() { copyValues = []; rowCount=0; rowsToAdd = ['+ executable.rowsToAdd + ']; slideCounter=0; background(225,225,225); columnNames = [ '+ executable.columnNames+']; userEntries = ['+executable.userEntries+']; sumEnabled = true; showEnabled =  true; rowstoCopy = 0; countCopies = 0; tableCreated=true; slideShow =  true; serialNumber = 0; pageNumber=0;  table = new p5.Table();  for(let i=0;i<columnNames.length;i++){ table.addColumn(columnNames[i]); }; setBtn=createButton("Next Page"); setBtn.position(1020,70); setBtn.mouseClicked(NextSlide); let addRow = table.addRow(); rowCount = rowCount + 1 ; serialNumber = 1; addRow.setString(columnNames[0], ""+1); j = 0; for (let i=1; i<columnNames.length; i++){ addRow.setString(columnNames[i], "" + userEntries[j]); j = j + 1; } function copyRow(copiedRow){ countCopies = countCopies + 1; serialNumber = serialNumber + 1; for (let i =1; i<table.getColumnCount(); i++){ copyValues[i] = table.getString(copiedRow,i); } let newRow=table.addRow(); newRow.setString(columnNames[0],""+ serialNumber); for (let i =1; i<table.getColumnCount(); i++){ newRow.setString(columnNames[i],""+ copyValues[i]); } }'+executable.rowstoCopy+'; function showTable() { clear(); if (slideShow==false){ text("Mode: Default (Enable slideShow for effects).",20,20); } for (let c = 0; c < 1; c++) { text(table.columns, 20 + 80 * c, 80); } for (let r = 0; r < rowCount + countCopies + totalCount; r++){ for (let c = 0; c < columnNames.length; c++) { text(table.getString(r, c), 20 + 80 * c, 100 + 20 * r); } } }  function Total(){ placeholder = 0; let totalRow = table.addRow(); totalRow.setString(columnNames[0],"Sum"); for (let i = 1; i <table.getColumnCount(); i ++){ placeholder = parseInt(table.getString(0,columnNames[i]));if(rowsToAdd.length==0){ rowsToAdd.length=1} totalRow.setString(columnNames[i],placeholder*rowsToAdd.length)  } }if('+executable.sumEnabled+'==true){Total();} function NextSlide(){ clear(); slideCounter = slideCounter + 1; print ("click",slideCounter); for (let c = 0; c < 1; c++) { text(table.columns, 20 + 80 * c, 80); } for (let r = 0; r < slideCounter; r++){ if (slideCounter == table.getRowCount()+1){ clear(); for (let c = 0; c < 1; c++) { text(table.columns, 20 + 80 * c, 80); } slideCounter = 1; } for (let c = 0; c < columnNames.length; c++) { text(table.getString(r, c), 20 + 80 * c, 100 + 20 * r); } }  } noLoop(); }'
+
+            // write the p5 code as a script element
             console.log(executableString);
-            script.innerText= executableString;   
+
+
+            script.innerText = executableString;   
             script.id = "testScriptName";
             script.onload = function handleScriptLoad(){
                 console.log('The p5 script has loaded')      
@@ -84,9 +97,9 @@ function runCode(){
                 console.log('An error has occured')
             }
        
-        
+            // immediately execute script 
             script.setAttribute('async','true');
-
+            // inject canvas
             document.getElementById('printscreen').appendChild(script); 
     }
   
