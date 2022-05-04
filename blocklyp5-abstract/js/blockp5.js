@@ -5,7 +5,6 @@ export class Blockp5 {
     }
 
     runCode() {
-        console.log("iran")
         executable.userEntries= [],
         executable.tableCreated = "false",
         executable.columnNames = ['"SerialNo"'],

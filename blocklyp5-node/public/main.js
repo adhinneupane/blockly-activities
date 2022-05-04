@@ -1,14 +1,22 @@
 var workspace = Blockly.inject('toolboxDiv', {toolbox: toolbox});
+Blockly.Xml.domToWorkspace(document.getElementById('startBlocks'), workspace);
 var modal = document.getElementById("myModal");
 var span = document.getElementsByClassName("close")[0];
 let executableString = ''
 
 function reload(){
-    document.getElementById('printscreen').appendChild(script); 
-    emptyCanvas = document.createElement(script)
-    emptyCanvas.innerText = ''
+    document.querySelector('body > button').remove();
+    document.querySelector('#defaultCanvas0').remove();
+    var test = document.getElementById('printscreen').
+    removeAllChildNodes(test);
 }
- 
+
+function removeAllChildNodes(parent) {
+    while (parent.firstChild) {
+        parent.removeChild(parent.firstChild);
+    }
+}
+
 const executable={
     // object to process blockly inputs as it's properties
     userEntries: [],
@@ -82,7 +90,7 @@ function runCode(){
         document.getElementById("refresh").disabled = false;
         const script = document.createElement('script');
 
-        executableString = 'function setup() { createCanvas(600, 600); noLoop(); textSize(20); } function draw() { copyValues = []; rowCount=0; rowsToAdd = ['+ executable.rowsToAdd + ']; slideCounter=0; background(225,225,225); columnNames = [ '+ executable.columnNames+']; userEntries = ['+executable.userEntries+']; sumEnabled = true; showEnabled =  true; rowstoCopy = 0; countCopies = 0; tableCreated=true; slideShow =  true; serialNumber = 0; pageNumber=0;  table = new p5.Table();  for(let i=0;i<columnNames.length;i++){ table.addColumn(columnNames[i]); }; setBtn=createButton("Next Page"); setBtn.position(1020,70); setBtn.mouseClicked(NextSlide); let addRow = table.addRow(); rowCount = rowCount + 1 ; serialNumber = 1; addRow.setString(columnNames[0], ""+1); j = 0; for (let i=1; i<columnNames.length; i++){ addRow.setString(columnNames[i], "" + userEntries[j]); j = j + 1; } function copyRow(copiedRow){ countCopies = countCopies + 1; serialNumber = serialNumber + 1; for (let i =1; i<table.getColumnCount(); i++){ copyValues[i] = table.getString(copiedRow,i); } let newRow=table.addRow(); newRow.setString(columnNames[0],""+ serialNumber); for (let i =1; i<table.getColumnCount(); i++){ newRow.setString(columnNames[i],""+ copyValues[i]); } }'+executable.rowstoCopy+'; function showTable() { clear(); if (slideShow==false){ text("Mode: Default (Enable slideShow for effects).",20,20); } for (let c = 0; c < 1; c++) { text(table.columns, 20 + 80 * c, 80); } for (let r = 0; r < rowCount + countCopies + totalCount; r++){ for (let c = 0; c < columnNames.length; c++) { text(table.getString(r, c), 20 + 80 * c, 100 + 20 * r); } } }  function Total(){ placeholder = 0; let totalRow = table.addRow(); totalRow.setString(columnNames[0],"Sum"); for (let i = 1; i <table.getColumnCount(); i ++){ placeholder = parseInt(table.getString(0,columnNames[i]));if(rowsToAdd.length==0){ rowsToAdd.length=1} totalRow.setString(columnNames[i],placeholder*rowsToAdd.length)  } }if('+executable.sumEnabled+'==true){Total();} function NextSlide(){ clear(); slideCounter = slideCounter + 1; print ("click",slideCounter); for (let c = 0; c < 1; c++) { text(table.columns, 20 + 80 * c, 80); } for (let r = 0; r < slideCounter; r++){ if (slideCounter == table.getRowCount()+1){ clear(); for (let c = 0; c < 1; c++) { text(table.columns, 20 + 80 * c, 80); } slideCounter = 1; } for (let c = 0; c < columnNames.length; c++) { text(table.getString(r, c), 20 + 80 * c, 100 + 20 * r); } }  } noLoop(); }'
+        executableString = 'function setup() { var myCanvas = createCanvas(600, 600); myCanvas.parent(' + 'printscreen' +'); noLoop(); textSize(20); } function draw() { copyValues = []; rowCount=0; rowsToAdd = ['+ executable.rowsToAdd + ']; slideCounter=0; background(225,225,225); columnNames = [ '+ executable.columnNames+']; userEntries = ['+executable.userEntries+']; sumEnabled = true; showEnabled =  true; rowstoCopy = 0; countCopies = 0; tableCreated=true; slideShow =  true; serialNumber = 0; pageNumber=0;  table = new p5.Table();  for(let i=0;i<columnNames.length;i++){ table.addColumn(columnNames[i]); }; setBtn=createButton("Next Page"); setBtn.position(1020,70); setBtn.mouseClicked(NextSlide); let addRow = table.addRow(); rowCount = rowCount + 1 ; serialNumber = 1; addRow.setString(columnNames[0], ""+1); j = 0; for (let i=1; i<columnNames.length; i++){ addRow.setString(columnNames[i], "" + userEntries[j]); j = j + 1; } function copyRow(copiedRow){ countCopies = countCopies + 1; serialNumber = serialNumber + 1; for (let i =1; i<table.getColumnCount(); i++){ copyValues[i] = table.getString(copiedRow,i); } let newRow=table.addRow(); newRow.setString(columnNames[0],""+ serialNumber); for (let i =1; i<table.getColumnCount(); i++){ newRow.setString(columnNames[i],""+ copyValues[i]); } }'+executable.rowstoCopy+'; function showTable() { clear(); if (slideShow==false){ text("Mode: Default (Enable slideShow for effects).",20,20); } for (let c = 0; c < 1; c++) { text(table.columns, 20 + 80 * c, 80); } for (let r = 0; r < rowCount + countCopies + totalCount; r++){ for (let c = 0; c < columnNames.length; c++) { text(table.getString(r, c), 20 + 80 * c, 100 + 20 * r); } } }  function Total(){ placeholder = 0; let totalRow = table.addRow(); totalRow.setString(columnNames[0],"Sum"); for (let i = 1; i <table.getColumnCount(); i ++){ placeholder = parseInt(table.getString(0,columnNames[i]));if(rowsToAdd.length==0){ rowsToAdd.length=1} totalRow.setString(columnNames[i],placeholder*rowsToAdd.length)  } }if('+executable.sumEnabled+'==true){Total();} function NextSlide(){ clear(); slideCounter = slideCounter + 1; print ("click",slideCounter); for (let c = 0; c < 1; c++) { text(table.columns, 20 + 80 * c, 80); } for (let r = 0; r < slideCounter; r++){ if (slideCounter == table.getRowCount()+1){ clear(); for (let c = 0; c < 1; c++) { text(table.columns, 20 + 80 * c, 80); } slideCounter = 1; } for (let c = 0; c < columnNames.length; c++) { text(table.getString(r, c), 20 + 80 * c, 100 + 20 * r); } }  } noLoop(); }'
 
             // write the p5 code as a script element
             console.log(executableString);
@@ -96,11 +104,11 @@ function runCode(){
             script.onerror = function handleScriptError(){
                 console.log('An error has occured')
             }
-       
             // immediately execute script 
             script.setAttribute('async','true');
             // inject canvas
             document.getElementById('printscreen').appendChild(script); 
+            
     }
   
     }

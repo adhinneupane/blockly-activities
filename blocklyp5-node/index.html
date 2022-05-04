@@ -105,17 +105,31 @@
     </div>
   
   </div>
+<main>
+  <div id="toolboxDiv" style="height:600px; z-index: 0; position:relative ; width: 700px; float: left; border: 1px solid; margin-top: 20px; margin-left: 35px;"></div>
+  <xml id="toolbox">
+    <block type="create_table"></block>
+    <block type="input_header"></block>
+    <!-- <block type="row_input"></block> -->
+    <block type="repeat_row"></block>
+    <block type="total_row"></block>
+    <block type="show"></block>
+    </xml>
 
-    <div id="toolboxDiv" style="height:600px; z-index: 0; position:relative ; width: 700px; float: left; border: 1px solid; margin-top: 20px; margin-left: 35px;"></div>
-            <xml id="toolbox">
-              <block type="create_table"></block>
-              <block type="input_header"></block>
-              <!-- <block type="row_input"></block> -->
-              <block type="repeat_row"></block>
-              <block type="total_row"></block>
-              <block type="show"></block>
-              </xml>
-        </div>
+    <xml id="startBlocks" style="display: none">
+      <block type="create_table"></block>
+      <!-- <block type="input_header"></block>
+      <block type="show"></block>
+      <block type="total_row"></block> -->
+
+    </xml>  
+
+</div>
+
+</main>
+
+    
+
 
         <div id="myModal" class="modal">
 
@@ -130,7 +144,7 @@
     <div id="printscreen" style="margin-left: 10px; padding-left: 10 px;">
     <script src="https://cdn.jsdelivr.net/npm/p5@1.4.1/lib/p5.js"></script>     
     <script>
-function setup() { createCanvas(500, 500); textSize(20); ; } function draw() { rect(30, 20, 55, 55, 20);background(255, 255, 255);  }</script> 
+    function setup() { createCanvas(500, 500); textSize(20); ; } function draw() { rect(30, 20, 55, 55, 20);background(255, 255, 255);  }</script> 
 </div> 
 <body>
 
