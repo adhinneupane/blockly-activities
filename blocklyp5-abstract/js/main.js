@@ -3,7 +3,6 @@
 import { BlocklyManager } from "./blocklyManager.js";
 import { onResize } from "./onResize.js";
 import { Blockp5 } from "./blockp5.js";
-
 const blocklyManager = new BlocklyManager();
 // const executable={
 //     // disabled all object properties before executing conversion of blockly workspace to p5 code.

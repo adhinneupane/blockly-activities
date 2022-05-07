@@ -66,3 +66,8 @@ table {
     height: 99%;
     vertical-align: top;
 }
+
+#defaultCanvas0{
+    width: 600;
+    height: 600;
+}

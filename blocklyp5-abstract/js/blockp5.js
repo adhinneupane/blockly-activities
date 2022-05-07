@@ -3,7 +3,6 @@ export class Blockp5 {
         this.p5_obj = {};
         this.workspace = workspace;
     }
-
     runCode() {
         executable.userEntries= [],
         executable.tableCreated = "false",
@@ -27,7 +26,6 @@ export class Blockp5 {
             alert(e);
         }
     }
-
     viewCode() {
         Blockly.JavaScript.INFINITE_LOOP_TRAP = null;
         console.log("here")
@@ -35,6 +33,6 @@ export class Blockp5 {
         let codeDiv = document.getElementById('codeDiv');
         let html = Prism.highlight(code, Prism.languages.javascript, 'javascript');
         codeDiv.innerHTML = html;
+        
     }
-
 }
