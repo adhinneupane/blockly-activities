@@ -24,6 +24,9 @@ const blocklyManager = new BlocklyManager();
 //     rowsToAdd : []
 // } 
 
+
+
+
 // Add resize
 window.addEventListener('resize', function() {onResize(blocklyManager);}, false);
 window.scrollTo(0, 0);
@@ -41,7 +44,8 @@ blockp5.runCode();
 
 document.getElementById('p5Run').onclick = function() {
     blockp5.runCode();
-    console.log("here")
+    document.getElementById('defaultCanvas0').width=500;
+    document.getElementById('defaultCanvas0').height=500;
 };
 
 document.getElementById('p5Reset').onclick = function() {
@@ -53,5 +57,5 @@ document.getElementById('p5Reset').onclick = function() {
 
 document.getElementById('blockly_code_tab').onclick = function() {
     blockp5.viewCode();
-    console.log("here");
 };
+
