@@ -143,8 +143,8 @@ Blockly.Blocks['setup'] = {
 Blockly.Blocks['input_header'] = {
   init: function() {
     this.appendDummyInput()
-        .appendField("Input")
-        .appendField(new Blockly.FieldTextInput("column Name"), "col1")
+        .appendField(".input")
+        .appendField(new Blockly.FieldTextInput("columnName"), "col1")
         .appendField(new Blockly.FieldTextInput("value"), "col2");
     this.setInputsInline(true);
     this.setPreviousStatement(true, null);
@@ -157,7 +157,7 @@ Blockly.Blocks['input_header'] = {
 Blockly.Blocks['total_row'] = {
   init: function() {
     this.appendDummyInput()
-        .appendField("Sum")
+        .appendField(".add_rows")
         .appendField(new Blockly.FieldTextInput("rows to add"), "rows_to_be_added");
     this.setInputsInline(true);
     this.setPreviousStatement(true, null);
@@ -170,7 +170,7 @@ Blockly.Blocks['total_row'] = {
 Blockly.Blocks['copy_row'] = {
   init: function() {
     this.appendDummyInput()
-        .appendField("Copy Row ")
+        .appendField(".copy_row ")
         .appendField(new Blockly.FieldTextInput("rowNumber"), "row_to_be_copied");
     this.setInputsInline(true);
     this.setPreviousStatement(true, null);
@@ -183,7 +183,7 @@ Blockly.Blocks['copy_row'] = {
 Blockly.Blocks['show'] = {
   init: function() {
     this.appendDummyInput()
-        .appendField("show");
+        .appendField(".show");
     this.setInputsInline(true);
     this.setPreviousStatement(true, null);
     this.setColour(230);
@@ -191,14 +191,17 @@ Blockly.Blocks['show'] = {
  this.setHelpUrl("");
   }
 };
-Blockly.Blocks['create_table'] = {
-  init: function() {
-    this.appendStatementInput("NAME")
-        .setCheck(null)
-        .appendField("Table");
-    this.setNextStatement(true, null);
-    this.setColour(230);
- this.setTooltip("");
- this.setHelpUrl("");
-  }
-};
+
+
+Blockly.Blocks['create_table']={
+  init: function(){
+  this.appendDummyInput()
+    .appendField("Table");
+  this.setInputsInline(false);
+  this.setNextStatement(true, null);
+  this.setColour(230);
+  this.setTooltip("");
+  this.setHelpUrl("");
+}
+}
+

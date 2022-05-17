@@ -44,8 +44,6 @@ blockp5.runCode();
 
 document.getElementById('p5Run').onclick = function() {
     blockp5.runCode();
-    document.getElementById('defaultCanvas0').width=500;
-    document.getElementById('defaultCanvas0').height=500;
 };
 
 document.getElementById('p5Reset').onclick = function() {
