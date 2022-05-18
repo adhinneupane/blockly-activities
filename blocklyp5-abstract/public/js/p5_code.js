@@ -1,8 +1,10 @@
-var headerCount = 1;
-var entryCount = 0; 
-var addedCount = 0;
+export const counters={
+ headerCount : 1,
+ entryCount : 0, 
+ addedCount : 0
+}
 
-const executable={
+export const executable={
   // disabled all object properties before executing conversion of blockly workspace to p5 code.
   userEntries: [],
   tableCreated : "false",
@@ -92,18 +94,18 @@ Blockly.JavaScript['input_header'] = function(block) {
   var valueOfHeader = block.getFieldValue('col2');
   tableHeader = '"' + tableHeader + '"';
   valueOfHeader = '"' + valueOfHeader + '"';
-  executable.columnNames[headerCount] = tableHeader;
-  headerCount = headerCount + 1; 
-  executable.userEntries[entryCount] = valueOfHeader;
-  entryCount = entryCount + 1;
-
+  executable.columnNames[counters.headerCount] = tableHeader;
+  counters.headerCount = counters.headerCount + 1; 
+  executable.userEntries[counters.entryCount] = valueOfHeader;
+  counters.entryCount = counters.entryCount + 1;
+  return ""
 };
 
 Blockly.JavaScript['total_row'] = function(block) {
   var rowsAdd = block.getFieldValue('row_to_be_added');
-  executable.rowsToAdd[addedCount] = rowsAdd;
+  executable.rowsToAdd[counters.addedCount] = rowsAdd;
   executable.sumEnabled = true;
-  
+  return ""
 };
 
 Blockly.JavaScript['copy_row'] = function(block) {
@@ -112,18 +114,17 @@ Blockly.JavaScript['copy_row'] = function(block) {
   var repeat_code = '';
   repeat_code += 'copyRow(' + number_copy +');';
   executable.rowstoCopy += repeat_code;
+  return ""
 };
  
 Blockly.JavaScript['show'] = function(block) {
   var checkShow = block.getFieldValue('NAME');
   // TODO: Assemble JavaScript into code variable.
   executable.showEnabled = true ;
-
-
-return "setup = function() {var myCanvas = createCanvas(400, 400); myCanvas.parent(myContainer);textSize(30);noLoop() } ; draw = function() { copyValues = []; rowCount=0; rowsToAdd = [' " + executable.rowsToAdd + "'];slideCounter=0;  columnNames = [ ' " + executable.columnNames + "'];  userEntries = ['" + executable.userEntries + "']; sumEnabled = true; showEnabled =  true;setBtn=createButton('Next >'); setBtn.position(220,150); setBtn.mouseClicked(NextSlide);rowstoCopy = 0; countCopies = 0; tableCreated=true; slideShow =  true; serialNumber = 0; pageNumber=0;  table = new p5.Table();  for(let i=0;i<columnNames.length;i++){ table.addColumn(columnNames[i]); }; let addRow = table.addRow(); rowCount = rowCount + 1 ; serialNumber = 1; addRow.setString(columnNames[0], \"\"\+1); j = 0; for (let i=1; i<columnNames.length; i++){ addRow.setString(columnNames[i], \"\" + userEntries[j]); j = j + 1; } function copyRow(copiedRow){ countCopies = countCopies + 1; serialNumber = serialNumber + 1; for (let i =1; i<table.getColumnCount(); i++){ copyValues[i] = table.getString(copiedRow,i); } let newRow=table.addRow(); newRow.setString(columnNames[0],\"\"+ serialNumber); for (let i =1; i<table.getColumnCount(); i++){ newRow.setString(columnNames[i],\"\"+ copyValues[i]); } } " + executable.repeat_code + "; function showTable() { clear(); if (slideShow==false){ text(\"Mode: Default (Enable slideShow for effects).\",20,20); } for (let c = 0; c < 1; c++) { text(table.columns, 20 + 80 * c, 80); } for (let r = 0; r < rowCount + countCopies + totalCount; r++){ for (let c = 0; c < columnNames.length; c++) { text(table.getString(r, c), 20 + 80 * c, 100 + 20 * r); } } }  slideCounter =2; NextSlide(); function Total(){ placeholder = 0; let totalRow = table.addRow(); totalRow.setString(columnNames[0],\"Sum\"); for (let i = 1; i <table.getColumnCount(); i ++){ placeholder = parseInt(table.getString(0,columnNames[i]));if(rowsToAdd.length==0){ rowsToAdd.length=1} totalRow.setString(columnNames[i],placeholder*rowsToAdd.length)  } }if(true==true){Total();} function NextSlide(){ clear(); slideCounter = slideCounter + 1;  for (let c = 0; c < 1; c++) { text(table.columns, 20 + 80 * c, 80); } for (let r = 0; r < slideCounter; r++){ if (slideCounter == table.getRowCount()+1){ clear(); for (let c = 0; c < 1; c++) { text(table.columns, 20 + 80 * c, 80); } slideCounter = 1; } for (let c = 0; c < columnNames.length; c++) { text(table.getString(r, c), 20 + 80 * c, 100 + 20 * r);noLoop(); } }  } }"
-};
+return "setup = function() {var myCanvas = createCanvas(400, 400); myCanvas.parent(myContainer);textSize(30);noLoop() } ; draw = function() { copyValues = []; rowCount=0; rowsToAdd = ['" + executable.rowsToAdd + "'];slideCounter=0;  columnNames = [  " + executable.columnNames + "];  userEntries = [" + executable.userEntries + "]; sumEnabled = true; showEnabled =  true;setBtn=createButton('Next >'); setBtn.position(220,150); setBtn.mouseClicked(NextSlide);rowstoCopy = 0; countCopies = 0; tableCreated=true; slideShow =  true; serialNumber = 0; pageNumber=0;  table = new p5.Table();  for(let i=0;i<columnNames.length;i++){ table.addColumn(columnNames[i]); }; let addRow = table.addRow(); rowCount = rowCount + 1 ; serialNumber = 1; addRow.setString(columnNames[0], \"\"\+1); j = 0; for (let i=1; i<columnNames.length; i++){ addRow.setString(columnNames[i], \"\" + userEntries[j]); j = j + 1; } function copyRow(copiedRow){ countCopies = countCopies + 1; serialNumber = serialNumber + 1; for (let i =1; i<table.getColumnCount(); i++){ copyValues[i] = table.getString(copiedRow,i); } let newRow=table.addRow(); newRow.setString(columnNames[0],\"\"+ serialNumber); for (let i =1; i<table.getColumnCount(); i++){ newRow.setString(columnNames[i],\"\"+ copyValues[i]); } } " + executable.rowstoCopy + "; function showTable() { clear(); if (slideShow==false){ text(\"Mode: Default (Enable slideShow for effects).\",20,20); } for (let c = 0; c < 1; c++) { text(table.columns, 20 + 80 * c, 80); } for (let r = 0; r < rowCount + countCopies + totalCount; r++){ for (let c = 0; c < columnNames.length; c++) { text(table.getString(r, c), 20 + 80 * c, 100 + 20 * r); } } }  slideCounter =2; NextSlide(); function Total(){ placeholder = 0; let totalRow = table.addRow(); totalRow.setString(columnNames[0],\"Sum\"); for (let i = 1; i <table.getColumnCount(); i ++){ placeholder = parseInt(table.getString(0,columnNames[i]));if(rowsToAdd.length==0){ rowsToAdd.length=1} totalRow.setString(columnNames[i],placeholder*rowsToAdd.length)  } }if(" + executable.sumEnabled + "==true){Total();} function NextSlide(){ clear(); slideCounter = slideCounter + 1;  for (let c = 0; c < 1; c++) { text(table.columns, 20 + 80 * c, 80); } for (let r = 0; r < slideCounter; r++){ if (slideCounter == table.getRowCount()+1){ clear(); for (let c = 0; c < 1; c++) { text(table.columns, 20 + 80 * c, 80); } slideCounter = 1; } for (let c = 0; c < columnNames.length; c++) { text(table.getString(r, c), 20 + 80 * c, 100 + 20 * r);noLoop(); } }  } }"
+}
 
 Blockly.JavaScript['create_table'] = function(block) {
   executable.tableCreated =  true;
-  
+  return ""  
 };

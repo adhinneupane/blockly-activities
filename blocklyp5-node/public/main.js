@@ -83,7 +83,6 @@ function runCode(){
     // flushObject();
     var code = Blockly.JavaScript.workspaceToCode(workspace); 
     
-    
     // check constraints and execute compressed code
     if (executable.tableCreated==true & executable.showEnabled == true)    {
         

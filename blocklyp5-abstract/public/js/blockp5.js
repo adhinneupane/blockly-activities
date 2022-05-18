@@ -4,15 +4,6 @@ export class Blockp5 {
         this.workspace = workspace;
     }
     runCode() {
-        executable.userEntries= [],
-        executable.tableCreated = "false",
-        executable.columnNames = ['"SerialNo"'],
-        executable.sumEnabled= "false", 
-        executable.slideShow = "false", 
-        executable.countCopies= 0,
-        executable.showEnabled= "false",
-        executable.rowstoCopy = "";
-        console.log("executablefluished", executable.columnNames,executable.tableCreated)
         window.LoopTrap = 1000;
         Blockly.JavaScript.INFINITE_LOOP_TRAP =
             'if (--window.LoopTrap == 0) throw "Infinite loop.";\n';
@@ -28,11 +19,11 @@ export class Blockp5 {
     }
     viewCode() {
         Blockly.JavaScript.INFINITE_LOOP_TRAP = null;
-        console.log("here")
         let code = Blockly.JavaScript.workspaceToCode(this.workspace);
         let codeDiv = document.getElementById('codeDiv');
         let html = Prism.highlight(code, Prism.languages.javascript, 'javascript');
         codeDiv.innerHTML = html;
         
     }
+
 }
