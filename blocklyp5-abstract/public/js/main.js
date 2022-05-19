@@ -64,6 +64,8 @@ blockp5.runCode();
 document.getElementById('p5Run').onclick = function() {
     flushObject();
     blockp5.runCode();
+    document.querySelector('#defaultCanvas0').width=999;
+    console.log("resized")
 };
 
 document.getElementById('p5Reset').onclick = function() {
