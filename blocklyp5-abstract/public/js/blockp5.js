@@ -23,7 +23,5 @@ export class Blockp5 {
         let codeDiv = document.getElementById('codeDiv');
         let html = Prism.highlight(code, Prism.languages.javascript, 'javascript');
         codeDiv.innerHTML = html;
-        
     }
-
 }
