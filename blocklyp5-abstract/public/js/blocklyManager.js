@@ -37,7 +37,7 @@ export class BlocklyManager {
                 scaleSpeed: 1.2
             }
         });
-        Blockly.Xml.domToWorkspace(document.getElementById('startBlocks'), this._workspace);
+       
     }
 
     get area() {
