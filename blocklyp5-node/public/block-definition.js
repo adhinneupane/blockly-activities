@@ -150,7 +150,7 @@ Blockly.Blocks['input_header'] = {
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setColour(270);
- this.setTooltip("");
+ this.setTooltip(" Set the column Name, value in a table object. \n Type: Object Property \n Example: [Object].input (heightInFeet)(6)");
  this.setHelpUrl("");
   }
 };
@@ -163,7 +163,7 @@ Blockly.Blocks['total_row'] = {
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setColour(130);
- this.setTooltip("");
+ this.setTooltip(" Select the rows to be added together in a table object. \n Type: Object Property \n Example: [Object].add_rows (1,2)");
  this.setHelpUrl("");
   }
 };
@@ -176,8 +176,8 @@ Blockly.Blocks['copy_row'] = {
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setColour(190);
- this.setTooltip("");
- this.setHelpUrl("");
+  this.setTooltip(" Select the rows to be copied/repeated in the table. \n Type: Object Property \n Example: [Object].copy_row (1)");
+  this.setHelpUrl("");
   }
 };
 Blockly.Blocks['show'] = {
@@ -187,7 +187,7 @@ Blockly.Blocks['show'] = {
     this.setInputsInline(true);
     this.setPreviousStatement(true, null);
     this.setColour(260);
- this.setTooltip("");
+    this.setTooltip(" Displays output on the screen. \n Type: Object Property \n Example: [Object].show");
  this.setHelpUrl("");
   }
 };
@@ -200,7 +200,7 @@ Blockly.Blocks['create_table']={
   this.setInputsInline(false);
   this.setNextStatement(true, null);
   this.setColour(230);
-  this.setTooltip("");
+  this.setTooltip(" Define an object of type table. \n Type: Object \n Example: Table");
   this.setHelpUrl("");
 }
 

@@ -1,5 +1,4 @@
 var workspace = Blockly.inject('toolboxDiv', {toolbox: toolbox});
-Blockly.Xml.domToWorkspace(document.getElementById('startBlocks'), workspace);
 var modal = document.getElementById("myModal");
 var span = document.getElementsByClassName("close")[0];
 let executableString = ''
@@ -87,11 +86,18 @@ window.onclick = function(event) {
   }
 
 
+function executeBlockly(){
+  let code = Blockly.JavaScript.workspaceToCode(workspace);
+  console.log("called")
+  programCount = programCount + 1;
+  console.log("programCount",programCount) 
+}
+
 let programCount = 0;
 function runCode(){
+ 
   flushObject();
-  programCount = programCount + 1 
-  let code = Blockly.JavaScript.workspaceToCode(workspace);
+  executeBlockly();
     if (programCount > 1){
         reloadScreen();
     }
@@ -107,7 +113,7 @@ function runCode(){
                 }
                 copyValues = [];
                 rowCount = 0;
-                rowsToAdd = [];
+                rowsToAdd = executable.rowsToAdd;
                 slideCounter = 0;
                 p.background(225, 225, 225);
                 //columnNames = ["SerialNo", "Caterpillar", "Leaves", "new"];
