@@ -1,39 +1,38 @@
 
 .toolboxDiv{
-    background-color: aqua;
+  background-color: aqua;
 }
 
 .wrapperCanvas{
-    border: 200px solid;
-    height: 800 px;
-    width: 700 px;
-    float: right;
-    background-color: rgb(255, 32, 32);
+  border: 200px solid;
+  height: 800 px;
+  width: 700 px;
+  float: right;
+  background-color: rgb(255, 32, 32);
 }
 
 ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #333;
-  }
-  
-  li {
-    float: left;
-  }
-  
-  li a {
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-  }
-  
-  /* Change the link color to #111 (black) on hover */
-  li a:hover {
-    background-color: #111;
-  }
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
 
-  
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+/* Change the link color to #111 (black) on hover */
+li a:hover {
+  background-color: #111;
+}
+

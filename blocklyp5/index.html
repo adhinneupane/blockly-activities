@@ -105,20 +105,30 @@
     </div>
   
   </div>
+<main>
+  <div id="toolboxDiv" style="height:600px; z-index: 0; position:relative ; width: 700px; float: left; border: 1px solid; margin-top: 20px; margin-left: 35px;"></div>
+  <xml id="toolbox">
+    <block type="create_table"></block>
+    <block type="input_header"></block>
+    <block type="copy_row"></block>
+    <block type="total_row"></block>
+    <block type="show"></block>
+    </xml>
+</div>
 
-    <div id="toolboxDiv" style="height:600px; z-index: 0; position:relative ; width: 700px; float: left; border: 1px solid; margin-top: 20px; margin-left: 35px;"></div>
-            <xml id="toolbox">
-              <block type="create_table"></block>
-              <block type="input_header"></block>
-              <!-- <block type="row_input"></block> -->
-              <block type="repeat_row"></block>
-              <block type="total_row"></block> 
-              <block type="show"></block>
-              </xml>
-        </div>
+<div id="printscreen" style=" position: absolute; height: 500px; width: 500px; border:1px solid black; margin: 20px; margin-top: 50px; margin-left: 800px;"   >
+  <h4 id="centertext" style=" text-align:center; vertical-align: middle;">
+    Output
+  </h4>
+  <script src="https://cdn.jsdelivr.net/npm/p5@1.4.1/lib/p5.js"></script>     
+<script id="p5Executable">
+</script> 
 
+</div> 
+
+
+</main>
         <div id="myModal" class="modal">
-
           <!-- Modal content -->
           <div class="modal-content">
             <span class="close">&times;</span>
@@ -127,16 +137,14 @@
         
         </div>
 
-    <div id="printscreen" style="margin-left: 10px; padding-left: 10 px;">
-    <script src="https://cdn.jsdelivr.net/npm/p5@1.4.1/lib/p5.js"></script>     
-    <script>
-function setup() { createCanvas(500, 500); textSize(20); ; } function draw() { rect(30, 20, 55, 55, 20);background(255, 255, 255);  }</script> 
-</div> 
+
 <body>
+
     <script src="https://unpkg.com/blockly"></script>
     <script src="block-definition.js"></script> 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js">  </script>
-    <script src="main.js"></script> 
+    <script src ="main.js"></script> 
+
 </script>
 </body>
 </html>

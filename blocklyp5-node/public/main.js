@@ -10,7 +10,7 @@ const executable={
     // object to process blockly inputs as it's properties
     userEntries: [],
     tableCreated : "false",
-    columnNames : ['SerialNo'],
+    columnNames : ['SNo'],
     sumEnabled: "false", 
     slideShow : "false", 
     countCopies: 0,
@@ -35,19 +35,22 @@ const counters={
 
 function reloadScreen(){
   let node = document.getElementById('printscreen');
-  lastNode = node.lastChild;         
-  document.getElementById('printscreen').removeChild(lastNode);
+  lastNode = node.lastChild;       
+  if (lastNode.id == 'defaultCanvas0'){
+    document.getElementById('printscreen').removeChild(lastNode);
+  }  
 }
 
 // flush the properties of executable object and refresh the counters
 function flushObject(){
+    document.getElementById('canvasHelp').innerText="Output";
     counters.copyCounter = 0;
     executable.rowsToAdd.splice(0,executable.rowsToAdd.length);
     executable.userEntries.splice(0,executable.userEntries.length);
     executable.columnNames.splice(1,executable.columnNames.length);
     executable.tableCreated = false; 
     executable.sumEnabled= "false", 
-    executable.slideShow = "false", 
+    executable.slideShow = "false",  
     executable.countCopies= 0,
     executable.showEnabled= "false",
     executable.rowstoCopy = "";
@@ -59,20 +62,30 @@ function flushObject(){
    
 function checkConstraints(){
     // checks booleans
-    var modalText = ''
-    if (executable.tableCreated == false){
-        modalText += "No Table option selected"
-    }
-    if (executable.tableCreated == "false"){
-        modalText += "Mandatory function: Create table. \n"
-    }
-    if (executable.showEnabled == "false" && executable.slideShow == "false"){
-        modalText += " Mandatory function: Show or SlideShow. "
-    }
-    if ((modalText.toString()).localeCompare('')>0){
-        document.getElementById("modal-paragraph").innerText= modalText
-        modal.style.display = "block";
-    } 
+    // var modalText = ''
+    // if (executable.tableCreated == false){
+    //     modalText += "No Table option selected"
+    // }
+    // if (executable.tableCreated == "false"){
+    //     modalText += "Mandatory function: Create table. \n"
+    // }
+    // if (executable.showEnabled == "false" && executable.slideShow == "false"){
+    //     modalText += " Mandatory function: Show or SlideShow. "
+    // }
+    // if ((modalText.toString()).localeCompare('')>0){
+    //     document.getElementById("modal-paragraph").innerText= modalText
+    //     modal.style.display = "block";
+    // } 
+    // let j = 1;
+    // for (let i = 0 ; i < executable.columnNames.length; i ++){ 
+    //  if (executable.columnNames.length > 2 && executable.columnNames[j]==executable.columnNames[i]){
+    //    document.getElementById('canvasHelp').innerText = "A table cannot have two columns with the same name"; 
+    //   }
+    //   else{
+    //     document.getElementById('canvasHelp').innerText = "Output"; 
+    //   }
+    //   j = j + 1; 
+    // }
 }
 
 span.onclick = function(){
@@ -95,9 +108,9 @@ function executeBlockly(){
 
 let programCount = 0;
 function runCode(){
- 
   flushObject();
   executeBlockly();
+  checkConstraints();
     if (programCount > 1){
         reloadScreen();
     }
@@ -175,7 +188,7 @@ function runCode(){
                   slideCounter = slideCounter + 1;
                   p.print("click", slideCounter);
                   for (let c = 0; c < 1; c++) {
-                    p.text(table.columns, 20 + 80 * c, 80);
+                    p.text(table.columns, 20 + 85 * c, 80);
                   }
                   for (let r = 0; r < slideCounter; r++) {
                     if (slideCounter == table.getRowCount() + 1) {

@@ -274,12 +274,17 @@ Blockly.Blocks['create_table']={
  Blockly.JavaScript['input_header'] = function(block) {
    var tableHeader = block.getFieldValue('col1');
    var valueOfHeader = block.getFieldValue('col2');
-   tableHeader = '' + tableHeader + '';
-   valueOfHeader = '' + valueOfHeader + '';
+   tableHeader = ' ' + tableHeader + ' ';
+   valueOfHeader = ' ' + valueOfHeader + ' ';
    executable.columnNames[counters.headerCount] = tableHeader;
    counters.headerCount = counters.headerCount + 1; 
    executable.userEntries[counters.entryCount] = valueOfHeader;
    counters.entryCount = counters.entryCount + 1;
+   for (let i = 0 ; i < executable.columnNames.length; i ++){ 
+    if (executable.columnNames[i]==executable.columnNames[i+1]){
+      document.getElementById('canvasHelp').innerText = "A table cannot have two columns with the same name"; 
+     }
+   }
    return ""
  };
  
@@ -300,6 +305,13 @@ Blockly.Blocks['create_table']={
    var number_copy = block.getFieldValue('row_to_be_copied');
    // row count starts from 0 in p5
    counters.copyCounter = counters.copyCounter + 1; 
+   if (number_copy>counters.copyCounter){
+     document.getElementById('canvasHelp').innerText = "Table does not have row number: " +number_copy+  " so it cannot be copied";
+     document.getElementById('canvasHelp').setColour = "red";
+   }
+   else{
+    document.getElementById('canvasHelp').innerText = "Output";
+   }
    return ""
  };
   
