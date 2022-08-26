@@ -56,9 +56,9 @@ app.use('/home', function(request, response){
     response.sendFile("/Users/admin/ICT-blockly-p5/blocklyp5-node/index.html");
 });
 
-
 app.use('/uuid', function(request,response){
     console.log(request.body)
+    console.log("stringified", JSON.stringify(request.body));
     response.sendFile("/Users/admin/ICT-blockly-p5/blocklyp5-node/index2.html")
 })
  

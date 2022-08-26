@@ -99,35 +99,34 @@ window.onclick = function(event) {
 
 let code
 
-let savedjson
+let blocklyWorkspace
 function executeBlockly(){
   code = Blockly.JavaScript.workspaceToCode(workspace);
-  savedjson = Blockly.serialization.workspaces.save(workspace);
-  console.log("code is",savedjson)
+  blocklyWorkspace = Blockly.serialization.workspaces.save(workspace);
+  console.log("code is",blocklyWorkspace)
   programCount = programCount + 1;
   console.log("programCount",programCount) 
 }
 
 let programCount = 0;
+
 function runCode(){
-
-
-
   // backend call 
   flushObject();
   executeBlockly();
   checkConstraints();
-  stringify = JSON.stringify(savedjson)
-  console.log("this is passed to ajax", stringify)
+  workspaceToSave = JSON.stringify(blocklyWorkspace)
+  console.log("this is passed to ajax", workspaceToSave)
   $.ajax({
     type: "POST",
     url: 'http://localhost:8080/uuid',
-    data: savedjson,
+    data: workspaceToSave,
     contentType: "application/json; charset=utf-8",
     complete: function (data) {
       console.log(data);
     }
     });
+    
     if (programCount > 1){
         reloadScreen();
     }
