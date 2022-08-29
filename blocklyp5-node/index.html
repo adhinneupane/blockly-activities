@@ -12,18 +12,21 @@
         z-index: 2;
       }
       </style>
-  </head>
+<script>
+
+</script>
+</head>
 
 <body>  
-  <nav class="nav">
+  <nav class="nav" style="margin-top: 10px;" >
     <div class="dropdown">
-      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        Dropdown button
+      <button class="btn btn-secondary dropdown-toggle" margin-top="200px" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Exercise
       </button>
       <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        <a class="dropdown-item" href="#">Action</a>
-        <a class="dropdown-item" href="#">Another action</a>
-        <a class="dropdown-item" href="#">Something else here</a>
+        <a class="dropdown-item" href="#">Number 1</a>
+        <a class="dropdown-item" href="#">Number 2</a>
+        <a class="dropdown-item" href="#">Number n</a>
       </div>
     </div>
     <a class="nav-link active" href="#">Active</a>
@@ -32,70 +35,24 @@
     <a class="nav-link disabled" href="#">Disabled</a>
   </nav>
   
-
-
-  
-  <ul>
-      <style>
-      ul {
-          list-style-type: none;
-          margin-top: 0 px; 
-          padding: 0;
-          overflow: hidden;
-          background-color: #333;
-        }
-  
-      li {
-        float: left;
-      }
-  
-      li a {
-        display: block;
-        color: white;
-        text-align: center;
-        padding: 14px 16px;
-        text-decoration: none;
-      }    
-      /* Change the link color to #111 (black) on hover */
-      li a:hover {
-        background-color: #111;
-      } 
-
-    </style>
-
-    <li><a href="#home">Introduction to computational Thinking</a></li>
-    <li style="float:left; margin-top: 10px; margin-left: 300px; margin-right: 20 px; padding-right: 20px;">
-      <select name="lessons" id="lessonNumber">
-        <option value="1">Lesson 1: Caterpillar Problem</option>
-        <option value="2">Lesson 2: </option>
-        <option value="3">Lesson 3: </option>
-        <option value="4">Lesson 4: </option>
-      </select>
-    </li>
-    <li style="float:right; margin-top: 10px; margin-left: 10px; margin-right: 20 px; padding-right: 20px;"><button id="makeCode" onclick="runCode()">Run Code</button></li>
-    <li style="float:right; margin-top: 10px; margin-left: 10px; "><button id="refresh"  onclick="reload()" disabled>Refresh</button></li>
-  
-  </ul>
-
-  <div id="myModal" class="modal">
-
-    <!-- Modal content -->
-    <div class="modal-content">
-      <span class="close">&times;</span>
-      <p id="modal-paragraph">Some text in the Modal..</p>
-    </div>
-  
-  </div>
-<main>
-  <div id="toolboxDiv" style="margin-top: 20px; height:600px; z-index: 0; position:relative ; width: 700px; float: left; border: 1px solid; margin-top: 20px; margin-left: 35px;"></div>
-  <xml id="toolbox">
-    <block type="create_table"></block>
-    <block type="input_header"></block>
-    <block type="copy_row"></block>
-    <block type="total_row"></block>
-    <block type="show"></block>
+  <div id="blocklyDiv" style="position: absolute; height: 500px; border: 2px black;" >
+    <xml id="toolbox">
+      <block type="create_table"></block>
+      <block type="input_header"></block>
+      <block type="copy_row"></block>
+      <block type="total_row"></block>
+      <block type="show"></block>
     </xml>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="col text-center">
+      <button type="button" class="btn btn-primary btn-lg" style="position: center">Large button</button>
+    </div>
+  </div>
 </div>
+
 
 
 
@@ -108,18 +65,6 @@
 </script> 
 
 </div> 
-
-
-
-</main>
-        <div id="myModal" class="modal">
-          <!-- Modal content -->
-          <div class="modal-content">
-            <span class="close">&times;</span>
-            <p>Some text in the Modal..</p>
-          </div>
-        
-        </div>
 
 <body>
     <script src="https://unpkg.com/blockly"></script>
