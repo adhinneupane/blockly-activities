@@ -3,10 +3,10 @@
 ### Blockly + p5
 ### Interactive Bellringers for Introduction to Computing Courses
 
-<img align="left" width="200" height="200" src="https://developers.google.com/static/blockly/images/logos/logo_standard.svg">
-<img align="left" width="200" height="100" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Node.js_logo_2015.svg/2560px-Node.js_logo_2015.svg.png">
+<img align="center" width="200" height="200" padding-bottom="50" src="https://developers.google.com/static/blockly/images/logos/logo_standard.svg">
+<img align="center" width="100" height="100" src="https://nodejs.org/static/images/logo.svg">
+<img align="center" width="120" height="100" src="https://www.sqlite.org/images/sqlite370_banner.gif">
 
-### Blockly + p5 - (JS/HTML/CSS)  
 
 ## Source Files for bellringer is in : blocklyp5-node\sourcefile.js
 
