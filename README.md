@@ -3,7 +3,8 @@
 ### Blockly + p5
 ### Interactive Bellringers for Introduction to Computing Courses
 
-The repository can be used with/without server setup. 
+![alt text](https://developers.google.com/static/blockly/images/logos/logo_standard.svg)
+![alt text](https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Node.js_logo_2015.svg/2560px-Node.js_logo_2015.svg.png)
 
 ### Blockly + p5 - (JS/HTML/CSS)  
 
