@@ -3,11 +3,12 @@
 var workspace = Blockly.inject('toolboxDiv', {toolbox: toolbox});
 var span = document.getElementsByClassName("close")[0];
 let executableString = ''
-let element; 
+
+// used to refresh the canvas on each run
 let lastNode;
 
 const executable={
-    // object to process blockly inputs as it's properties
+    // user inputs as properties of this object
     userEntries: [],
     tableCreated : "false",
     columnNames : ['SNo'],
@@ -24,6 +25,7 @@ const executable={
     rowCounter: 0,
     rowsToAdd : []
 } 
+
 
 const counters={
     headerCount : 1,
@@ -60,33 +62,6 @@ function flushObject(){
     counters.addedCount = 0
 }
    
-function checkConstraints(){
-    // checks booleans
-    // var modalText = ''
-    // if (executable.tableCreated == false){
-    //     modalText += "No Table option selected"
-    // }
-    // if (executable.tableCreated == "false"){
-    //     modalText += "Mandatory function: Create table. \n"
-    // }
-    // if (executable.showEnabled == "false" && executable.slideShow == "false"){
-    //     modalText += " Mandatory function: Show or SlideShow. "
-    // }
-    // if ((modalText.toString()).localeCompare('')>0){
-    //     document.getElementById("modal-paragraph").innerText= modalText
-    //     modal.style.display = "block";
-    // } 
-    // let j = 1;
-    // for (let i = 0 ; i < executable.columnNames.length; i ++){ 
-    //  if (executable.columnNames.length > 2 && executable.columnNames[j]==executable.columnNames[i]){
-    //    document.getElementById('canvasHelp').innerText = "A table cannot have two columns with the same name"; 
-    //   }
-    //   else{
-    //     document.getElementById('canvasHelp').innerText = "Output"; 
-    //   }
-    //   j = j + 1; 
-    // }
-}
 
 span.onclick = function(){
     modal.style.display = "none";
@@ -116,7 +91,6 @@ function runCode(){
   // backend call 
   flushObject();
   executeBlockly();
-  checkConstraints();
   workspaceToSave = JSON.stringify(blocklyWorkspace)
   console.log("this is passed to ajax", workspaceToSave)
   $.ajax({
