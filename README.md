@@ -5,7 +5,7 @@
 
 <img align="center" width="200" height="200" padding-bottom="50" src="https://developers.google.com/static/blockly/images/logos/logo_standard.svg">
 <img align="center" width="100" height="100" src="https://nodejs.org/static/images/logo.svg">
-<img align="center" width="120" height="100" src="https://www.sqlite.org/images/sqlite370_banner.gif">
+<img align="center" width="150" height="80" src="https://www.sqlite.org/images/sqlite370_banner.gif">
 
 
 ## Source Files for bellringer is in : blocklyp5-node\sourcefile.js
@@ -14,7 +14,7 @@
    ```
    git clone git@github.com:ashutoshneupane/brbytes.git
    ```
-    
+
 2. 
    ```
    Visit index.html
