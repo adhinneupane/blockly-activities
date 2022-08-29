@@ -1,5 +1,6 @@
+// insert blockly to front end
+
 var workspace = Blockly.inject('toolboxDiv', {toolbox: toolbox});
-var modal = document.getElementById("myModal");
 var span = document.getElementsByClassName("close")[0];
 let executableString = ''
 let element; 
