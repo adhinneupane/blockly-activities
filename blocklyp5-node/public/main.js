@@ -98,7 +98,8 @@ window.onclick = function(event) {
   }
 
 let code
-
+let bellringer = 'caterpillar'
+let username = 'ashutosh'
 let blocklyWorkspace
 function executeBlockly(){
   code = Blockly.JavaScript.workspaceToCode(workspace);
@@ -120,7 +121,7 @@ function runCode(){
   $.ajax({
     type: "POST",
     url: 'http://localhost:8080/uuid',
-    data: workspaceToSave,
+    data: workspaceToSave,username,bellringer,
     contentType: "application/json; charset=utf-8",
     complete: function (data) {
       console.log(data);

@@ -20,23 +20,20 @@ const query = (command, method = 'all') => {
 };
 
 var username = 'placeholder'
-var tableName = 'submissions'
+var tableName2 = 'submissions'
+var tableName = "Usersubmissions"
 
 
 db.serialize(async () => {
-  await query(`CREATE TABLE IF NOT EXISTS ${tableName} (username text, time text, bellringer text, hash text)`, 'run');
-  var result = await query(`SELECT * FROM ${tableName}`)
-  console.log(result)
+  await query(`CREATE TABLE IF NOT EXISTS ${tableName} (username text, time text, bellringer text, hash text, blocklyWorkspace text)`, 'run');
 });
 
-// db.serialize(async() =>{
-//   //await query(`INSERT INTO posts VALUES ("${new Date().toISOString()}", "${lorem.generateWords(10)}", "Ryan Glover", "${lorem.generateParagraphs(5)}", "${tags}")`, 'run');
-//   await query(`INSERT INTO ${tableName} VALUES ("${username}", "${new Date().toISOString()}","bellringerPlaceholder","${uuid()}")`,'run');   
-// });
+
 
 import express from 'express'
 import path from 'path'
 import { table } from 'console';
+import { type } from 'os';
 
 const router = express.Router;
 
@@ -56,11 +53,22 @@ app.use('/home', function(request, response){
     response.sendFile("/Users/admin/ICT-blockly-p5/blocklyp5-node/index.html");
 });
 
+let test;
 app.use('/uuid', function(request,response){
-    console.log(request.body)
-    console.log("stringified", JSON.stringify(request.body));
+    console.log("stringified", JSON.stringify(request.body.workspaceToSave));
+    var blocklyWorkspace = JSON.stringify(request.body.workspaceToSave)
+    var username = JSON.stringify(request.body.username);
+    console.log("username",username);
+    console.log(typeof(blocklyWorkspace));
+    db.serialize(async() =>{
+      await query(`INSERT INTO ${tableName} VALUES ("${username}", "${new Date().toISOString()}","bellringerPlaceholder","${uuid()}",'${blocklyWorkspace}')`,'run');
+      var result = await query(`SELECT * FROM ${tableName}`)
+      console.log(result)   
+    });
+    response.send(uuid,)
     response.sendFile("/Users/admin/ICT-blockly-p5/blocklyp5-node/index2.html")
 })
+
  
 app.post("/run", (request, response) => {
     response.send("posted");
