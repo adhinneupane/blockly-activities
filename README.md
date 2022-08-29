@@ -3,8 +3,8 @@
 ### Blockly + p5
 ### Interactive Bellringers for Introduction to Computing Courses
 
-<img align="left" width="100" height="100" src="https://developers.google.com/static/blockly/images/logos/logo_standard.svg">
-<img align="right" width="100" height="100" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Node.js_logo_2015.svg/2560px-Node.js_logo_2015.svg.png">
+<img align="left" width="200" height="200" src="https://developers.google.com/static/blockly/images/logos/logo_standard.svg">
+<img align="left" width="200" height="100" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Node.js_logo_2015.svg/2560px-Node.js_logo_2015.svg.png">
 
 ### Blockly + p5 - (JS/HTML/CSS)  
 
