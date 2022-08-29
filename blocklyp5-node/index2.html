@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="css/style.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BANG BANG to Computing</title>
+    <style>
+      body {font-family: Arial, Helvetica, sans-serif;}
+      
+      .p5Canvas {
+        z-index: 2;
+      }
+      /* The Modal (background) */
+      .modal {
+        display: none; /* Hidden by default */
+        position: absolute; /* Stay in place */
+        z-index: 1; /* Sit on top */
+        padding-top: 100px; /* Location of the box */
+        left: 0;
+        top: 0;
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        overflow: auto; /* Enable scroll if needed */
+        background-color: rgb(0,0,0); /* Fallback color */
+        background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+      }
+      
+      /* Modal Content */
+      .modal-content {
+        background-color: #fefefe;
+        margin: auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%;
+      }
+      
+      /* The Close Button */
+      .close {
+        color: #aaaaaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+      }
+      
+      .close:hover,
+      .close:focus {
+        color: #000;
+        text-decoration: none;
+        cursor: pointer;
+      }
+      </style>
+  </head>
+
+<body>  
+  <ul>
+      <style>
+      ul {
+          list-style-type: none;
+          margin-top: 0 px; 
+          padding: 0;
+          overflow: hidden;
+          background-color: #333;
+        }
+  
+      li {
+        float: left;
+      }
+  
+      li a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+      }    
+      /* Change the link color to #111 (black) on hover */
+      li a:hover {
+        background-color: #111;
+      } 
+
+    </style>
+
+    <li><a href="#home">Introduction to computational Thinking</a></li>
+    <li style="float:left; margin-top: 10px; margin-left: 300px; margin-right: 20 px; padding-right: 20px;">
+      <select name="lessons" id="lessonNumber">
+        <option value="1">Lesson 1: Caterpillar Problem</option>
+        <option value="2">Lesson 2: </option>
+        <option value="3">Lesson 3: </option>
+        <option value="4">Lesson 4: </option>
+      </select>
+    </li>
+    <li style="float:right; margin-top: 10px; margin-left: 10px; margin-right: 20 px; padding-right: 20px;"><button id="makeCode" onclick="runCode()">Run Code</button></li>
+    <li style="float:right; margin-top: 10px; margin-left: 10px; "><button id="refresh"  onclick="reload()" disabled>Refresh</button></li>
+  
+  </ul>
+
+  <div id="myModal" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <p id="modal-paragraph">Some text in the Modal..</p>
+    </div>
+  
+  </div>
+<main>
+  <div id="toolboxDiv" style="margin-top: 20px; height:600px; z-index: 0; position:relative ; width: 700px; float: left; border: 1px solid; margin-top: 20px; margin-left: 35px;"></div>
+  <xml id="toolbox">
+    <block type="create_table"></block>
+    <block type="input_header"></block>
+    <block type="copy_row"></block>
+    <block type="total_row"></block>
+    <block type="show"></block>
+    </xml>
+</div>
+
+
+
+<div id="printscreen" style=" position: absolute; height: 500px; width: 500px; border:1px solid black; margin: 20px; margin-top: 50px; margin-left: 800px;"   >
+  <h4 id="canvasHelp" style=" text-align:center; vertical-align: middle;">
+    Output
+  </h4>
+  <script src="https://cdn.jsdelivr.net/npm/p5@1.4.1/lib/p5.js"></script>     
+<script id="p5Executable">
+</script> 
+
+</div> 
+
+
+
+</main>
+        <div id="myModal" class="modal">
+          <!-- Modal content -->
+          <div class="modal-content">
+            <span class="close">&times;</span>
+            <p>Some text in the Modal..</p>
+          </div>
+        
+        </div>
+
+
+<body>
+
+    <script src="https://unpkg.com/blockly"></script>
+    <script src="/block-definition.js"></script> 
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js">  </script>
+    <script src ="/main.js"></script> 
+
+</script>
+</body>
+</html>
+

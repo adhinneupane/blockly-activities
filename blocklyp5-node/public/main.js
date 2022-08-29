@@ -5,7 +5,6 @@ let executableString = ''
 let element; 
 let lastNode;
 
-
 const executable={
     // object to process blockly inputs as it's properties
     userEntries: [],
@@ -98,19 +97,37 @@ window.onclick = function(event) {
     }
   }
 
-
+let code
+let bellringer = 'caterpillar'
+let username = 'ashutosh'
+let blocklyWorkspace
 function executeBlockly(){
-  let code = Blockly.JavaScript.workspaceToCode(workspace);
-  console.log("called")
+  code = Blockly.JavaScript.workspaceToCode(workspace);
+  blocklyWorkspace = Blockly.serialization.workspaces.save(workspace);
+  console.log("code is",blocklyWorkspace)
   programCount = programCount + 1;
   console.log("programCount",programCount) 
 }
 
 let programCount = 0;
+
 function runCode(){
+  // backend call 
   flushObject();
   executeBlockly();
   checkConstraints();
+  workspaceToSave = JSON.stringify(blocklyWorkspace)
+  console.log("this is passed to ajax", workspaceToSave)
+  $.ajax({
+    type: "POST",
+    url: 'http://localhost:8080/uuid',
+    data: workspaceToSave,username,bellringer,
+    contentType: "application/json; charset=utf-8",
+    complete: function (data) {
+      console.log(data);
+    }
+    });
+    
     if (programCount > 1){
         reloadScreen();
     }
@@ -209,4 +226,4 @@ function runCode(){
           if(executable.showEnabled == true){
             let myp5 = new p5(s, 'printscreen');
           } 
-        }
+}
