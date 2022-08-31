@@ -1,3 +1,37 @@
+let counters 
+let code
+let bellringer = 'caterpillar'
+let username = 'ashutosh'
+let blocklyWorkspace
+let programCount = 0;
+
+const executable={
+  // user inputs as properties of this object
+  userEntries: [],
+  tableCreated : "false",
+  columnNames : ['SNo'],
+  sumEnabled: "false", 
+  slideShow : "false", 
+  countCopies: 0,
+  showEnabled: "false",
+  rowstoCopy : "",
+  insert: function(key1,key2){
+      this.userEntries.push(key1);
+      this.userEntries.push(key2);
+  },
+  runProgram:0,
+  rowCounter: 0,
+  rowsToAdd : []
+} 
+
+
+counters={
+  headerCount : 1,
+  entryCount : 0, 
+  addedCount : 0,
+  copyCounter : 0
+ }
+
 // insert blockly to front end
 var blocklyArea = document.getElementById('blocklyArea');
 var blocklyDiv = document.getElementById('blocklyDiv');
@@ -24,40 +58,14 @@ window.addEventListener('resize', onresize, false);
 onresize();
 Blockly.svgResize(workspace);
 
-
-var workspace = Blockly.inject('toolboxDiv', {toolbox: toolbox});
-
 let executableString = ''
 
 // used to refresh the canvas on each run
 let lastNode;
 
-const executable={
-    // user inputs as properties of this object
-    userEntries: [],
-    tableCreated : "false",
-    columnNames : ['SNo'],
-    sumEnabled: "false", 
-    slideShow : "false", 
-    countCopies: 0,
-    showEnabled: "false",
-    rowstoCopy : "",
-    insert: function(key1,key2){
-        this.userEntries.push(key1);
-        this.userEntries.push(key2);
-    },
-    runProgram:0,
-    rowCounter: 0,
-    rowsToAdd : []
-} 
 
 
-const counters={
-    headerCount : 1,
-    entryCount : 0, 
-    addedCount : 0,
-    copyCounter : 0
-   }
+
 
 
 function reloadScreen(){
@@ -98,10 +106,7 @@ window.onclick = function(event) {
     }
   }
 
-let code
-let bellringer = 'caterpillar'
-let username = 'ashutosh'
-let blocklyWorkspace
+
 function executeBlockly(){
   code = Blockly.JavaScript.workspaceToCode(workspace);
   blocklyWorkspace = Blockly.serialization.workspaces.save(workspace);
@@ -110,23 +115,21 @@ function executeBlockly(){
   console.log("programCount",programCount) 
 }
 
-let programCount = 0;
 
 function runCode(){
   // backend call 
   flushObject();
   executeBlockly();
   workspaceToSave = JSON.stringify(blocklyWorkspace)
-  console.log("this is passed to ajax", workspaceToSave)
-  $.ajax({
-    type: "POST",
-    url: 'http://localhost:8080/uuid',
-    data: workspaceToSave,username,bellringer,
-    contentType: "application/json; charset=utf-8",
-    complete: function (data) {
-      console.log(data);
-    }
-    });
+  // $.ajax({
+  //   type: "POST",
+  //   url: 'http://localhost:8080/uuid',
+  //   data: workspaceToSave,username,bellringer,
+  //   contentType: "application/json; charset=utf-8",
+  //   complete: function (data) {
+  //     console.log(data);
+  //   }
+  //   });
     
     if (programCount > 1){
         reloadScreen();
