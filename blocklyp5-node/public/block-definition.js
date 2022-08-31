@@ -183,6 +183,8 @@ Blockly.Blocks['copy_row'] = {
   this.setHelpUrl("");
   }
 };
+
+
 Blockly.Blocks['show'] = {
   init: function() {
     this.appendDummyInput()
@@ -311,9 +313,6 @@ Blockly.Blocks['create_table']={
    if (number_copy>counters.copyCounter){
      document.getElementById('canvasHelp').innerText = "Table does not have row number: " +number_copy+  " so it cannot be copied";
      document.getElementById('canvasHelp').setColour = "red";
-   }
-   else{
-    document.getElementById('canvasHelp').innerText = "Output";
    }
    return ""
  };

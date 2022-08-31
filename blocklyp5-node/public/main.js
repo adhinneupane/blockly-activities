@@ -1,3 +1,5 @@
+const json = ''
+
 let counters 
 let code
 let bellringer = 'caterpillar'
@@ -63,22 +65,16 @@ let executableString = ''
 // used to refresh the canvas on each run
 let lastNode;
 
-
-
-
-
-
 function reloadScreen(){
-  let node = document.getElementById('printscreen');
+  let node = document.getElementById('defaultCanvas0');
   lastNode = node.lastChild;       
   if (lastNode.id == 'defaultCanvas0'){
-    document.getElementById('printscreen').removeChild(lastNode);
+    document.getElementById('defaultCanvas0').removeChild(lastNode);
   }  
 }
 
 // flush the properties of executable object and refresh the counters
 function flushObject(){
-    document.getElementById('canvasHelp').innerText="Output";
     counters.copyCounter = 0;
     executable.rowsToAdd.splice(0,executable.rowsToAdd.length);
     executable.userEntries.splice(0,executable.userEntries.length);
@@ -95,10 +91,6 @@ function flushObject(){
     counters.addedCount = 0
 }
    
-
-span.onclick = function(){
-    modal.style.display = "none";
-}
 
 window.onclick = function(event) {
     if (event.target == modal) {
@@ -227,6 +219,6 @@ function runCode(){
               };
         };
           if(executable.showEnabled == true){
-            let myp5 = new p5(s, 'printscreen');
+            let myp5 = new p5(s, 'defaultCanvas0');
           } 
 }

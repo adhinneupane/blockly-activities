@@ -13,38 +13,52 @@
       }
       </style>
 <script>
-
 </script>
 </head>
 
 <body>  
-  <nav class="nav" style="margin-top: 10px;" >
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" style="padding-left: 10px" href="#">
       <img src="https://www.brbytes.org/images/Logos/brbytes.png" width="150" height="50" alt="">
     </a>
-    
-    <div class="mx-auto"> 
-      <div class="dropdown" style="padding-top: 10px;">
-        <button class="btn btn-secondary dropdown-toggle" margin-top="200px" style="text-align: center;" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Exercise
-        </button>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <a class="dropdown-item" href="#">Number 1</a>
-          <a class="dropdown-item" href="#">Number 2</a>
-          <a class="dropdown-item" href="#">Number n</a>
-        </div>
-      </div>
-    </div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-    <button type="button" href="#scrollspyHeading1" onclick="runCode()" class="btn btn-primary navbar-btn" style="margin-right: 20px ;">
-      Run
-    </button>
-    <button type="button" class="btn btn-secondary navbar-btn" style="margin-right: 20px ;">
-      Reset
-    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Lesson <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item dropdown">
+          <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Exercises
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item" href="#">Action</a>
+              <a class="dropdown-item" href="#">Another action</a>
+              <a class="dropdown-item" href="#">Something else here</a>
+            </div>
+          </div>
+        </li>
+      </ul>
+        <div style="float: right;">
+            <button type="button" href="#scrollspyHeading1" onclick="runCode()" class="btn btn-primary navbar-btn" style="float: right">
+              Run
+            </button>
+        </div>
+        <div style="float: right; padding-left: 2%;">
+          <button type="button" class="btn btn-secondary navbar-btn"   >
+            Reset
+          </button>
+        </div>
+
+    </div>
   </nav>
   
-  <div id="blocklyDiv" style=" margin-top: 10px ; position: relative; height: 500px;" >
+<div id="blocklyArea">
+  <div id="blocklyDiv" style=" position: relative; height: 500px;" >
     <xml id="toolbox">
       <block type="create_table"></block>
       <block type="input_header"></block>
@@ -53,26 +67,33 @@
       <block type="show"></block>
     </xml>
   </div>
+</div>  
 
-<div id="printscreen" margin-left="50%" style=" position: relative"   >
-  <h4 id="canvasHelp" style=" text-align:center; vertical-align: middle;">
-  </h4>
-  <script src="https://cdn.jsdelivr.net/npm/p5@1.4.1/lib/p5.js"></script>     
+<script src="https://cdn.jsdelivr.net/npm/p5@1.4.1/lib/p5.js"></script>     
 <script id="p5Executable">
 </script> 
 
-</div> 
-
-<body>
     <script src="https://unpkg.com/blockly"></script>
     <script src="/block-definition.js"></script> 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js">  </script>
     <script src ="/main.js"></script> 
 </script>
 
-<h4 id="scrollspyHeading1">First heading</h4>
-  <p>...</p>
 
+<h4 id="scrollspyHeading3">Second heading</h4>
+Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+<p>...</p>  
+
+<h4 id="scrollspyHeading2">Third heading</h4>
+Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+<p>...</p>
+
+<h4 id="scrollspyHeading1">First heading</h4>
+  <p>...
+    ..
+    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+  </p>
+  
 
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
