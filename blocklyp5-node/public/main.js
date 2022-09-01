@@ -34,30 +34,45 @@ counters={
   copyCounter : 0
  }
 
+ var toolbox = {
+  "kind": "flyoutToolbox",
+  "contents": [
+    {
+      "kind": "block",
+      "type":"create_table"
+    },
+    {
+      "kind": "block",
+      "type" :"input_header"
+    },
+    {
+      "kind": "block",
+      "type" :"copy_row"
+    },
+    {
+      "kind": "block",
+      "type" :"total_row"
+    },
+    {
+      "kind": "block",
+      "type" :"show"
+    }
+ 
+  ]
+};
+
+
+function reloadPage(){
+  var result = confirm("Doing so will clear both: your program and output. Do you wish to continue?")
+    if (result==true){
+      window.location.reload();
+    }
+}
+
 // insert blockly to front end
 var blocklyArea = document.getElementById('blocklyArea');
 var blocklyDiv = document.getElementById('blocklyDiv');
-var workspace = Blockly.inject(blocklyDiv,
-    {toolbox: document.getElementById('toolbox')});
-var onresize = function(e) {
-  // Compute the absolute coordinates and dimensions of blocklyArea.
-  var element = blocklyArea;
-  var x = 0;
-  var y = 0;
-  do {
-    x += element.offsetLeft;
-    y += element.offsetTop;
-    element = element.offsetParent;
-  } while (element);
-  // Position blocklyDiv over blocklyArea.
-  blocklyDiv.style.left = x + 'px';
-  blocklyDiv.style.top = y + 'px';
-  blocklyDiv.style.width = blocklyArea.offsetWidth + 'px';
-  blocklyDiv.style.height = blocklyArea.offsetHeight + 'px';
-  Blockly.svgResize(workspace);
-};
-window.addEventListener('resize', onresize, false);
-onresize();
+var workspace = Blockly.inject('blocklyDiv', {toolbox: toolbox});
 Blockly.svgResize(workspace);
 
 let executableString = ''
@@ -66,11 +81,11 @@ let executableString = ''
 let lastNode;
 
 function reloadScreen(){
+// if a canvas exists, then remove it
   let node = document.getElementById('defaultCanvas0');
-  lastNode = node.lastChild;       
-  if (lastNode.id == 'defaultCanvas0'){
-    document.getElementById('defaultCanvas0').removeChild(lastNode);
-  }  
+  if (node != null){
+    node.remove()
+  }
 }
 
 // flush the properties of executable object and refresh the counters
@@ -92,27 +107,17 @@ function flushObject(){
 }
    
 
-window.onclick = function(event) {
-    if (event.target == modal) {
-      modal.style.display = "none";
-    }
-  }
-
 
 function executeBlockly(){
   code = Blockly.JavaScript.workspaceToCode(workspace);
   blocklyWorkspace = Blockly.serialization.workspaces.save(workspace);
-  console.log("code is",blocklyWorkspace)
-  programCount = programCount + 1;
-  console.log("programCount",programCount) 
 }
-
 
 function runCode(){
   // backend call 
   flushObject();
   executeBlockly();
-  workspaceToSave = JSON.stringify(blocklyWorkspace)
+  workspaceToSave = JSON.stringify(blocklyWorkspace);
   // $.ajax({
   //   type: "POST",
   //   url: 'http://localhost:8080/uuid',
@@ -123,9 +128,8 @@ function runCode(){
   //   }
   //   });
     
-    if (programCount > 1){
-        reloadScreen();
-    }
+    
+          reloadScreen();
           const s = (p) => {
             p.setup = function () {
                 myCanvas = p.createCanvas(400, 400);
@@ -221,4 +225,9 @@ function runCode(){
           if(executable.showEnabled == true){
             let myp5 = new p5(s, 'defaultCanvas0');
           } 
+  let node=document.getElementById('defaultCanvas0')
+  if (node!=null){
+    node.style.marginLeft="40%"
+  }
 }
+

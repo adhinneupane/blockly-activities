@@ -16,6 +16,8 @@
 </script>
 </head>
 
+
+
 <body>  
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" style="padding-left: 10px" href="#">
@@ -24,41 +26,37 @@
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-
+  
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
           <a class="nav-link" href="#">Lesson <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item dropdown">
-          <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Exercises
-            </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <a class="dropdown-item" href="#">Action</a>
-              <a class="dropdown-item" href="#">Another action</a>
-              <a class="dropdown-item" href="#">Something else here</a>
-            </div>
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Exercises
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="#">Action</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Something else here</a>
           </div>
         </li>
       </ul>
-        <div style="float: right;">
-            <button type="button" href="#scrollspyHeading1" onclick="runCode()" class="btn btn-primary navbar-btn" style="float: right">
-              Run
-            </button>
-        </div>
-        <div style="float: right; padding-left: 2%;">
-          <button type="button" class="btn btn-secondary navbar-btn"   >
-            Reset
-          </button>
-        </div>
-
+      <form class="form-inline my-2 my-lg-0">
+        <button type="button" href="#scrollspyHeading1" onclick="runCode()" class="btn btn-primary navbar-btn" style="margin-right: 10px;">
+          Run
+        </button>
+        <button type="button" onClick="reloadPage()" class="btn btn-secondary navbar-btn">
+          Reset
+        </button>
+      </form>
     </div>
   </nav>
-  
-<div id="blocklyArea" style="height: 500px;">
- <div id="blocklyDiv" style="position: absolute">
+
+
+ <div id="blocklyDiv" style="position: relative; height: 450px;">
     <xml id="toolbox">
       <block type="create_table"></block>
       <block type="input_header"></block>
@@ -66,33 +64,17 @@
       <block type="total_row"></block>
       <block type="show"></block>
     </xml>
-  </div>
 </div>  
 
-<script src="https://cdn.jsdelivr.net/npm/p5@1.4.1/lib/p5.js"></script>     
+<script src="https://cdn.jsdelivr.net/npm/p5@1.4.1/lib/p5.js"></script>   
 <script id="p5Executable">
 </script> 
-
     <script src="https://unpkg.com/blockly"></script>
     <script src="/block-definition.js"></script> 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js">  </script>
     <script src ="/main.js"></script> 
 </script>
 
-
-<h4 id="scrollspyHeading3">Second heading</h4>
-Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galnodeley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-<p>...</p>  
-
-<h4 id="scrollspyHeading2">Third heading</h4>
-Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-<p>...</p>
-
-<h4 id="scrollspyHeading1">First heading</h4>
-  <p>...
-    ..
-    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-  </p>
   
 
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
