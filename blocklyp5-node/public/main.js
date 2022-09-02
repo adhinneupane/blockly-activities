@@ -2,38 +2,9 @@ const json = ''
 let counters 
 let code
 let bellringer = 'caterpillar'
-let username = 'ashutosh'
+let username = 'brbytes-user1'
 let blocklyWorkspace
-
-
-const executable={
-  // user inputs as properties of this object
-  userEntries: [],
-  tableCreated : "false",
-  columnNames : ['SNo'],
-  sumEnabled: "false", 
-  slideShow : "false", 
-  countCopies: 0,
-  showEnabled: "false",
-  rowstoCopy : "",
-  insert: function(key1,key2){
-      this.userEntries.push(key1);
-      this.userEntries.push(key2);
-  },
-  runProgram:0,
-  rowCounter: 0,
-  rowsToAdd : []
-} 
-
-
-counters={
-  headerCount : 1,
-  entryCount : 0, 
-  addedCount : 0,
-  copyCounter : 0
- }
-
- var toolbox = {
+var toolbox = {
   "kind": "flyoutToolbox",
   "contents": [
     {
@@ -60,6 +31,32 @@ counters={
   ]
 };
 
+
+const executable={
+  // user inputs as properties of this object
+  userEntries: [],
+  tableCreated : "false",
+  columnNames : ['SNo'],
+  sumEnabled: "false", 
+  slideShow : "false", 
+  countCopies: 0,
+  showEnabled: "false",
+  rowstoCopy : "",
+  insert: function(key1,key2){
+      this.userEntries.push(key1);
+      this.userEntries.push(key2);
+  },
+  runProgram:0,
+  rowCounter: 0,
+  rowsToAdd : []
+} 
+
+counters={
+  headerCount : 1,
+  entryCount : 0, 
+  addedCount : 0,
+  copyCounter : 0
+ }
 
 function reloadPage(){
   var result = confirm("Doing so will clear both: your program and output. Do you wish to continue?")
@@ -105,11 +102,13 @@ function flushObject(){
     counters.addedCount = 0
 }
    
+// Convert Blocks into properties of Javascript object
 function executeBlockly(){
   code = Blockly.JavaScript.workspaceToCode(workspace);
   blocklyWorkspace = Blockly.serialization.workspaces.save(workspace);
 }
 
+// Execute the p5 Code and create canvas
 function runCode(){
   // backend call 
   flushObject();
@@ -132,8 +131,7 @@ function runCode(){
   }
 }
 
-
-
+// p5 code as a separate function for portability
 function checkmethod(){
   const s = (p) => {
     p.setup = function () {

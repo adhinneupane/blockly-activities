@@ -2,21 +2,21 @@ import { v4 as uuid } from 'uuid';
 import { fileURLToPath } from 'url';
 import 'url';
 import 'querystring'
+import express from 'express'
+import path from 'path'
+import { table } from 'console';
+import { type } from 'os';
 
 
 var username = 'placeholder'
 var tableName2 = 'submissions'
 var tableName = "Usersubmissions"
 
+import * as pg from 'pg'
+const { Pool } = pg
 
-
-import express from 'express'
-import path from 'path'
-import { table } from 'console';
-import { type } from 'os';
 
 const router = express.Router;
-
 var app = express();
 var PORT = 8080;
 
