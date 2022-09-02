@@ -124,7 +124,7 @@ function runCode(){
   //   }
   //   });
   reloadScreen();
-  checkmethod();
+  p5();
   let node=document.getElementById('defaultCanvas0')
   if (node!=null){
   node.style.marginLeft="40%"
@@ -132,7 +132,7 @@ function runCode(){
 }
 
 // p5 code as a separate function for portability
-function checkmethod(){
+function p5(){
   const s = (p) => {
     p.setup = function () {
         myCanvas = p.createCanvas(400, 400);
