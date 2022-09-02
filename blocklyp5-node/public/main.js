@@ -1,51 +1,95 @@
-// insert blockly to front end
+const json = ''
 
-var workspace = Blockly.inject('toolboxDiv', {toolbox: toolbox});
-var span = document.getElementsByClassName("close")[0];
+let counters 
+let code
+let bellringer = 'caterpillar'
+let username = 'ashutosh'
+let blocklyWorkspace
+let programCount = 0;
+
+const executable={
+  // user inputs as properties of this object
+  userEntries: [],
+  tableCreated : "false",
+  columnNames : ['SNo'],
+  sumEnabled: "false", 
+  slideShow : "false", 
+  countCopies: 0,
+  showEnabled: "false",
+  rowstoCopy : "",
+  insert: function(key1,key2){
+      this.userEntries.push(key1);
+      this.userEntries.push(key2);
+  },
+  runProgram:0,
+  rowCounter: 0,
+  rowsToAdd : []
+} 
+
+
+counters={
+  headerCount : 1,
+  entryCount : 0, 
+  addedCount : 0,
+  copyCounter : 0
+ }
+
+ var toolbox = {
+  "kind": "flyoutToolbox",
+  "contents": [
+    {
+      "kind": "block",
+      "type":"create_table"
+    },
+    {
+      "kind": "block",
+      "type" :"input_header"
+    },
+    {
+      "kind": "block",
+      "type" :"copy_row"
+    },
+    {
+      "kind": "block",
+      "type" :"total_row"
+    },
+    {
+      "kind": "block",
+      "type" :"show"
+    }
+ 
+  ]
+};
+
+
+function reloadPage(){
+  var result = confirm("Doing so will clear both: your program and output. Do you wish to continue?")
+    if (result==true){
+      window.location.reload();
+    }
+}
+
+// insert blockly to front end
+var blocklyArea = document.getElementById('blocklyArea');
+var blocklyDiv = document.getElementById('blocklyDiv');
+var workspace = Blockly.inject('blocklyDiv', {toolbox: toolbox});
+Blockly.svgResize(workspace);
+
 let executableString = ''
 
 // used to refresh the canvas on each run
 let lastNode;
 
-const executable={
-    // user inputs as properties of this object
-    userEntries: [],
-    tableCreated : "false",
-    columnNames : ['SNo'],
-    sumEnabled: "false", 
-    slideShow : "false", 
-    countCopies: 0,
-    showEnabled: "false",
-    rowstoCopy : "",
-    insert: function(key1,key2){
-        this.userEntries.push(key1);
-        this.userEntries.push(key2);
-    },
-    runProgram:0,
-    rowCounter: 0,
-    rowsToAdd : []
-} 
-
-
-const counters={
-    headerCount : 1,
-    entryCount : 0, 
-    addedCount : 0,
-    copyCounter : 0
-   }
-
-
 function reloadScreen(){
-  let node = document.getElementById('printscreen');
-  lastNode = node.lastChild;       
-  if (lastNode.id == 'defaultCanvas0'){
-    document.getElementById('printscreen').removeChild(lastNode);
-  }  
+// if a canvas exists, then remove it
+  let node = document.getElementById('defaultCanvas0');
+  if (node != null){
+    node.remove()
+  }
 }
 
 // flush the properties of executable object and refresh the counters
 function flushObject(){
-    document.getElementById('canvasHelp').innerText="Output";
     counters.copyCounter = 0;
     executable.rowsToAdd.splice(0,executable.rowsToAdd.length);
     executable.userEntries.splice(0,executable.userEntries.length);
@@ -63,49 +107,29 @@ function flushObject(){
 }
    
 
-span.onclick = function(){
-    modal.style.display = "none";
-}
 
-window.onclick = function(event) {
-    if (event.target == modal) {
-      modal.style.display = "none";
-    }
-  }
-
-let code
-let bellringer = 'caterpillar'
-let username = 'ashutosh'
-let blocklyWorkspace
 function executeBlockly(){
   code = Blockly.JavaScript.workspaceToCode(workspace);
   blocklyWorkspace = Blockly.serialization.workspaces.save(workspace);
-  console.log("code is",blocklyWorkspace)
-  programCount = programCount + 1;
-  console.log("programCount",programCount) 
 }
-
-let programCount = 0;
 
 function runCode(){
   // backend call 
   flushObject();
   executeBlockly();
-  workspaceToSave = JSON.stringify(blocklyWorkspace)
-  console.log("this is passed to ajax", workspaceToSave)
-  $.ajax({
-    type: "POST",
-    url: 'http://localhost:8080/uuid',
-    data: workspaceToSave,username,bellringer,
-    contentType: "application/json; charset=utf-8",
-    complete: function (data) {
-      console.log(data);
-    }
-    });
+  workspaceToSave = JSON.stringify(blocklyWorkspace);
+  // $.ajax({
+  //   type: "POST",
+  //   url: 'http://localhost:8080/uuid',
+  //   data: workspaceToSave,username,bellringer,
+  //   contentType: "application/json; charset=utf-8",
+  //   complete: function (data) {
+  //     console.log(data);
+  //   }
+  //   });
     
-    if (programCount > 1){
-        reloadScreen();
-    }
+    
+          reloadScreen();
           const s = (p) => {
             p.setup = function () {
                 myCanvas = p.createCanvas(400, 400);
@@ -199,6 +223,11 @@ function runCode(){
               };
         };
           if(executable.showEnabled == true){
-            let myp5 = new p5(s, 'printscreen');
+            let myp5 = new p5(s, 'defaultCanvas0');
           } 
+  let node=document.getElementById('defaultCanvas0')
+  if (node!=null){
+    node.style.marginLeft="40%"
+  }
 }
+
