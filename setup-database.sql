@@ -1,5 +1,4 @@
 
-
 CREATE TABLE Blockly (
   executionid varchar(100) primary key,
   username VARCHAR(40),
@@ -17,3 +16,5 @@ CREATE TABLE Code(
   exercise varchar(100),
   time timestamp 
 );
+
+
