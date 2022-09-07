@@ -4,6 +4,8 @@ let code
 let bellringer = 'caterpillar'
 let username = 'brbytes-user1'
 let blocklyWorkspace
+let extra
+
 var toolbox = {
   "kind": "flyoutToolbox",
   "contents": [
@@ -31,6 +33,18 @@ var toolbox = {
   ]
 };
 
+function create_UUID(){
+  var dt = new Date().getTime();
+  var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+      var r = (dt + Math.random()*16)%16 | 0;
+      dt = Math.floor(dt/16);
+      return (c=='x' ? r :(r&0x3|0x8)).toString(16);
+  });
+  return uuid;
+}
+
+
+
 
 const executable={
   // user inputs as properties of this object
@@ -56,7 +70,7 @@ counters={
   entryCount : 0, 
   addedCount : 0,
   copyCounter : 0
- }
+}
 
 function reloadPage(){
   var result = confirm("Doing so will clear both: your program and output. Do you wish to continue?")
@@ -104,8 +118,20 @@ function flushObject(){
    
 // Convert Blocks into properties of Javascript object
 function executeBlockly(){
-  code = Blockly.JavaScript.workspaceToCode(workspace);
   blocklyWorkspace = Blockly.serialization.workspaces.save(workspace);
+  workspaceTosave = blocklyWorkspace
+  code = Blockly.JavaScript.workspaceToCode(workspace);
+  postName()
+}
+
+async function postName() {
+  const object = { blocklyCode: workspaceTosave, username: username,email:"aneupa6@lsu.edu",executable: executable, uuid: create_UUID() };
+  const response = await fetch('/uuid', {
+    method: 'POST',
+    body: JSON.stringify(object)
+  });
+  const responseText = await response.text();
+  console.log(responseText); // logs 'OK'
 }
 
 // Execute the p5 Code and create canvas
@@ -113,26 +139,7 @@ function runCode(){
   // backend call 
   flushObject();
   executeBlockly();
-  workspaceToSave = JSON.stringify(blocklyWorkspace);
-  // $.ajax({
-  //   type: "POST",
-  //   url: 'http://localhost:8080/uuid',
-  //   data: workspaceToSave,username,bellringer,
-  //   contentType: "application/json; charset=utf-8",
-  //   complete: function (data) {
-  //     console.log(data);
-  //   }
-  //   });
   reloadScreen();
-  p5();
-  let node=document.getElementById('defaultCanvas0')
-  if (node!=null){
-  node.style.marginLeft="40%"
-  }
-}
-
-// p5 code as a separate function for portability
-function p5(){
   const s = (p) => {
     p.setup = function () {
         myCanvas = p.createCanvas(400, 400);
@@ -228,5 +235,6 @@ function p5(){
     if(executable.showEnabled == true){
       let myp5 = new p5(s, 'defaultCanvas0');
     } 
-   
+ 
+  let node=document.getElementById('defaultCanvas0')
 }

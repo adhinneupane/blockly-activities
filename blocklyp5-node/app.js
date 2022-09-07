@@ -26,25 +26,18 @@ console.log('directory-name 👉️', __dirname);
 console.log(path.join(__dirname,'index.html'));
 
 app.use(express.static('public'))
-app.use(express.json());
-app.use(express.urlencoded());
+
 
 app.use('/home', function(request, response){  
     response.sendFile("/Users/admin/ICT-blockly-p5/blocklyp5-node/index.html");
 });
 
+
 let test;
 app.use('/uuid', function(request,response){
-    console.log("stringified", JSON.stringify(request.body.workspaceToSave));
-    var blocklyWorkspace = JSON.stringify(request.body.workspaceToSave)
-    var username = JSON.stringify(request.body.username);
-    console.log("username",username);
-    console.log(typeof(blocklyWorkspace));
-    response.send(uuid,)
-    response.sendFile("/Users/admin/ICT-blockly-p5/blocklyp5-node/index.html")
+    response.send("text")
 })
 
- 
 app.post("/run", (request, response) => {
     response.send("posted");
    });
