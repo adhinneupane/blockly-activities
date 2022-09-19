@@ -11,8 +11,18 @@ Blockly.Blocks['show'] = {
 };
 
 Blockly.JavaScript['show'] = function(block) {
-   var code = ''
+   var code = show();
    return code;
+   console.log("code from show is", code);
+}
+
+function show(){
+    let gap = 0; 
+    for (let i =0; i<= table.columns.length-1; i++){
+      sketch.text(table.columns[i], 20 + gap ,20);
+      sketch.text(table.get(i,i), 25 + gap, 40 );
+      gap = gap + 100; 
+    }
 }
 
 

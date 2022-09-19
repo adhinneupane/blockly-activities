@@ -44,4 +44,21 @@
    visit server on port http://localhost:8080/home
    ```
 
+General Structure
 
+```
+
+const s = ( sketch ) => { sketch.setup = () => { sketch.createCanvas(500, 500); sketch.textSize(20); 
+                                               };
+sketch.draw = () => {  let table = new p5.Table();
+                     
+                     table.addColumn("columnName"); 
+                     var newRow = table.addRow();      
+                     newRow.setString("columnName",2);                                                                   
+    } 
+};
+
+
+let myp5 = new p5(s, document.getElementById("canvasArea"));
+
+```

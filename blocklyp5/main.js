@@ -1,4 +1,5 @@
-import { setup } from "./blocks/functions.js"
+
+
 var toolbox = {
   "kind": "flyoutToolbox",
   "contents": [
@@ -43,9 +44,10 @@ document.getElementById('p5Run').onclick = function() {
 };
 
 function runCode(){
+  reloadScreen()
    let code = Blockly.JavaScript.workspaceToCode(workspace);
    try {
-    eval(code);
+    console.log('run')
   } catch (e) {
     alert(e);
   }

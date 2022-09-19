@@ -14,9 +14,12 @@ Blockly.Blocks['input_header'] = {
 };
 
 Blockly.JavaScript['input_header'] = function(block) {
-    let columnName = table.addColumn(block.getFieldValue('col1'))
-    let value = table.addRow(column,block.getFieldValue('col2'))
-    let code = 'table.addColumn(' + columnName +') newRow = table.addRow(); newRow.setString('+ columnName + ',' + value  +')'
-    return code; 
+    let columnName = block.getFieldValue('col1')
+    let value = block.getFieldValue('col2')
+    return input_header(columnName,value)
 };
+
+function input_header(columnName,value){
+  return 'table.addColumn("' + columnName +'"); table.addRow().set("' + columnName + '" , ' + value + ');';
+}
 
