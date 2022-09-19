@@ -14,19 +14,9 @@ Blockly.Blocks['input_header'] = {
 };
 
 Blockly.JavaScript['input_header'] = function(block) {
-    var tableHeader = block.getFieldValue('col1');
-    var valueOfHeader = block.getFieldValue('col2');
-    tableHeader = ' ' + tableHeader + ' ';
-    valueOfHeader = ' ' + valueOfHeader + ' ';
-    executable.columnNames[counters.headerCount] = tableHeader;
-    counters.headerCount = counters.headerCount + 1; 
-    executable.userEntries[counters.entryCount] = valueOfHeader;
-    counters.entryCount = counters.entryCount + 1;
-    for (let i = 0 ; i < executable.columnNames.length; i ++){ 
-     if (executable.columnNames[i]==executable.columnNames[i+1]){
-       document.getElementById('canvasHelp').innerText = "A table cannot have two columns with the same name"; 
-      }
-    }
-    return ""
+    let columnName = table.addColumn(block.getFieldValue('col1'))
+    let value = table.addRow(column,block.getFieldValue('col2'))
+    let code = 'table.addColumn(' + columnName +') newRow = table.addRow(); newRow.setString('+ columnName + ',' + value  +')'
+    return code; 
 };
 

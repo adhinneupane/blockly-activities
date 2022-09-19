@@ -11,6 +11,6 @@ Blockly.Blocks['create_table']={
 }
 
 Blockly.JavaScript['create_table'] = function(block) {
-    executable.tableCreated =  true;
-    return ""
-   };
+  var code = 'table = new p5.Table()'
+  return code
+};
