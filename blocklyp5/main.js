@@ -1,5 +1,5 @@
 
-
+import {drawp5,s,nonRepeatingCode} from './blocks/functions'
 var toolbox = {
   "kind": "flyoutToolbox",
   "contents": [
@@ -47,7 +47,8 @@ function runCode(){
   reloadScreen()
    let code = Blockly.JavaScript.workspaceToCode(workspace);
    try {
-    console.log('run')
+    s;
+    drawp5;
   } catch (e) {
     alert(e);
   }
