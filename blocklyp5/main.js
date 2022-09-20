@@ -1,3 +1,4 @@
+import {BlocklyCode,finalTaskName} from './func-conversions/functions.js'
 
 
 
@@ -12,14 +13,14 @@ var toolbox = {
       "kind": "block",
       "type" :"input_header"
     },
-    {
-      "kind": "block",
-      "type" :"copy_row"
-    },
-    {
-      "kind": "block",
-      "type" :"total_row"
-    },
+    // {
+    //   "kind": "block",
+    //   "type" :"copy_row"
+    // },
+    // {
+    //   "kind": "block",
+    //   "type" :"total_row"
+    // },
     {
       "kind": "block",
       "type" :"show"
@@ -47,10 +48,28 @@ document.getElementById('p5Run').onclick = function() {
 function runCode(){
   reloadScreen()
    let code = Blockly.JavaScript.workspaceToCode(workspace);
-   
    try {
-    console.log(code)
+    // non changing code | main part 
+    const s = ( sketch ) => 
+    {
+      sketch.setup = () => 
+      { 
+        let canvas = sketch.createCanvas(500, 500); 
+        sketch.noLoop();
+        canvas.parent('canvasArea')
+      };
+      sketch.draw = () => 
+      {
+        // Adding user generated code to p5 program
+        sketch.background(220) + BlocklyCode(sketch);
+      }
+
+    }; 
+
+    // create canvas on screen
+    const drawp5 = new p5(s, document.getElementById("canvasArea"));
   } catch (e) {
+    console.log(e);
     alert(e);
   }
 }
