@@ -1,5 +1,4 @@
 
-import {drawp5,s,nonRepeatingCode} from './blocks/functions'
 
 
 var toolbox = {
