@@ -1,7 +1,6 @@
 // File executed on program run
 // Block level functions and p5 program for execution
 
-
 const createTable = () => {
   globalThis.table = new p5.Table();
 }
@@ -21,15 +20,10 @@ const showTable = (param) => {
 }
 
 // composable function that will change depending on user organization of blocks
-const BlocklyCode = (sketch) =>
+const BlocklyCode = (code) =>
  {
- createTable();
- column("caterpillar",2);
- column("leaves",5);
- // more p5 functions for blockly will be added here
- showTable(sketch);
+  return code;
  }
 
-
-export {BlocklyCode,createTable,column,showTable}
+export {BlocklyCode}
 

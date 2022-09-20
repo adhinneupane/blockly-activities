@@ -12,9 +12,8 @@ Blockly.Blocks['show'] = {
 
 Blockly.JavaScript['show'] = function(block) {
   //  var code = show();
-   code = show;
+   code = 'showTable(sketch);';
    return code;
-   console.log("code from show is", code);
 }
 
 // export function show(){

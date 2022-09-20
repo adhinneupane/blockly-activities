@@ -11,7 +11,10 @@ Blockly.Blocks['create_table']={
 }
 
 Blockly.JavaScript['create_table'] = function(block) {
-  code = createTable();
+  code = 'createTable();';
   return code; 
 };
+
+
+
 

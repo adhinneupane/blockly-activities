@@ -16,6 +16,6 @@ Blockly.Blocks['input_header'] = {
 Blockly.JavaScript['input_header'] = function(block) {
     let columnName = block.getFieldValue('column')
     let value = block.getFieldValue('value')
-    code = column(columnName,value)
+    code = 'column("' + columnName+ '",' + value + ');'
     return code;
 };
