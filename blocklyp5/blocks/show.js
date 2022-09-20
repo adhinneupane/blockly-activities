@@ -12,7 +12,7 @@ Blockly.Blocks['show'] = {
 
 Blockly.JavaScript['show'] = function(block) {
   //  var code = show();
-  let code = ''
+   code = show;
    return code;
    console.log("code from show is", code);
 }

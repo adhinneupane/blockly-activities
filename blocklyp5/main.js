@@ -47,9 +47,9 @@ document.getElementById('p5Run').onclick = function() {
 function runCode(){
   reloadScreen()
    let code = Blockly.JavaScript.workspaceToCode(workspace);
+   
    try {
-    s;
-    drawp5;
+    console.log(code)
   } catch (e) {
     alert(e);
   }
