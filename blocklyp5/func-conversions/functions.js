@@ -2,16 +2,16 @@
 // Block level functions and p5 program for execution
 
 
-export const createTable = () => {
+const createTable = () => {
   globalThis.table = new p5.Table();
 }
 
-export const column = (columnName, value) => {
+const column = (columnName, value) => {
   globalThis.table.addColumn(columnName)
   globalThis.table.addRow().set(columnName,value)
 }
 
-export const showTable = (param) => {
+const showTable = (param) => {
   let gap = 0; 
   for (let i =0; i<= table.columns.length-1; i++){
     param.text(globalThis.table.columns[i], 20 + gap ,20);
@@ -21,7 +21,7 @@ export const showTable = (param) => {
 }
 
 // composable function that will change depending on user organization of blocks
-export const BlocklyCode = (sketch) =>
+const BlocklyCode = (sketch) =>
  {
  createTable();
  column("caterpillar",2);
@@ -31,14 +31,5 @@ export const BlocklyCode = (sketch) =>
  }
 
 
-export const sum = () => {
- globalThis.a = 20;
- b = 30;
- c = a + b; 
-}
+export {BlocklyCode,createTable,column,showTable}
 
-const finalTaskName = 'abc'
-const finalQuantityTaskExecuted = 0
-const finalQuantityTaskCompletion = 100
-
-export {finalTaskName, finalQuantityTaskExecuted, finalQuantityTaskCompletion}
