@@ -23,4 +23,3 @@ Blockly.JavaScript['input_header'] = function(block) {
 function input_header(columnName,value){
   return 'table.addColumn("' + columnName +'"); table.addRow().set("' + columnName + '" , ' + value + ');';
 }
-
