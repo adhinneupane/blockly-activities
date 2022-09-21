@@ -61,19 +61,23 @@ const showTable = (param) => {
     console.log("nrows",nrows)
     console.log("ncols",ncols)
     
+    param.text("row", 20 + cgap, 20)
+    cgap += 100
     for(let i=0; i<ncols; i++) {
-	param.text(t.columns[i], 20 + cgap, 20)
-	cgap += 100
+	    param.text(t.columns[i], 20 + cgap, 20)
+	    cgap += 100
     }
 
     for(let r=0; r<nrows; r++) {
-	cgap = 0
-	for(let c=0; c<ncols; c++) {
-	    console.log(r,c,t.get(r,c))
-	    param.text(t.getString(r,c), 20 + cgap, 40 + rgap)
-	    cgap += 100
-	}
-	rgap += 20
+	    cgap = 0
+        param.text(r+1, 20 + cgap, 40 + rgap)
+        cgap += 100
+	    for(let c=0; c<ncols; c++) {
+	        console.log(r,c,t.get(r,c))
+	        param.text(t.getString(r,c), 20 + cgap, 40 + rgap)
+	        cgap += 100
+	    }
+	    rgap += 20
     }
 	
 }
