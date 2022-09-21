@@ -6,7 +6,7 @@
 
 1.  
    ```
-   git clone git@github.com:ashutoshneupane/brbytes.git
+   git clone https://git.brbytes.org/ashutoshneupane/ICT-blockly-p5.git
    ```
     
 2. 
