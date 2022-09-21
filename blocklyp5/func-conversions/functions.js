@@ -58,6 +58,8 @@ const showTable = (param) => {
     const nrows = t.rows.length
     const ncols = t.columns.length
 
+    param.textSize(20);
+
     console.log("nrows",nrows)
     console.log("ncols",ncols)
     
