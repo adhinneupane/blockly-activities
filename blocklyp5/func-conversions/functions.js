@@ -10,11 +10,20 @@ const column = (columnName, value) => {
 
     t.addColumn(columnName)
 
-    let selRow = t.getRowCount() > 0
-	? t.getRow(0)
+    let r = 0
+    while(r < t.getRowCount()) {
+        let row = t.getRow(r)
+        let v = row.get(columnName)
+        if(!v) { row.set(columnName,0) }
+        r++;
+    }
+
+    let selRow = r > 0
+	? t.getRow(r-1)
 	: t.addRow()
     
     selRow.set(columnName,value)
+
 }
 
 const add_row = (rownum) => {
