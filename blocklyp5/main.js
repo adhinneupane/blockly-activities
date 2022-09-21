@@ -70,7 +70,7 @@ function runCode(){
 			      eval(code);
 			  }
 			  catch(e){
-			      console.log(e)
+			      alert(e);
 			  }
 		      }
 
