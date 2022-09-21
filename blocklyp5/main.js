@@ -57,20 +57,20 @@ function runCode(){
 	      {
 		  sketch.setup = () => 
 		      { 
-			  let canvas = sketch.createCanvas(500, 500); 
+			  let canvas = sketch.createCanvas(450, 450); 
 			  sketch.noLoop();
 			  canvas.parent('canvasArea')
 		      };
 		  sketch.draw = () => 
 		      {
 			  // Adding user generated code to p5 program
-			  sketch.background(220);
+			  sketch.background(255);
 			  try{
 			      // execute Blockly generated p5 code
 			      eval(code);
 			  }
 			  catch(e){
-			      console.log(e)
+			      alert(e);
 			  }
 		      }
 
