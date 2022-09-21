@@ -11,6 +11,7 @@
     
 2. 
    ```
+   cd ICT-blockly-p5
    cd blocklyp5
    python3 -m http.server
    ```
@@ -79,12 +80,15 @@ const drawp5 = new p5(s, document.getElementById("canvasArea"));
 ```
 
 
-## How is it composible 
+## Composibility / Abstraction
 
-Each blockly block is associated with one of these functions for example: CreateTable
+Each block is associated with one of these functions for example:
+
+Input Header is associated to function: CreateTable defined in func-conversions/functions.js
 
 ```
-// Block Definition to design it on screen
+//The Block Definition for it is: 
+
 Blockly.Blocks['input_header'] = {
     init: function() {
       this.appendDummyInput()
@@ -101,12 +105,51 @@ Blockly.Blocks['input_header'] = {
 };
 
 
-// JS manipulation
-// Only the pre-written function for adding columns to any table is called. 
+// Generating p5 code step-1
+
 Blockly.JavaScript['input_header'] = function(block) {
     let columnName = block.getFieldValue('col1')
     let value = block.getFieldValue('value')
-    code = column(col1,value)
-    return code;
+    code = column(col1,value)                      <-- func-conversions/functions.js
+    return code;                                   <-- string code ++ in order of arranged blocks  
 };
+
+// Generating p5 code step-2 
+
+
+
+function runCode(){   
+  reloadScreen()
+
+  // non-changing code (Setup() is same for all executions. Draw includes Dynamic P5 code as a string code)
+
+   var code = Blockly.JavaScript.workspaceToCode(workspace);
+   try {
+    const s = ( sketch) => 
+    {
+      sketch.setup = () => 
+      { 
+        let canvas = sketch.createCanvas(500, 500); 
+        sketch.noLoop();
+        canvas.parent('canvasArea')
+      };
+      sketch.draw = () => 
+      {
+        // Adding user generated code to p5 program
+        sketch.background(220);
+        try{
+          eval(code);                                <-- execute blockly generated p5 code written as on-demand functions
+         }
+        catch(e){
+          console.log(e)
+        }
+      }
+
+    }; 
+
+    // create canvas on screen
+    const drawp5 = new p5(s, document.getElementById("canvasArea"));
+
+
+
 ```
