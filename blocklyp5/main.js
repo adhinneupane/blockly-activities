@@ -1,4 +1,5 @@
-import {BlocklyCode} from './func-conversions/functions.js'
+import {createTable,column,showTable} from './func-conversions/functions.js'
+
 
 var toolbox = {
   "kind": "flyoutToolbox",
@@ -45,8 +46,7 @@ document.getElementById('p5Run').onclick = function() {
 
 function runCode(){
   reloadScreen()
-   globalThis.code = Blockly.JavaScript.workspaceToCode(workspace);
-   console.log("code",globalThis.code)
+   var code = Blockly.JavaScript.workspaceToCode(workspace);
    try {
     // non changing code | main part 
     const s = ( sketch) => 
@@ -60,7 +60,14 @@ function runCode(){
       sketch.draw = () => 
       {
         // Adding user generated code to p5 program
-        sketch.background(220) + BlocklyCode(globalThis.code);
+        sketch.background(220);
+        try{
+          // execute Blockly generated p5 code
+          eval(code);
+        }
+        catch(e){
+          console.log(e)
+        }
       }
 
     }; 
@@ -68,7 +75,6 @@ function runCode(){
     const drawp5 = new p5(s, document.getElementById("canvasArea"));
   } catch (e) {
     console.log(e);
-    alert(e);
   }
 }
 
