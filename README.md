@@ -1,64 +1,112 @@
 
 
-### Blockly + p5
+# Blockly + p5
+
 ### Interactive Bellringers for Introduction to Computing Courses
-
-<img align="center" width="200" height="200" padding-bottom="50" src="https://developers.google.com/static/blockly/images/logos/logo_standard.svg">
-<img align="center" width="100" height="100" src="https://nodejs.org/static/images/logo.svg">
-<img align="center" width="150" height="80" src="https://www.sqlite.org/images/sqlite370_banner.gif">
-
-
-## Source Files for bellringer is in : blocklyp5-node\sourcefile.js
-
-1.  
-   ```
-   git clone git@github.com:ashutoshneupane/brbytes.git
-   ```
-
-2. 
-   ```
-   Visit index.html
-   ```
-
-### Blockly + p5 - (Node/JS/HTML/CSS)
 
 1.  
    ```
    git clone git@github.com:ashutoshneupane/brbytes.git
    ```
     
-2. Make sure you have nodejs and express installed
+2. 
    ```
-   node --version
-   npm install express 
+   cd blocklyp5
+   python3 -m http.server
    ```
 
 3.  
    ```
-   cd ICT-blockly-P5/blocklyp5-node/ &&
-   node app.js
+   visit localhost:8000
    ```
 
-4. 
-   ```
-   visit server on port http://localhost:8080/home
-   ```
+## How it works: 
 
-General Structure
+Source Program for p5 is in blocks/function.js 
+
+```
+// Block level functions and p5 program for execution
+
+const createTable = () => {
+  table = new p5.Table();
+}
+
+const column = (columnName, value) => {
+  table.addColumn(columnName)
+  table.addRow().set(columnName,value)
+}
+
+const showTable = (param) => {
+  let gap = 0; 
+  for (let i =0; i<= table.columns.length-1; i++){
+    param.text(table.columns[i], 20 + gap ,20);
+    param.text(table.get(i,i), 25 + gap, 40 );
+    gap = gap + 100; 
+  }
+}
+
+// composable function that will change depending on user organization of blocks
+const BlocklyCode = (sketch) =>
+ {
+ createTable();
+ column("caterpillar",2);
+ column("leaves",5);
+ // more p5 functions for blockly will be added here
+ showTable(sketch);
+ }
+
+
+// non changing code
+ const s = ( sketch ) => 
+{
+  sketch.setup = () => 
+  { 
+    let canvas = sketch.createCanvas(500, 500); 
+    sketch.noLoop();
+    canvas.parent('canvasArea')
+  };
+  sketch.draw = () => 
+  {
+    // Adding user generated code to p5 program
+    sketch.background(220) + BlocklyCode(sketch);
+  }
+
+}; 
+
+// create canvas on screen
+const drawp5 = new p5(s, document.getElementById("canvasArea"));
 
 ```
 
-const s = ( sketch ) => { sketch.setup = () => { sketch.createCanvas(500, 500); sketch.textSize(20); 
-                                               };
-sketch.draw = () => {  let table = new p5.Table();
-                     
-                     table.addColumn("columnName"); 
-                     var newRow = table.addRow();      
-                     newRow.setString("columnName",2);                                                                   
-    } 
+
+## How is it composible 
+
+Each blockly block is associated with one of these functions for example: CreateTable
+
+```
+// Block Definition to design it on screen
+Blockly.Blocks['input_header'] = {
+    init: function() {
+      this.appendDummyInput()
+          .appendField(".input")
+          .appendField(new Blockly.FieldTextInput("columnName"), "col1")
+          .appendField(new Blockly.FieldTextInput("value"), "value");
+      this.setInputsInline(true);
+      this.setPreviousStatement(true, null);
+      this.setNextStatement(true, null);
+      this.setColour(270);
+   this.setTooltip(" Set the column Name, value in a table object. \n Type: Object Property \n Example: [Object].input (heightInFeet)(6)");
+   this.setHelpUrl("");
+    }
 };
 
 
-let myp5 = new p5(s, document.getElementById("canvasArea"));
-
+// JS manipulation
+// Only the pre-written function for adding columns to any table is called. 
+Blockly.JavaScript['input_header'] = function(block) {
+    let columnName = block.getFieldValue('col1')
+    let value = block.getFieldValue('value')
+    code = column(col1,value)
+    return code;
+};
 ```
