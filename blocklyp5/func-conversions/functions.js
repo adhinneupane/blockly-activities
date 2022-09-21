@@ -70,7 +70,7 @@ const showTable = (param) => {
 	cgap = 0
 	for(let c=0; c<ncols; c++) {
 	    console.log(r,c,t.get(r,c))
-	    param.text(t.getString(r,c), 20 + cgap, 20 + rgap)
+	    param.text(t.getString(r,c), 20 + cgap, 40 + rgap)
 	    cgap += 100
 	}
 	rgap += 20
