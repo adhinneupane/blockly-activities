@@ -6,8 +6,15 @@ const createTable = () => {
 }
 
 const column = (columnName, value) => {
-    globalThis.table.addColumn(columnName)
-    globalThis.table.addRow().set(columnName,value)
+    const t = globalThis.table
+
+    t.addColumn(columnName)
+
+    let selRow = t.getRowCount() > 0
+	? t.getRow(0)
+	: t.addRow()
+    
+    selRow.set(columnName,value)
 }
 
 const add_row = (rownum) => {
@@ -44,13 +51,31 @@ const mul_row = (value) => {
 }
 
 const showTable = (param) => {
-    let gap = 0; 
+    let cgap = 0 
+    let rgap = 0
+    
+    const t = globalThis.table
+    const nrows = t.rows.length
+    const ncols = t.columns.length
 
-    for (let i = 0; i<= table.columns.length-1; i++) {
-	param.text(table.columns[i], 20 + gap ,20);
-	param.text(table.get(i,i), 25 + gap, 40 );
-	gap = gap + 100; 
+    console.log("nrows",nrows)
+    console.log("ncols",ncols)
+    
+    for(let i=0; i<ncols; i++) {
+	param.text(t.columns[i], 20 + cgap, 20)
+	cgap += 100
     }
+
+    for(let r=0; r<nrows; r++) {
+	cgap = 0
+	for(let c=0; c<ncols; c++) {
+	    console.log(r,c,t.get(r,c))
+	    param.text(t.getString(r,c), 20 + cgap, 20 + rgap)
+	    cgap += 100
+	}
+	rgap += 20
+    }
+	
 }
 
 export {
