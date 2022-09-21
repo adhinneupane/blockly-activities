@@ -1,7 +1,7 @@
-Blockly.Blocks['show'] = {
+Blockly.Blocks['show_table'] = {
     init: function() {
       this.appendDummyInput()
-          .appendField(".show");
+          .appendField("show the table");
       this.setInputsInline(true);
       this.setPreviousStatement(true, null);
       this.setColour(260);
@@ -10,7 +10,7 @@ Blockly.Blocks['show'] = {
     }
 };
 
-Blockly.JavaScript['show'] = function(block) {
+Blockly.JavaScript['show_table'] = function(block) {
   //  var code = show();
    code = 'showTable(sketch);';
    return code;

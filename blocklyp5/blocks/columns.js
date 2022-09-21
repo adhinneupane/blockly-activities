@@ -1,8 +1,9 @@
 Blockly.Blocks['input_header'] = {
     init: function() {
       this.appendDummyInput()
-          .appendField(".input")
-          .appendField(new Blockly.FieldTextInput("columnName"), "column")
+          .appendField("make column")
+            .appendField(new Blockly.FieldTextInput("name"), "column")
+	    .appendField("with")
           .appendField(new Blockly.FieldTextInput("value"), "value");
       this.setInputsInline(true);
       this.setPreviousStatement(true, null);
@@ -16,6 +17,6 @@ Blockly.Blocks['input_header'] = {
 Blockly.JavaScript['input_header'] = function(block) {
     let columnName = block.getFieldValue('column')
     let value = block.getFieldValue('value')
-    code = 'column("' + columnName+ '",' + value + ');'
-    return code;
+
+    return `column("${columnName}",${value});`
 };
