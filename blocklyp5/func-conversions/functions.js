@@ -26,15 +26,24 @@ const column = (columnName, value) => {
 
 }
 
-const add_row = (rownum) => {
+const add_rows = (number) => {
     const t = globalThis.table
     const nrows = t.getRowCount()
-    const lastRow = t.getRow(nrows-1)
-    const otherRow = t.getRow(rownum-1)
+    const ncols = t.getColumnCount()
     const newRow = t.addRow()
+
+    let rmin = nrows - number
+    if(rmin < 0) { rmin = 0 }
     
-    for(let i = 0; i < t.getColumnCount(); i++) {
-	newRow.set(i,otherRow.get(i) + lastRow.get(i))
+    for(let c=0; c<ncols;c++) {
+	newRow.set(c,0)
+    }
+    
+    for(let r = rmin; r < nrows; r++) {
+	let selRow = t.getRow(r)
+	for(let i = 0; i < ncols; i++) {
+	    newRow.set(i,newRow.get(i) + selRow.get(i))
+	}
     }
 }
 
@@ -96,7 +105,7 @@ const showTable = (param) => {
 
 export {
     createTable,
-    add_row,
+    add_rows,
     copy_row,
     mul_row,
     column,

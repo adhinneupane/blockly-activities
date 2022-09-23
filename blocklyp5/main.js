@@ -1,4 +1,4 @@
-import {createTable,column,add_row,copy_row,mul_row,showTable} from './func-conversions/functions.js'
+import {createTable,column,add_rows,copy_row,mul_row,showTable} from './func-conversions/functions.js'
 
 
 var toolbox = {
@@ -18,7 +18,7 @@ var toolbox = {
 	},
 	{
 	    "kind": "block",
-	    "type" :"add_row"
+	    "type" :"add_rows"
 	},
 	{
 	    "kind": "block",
