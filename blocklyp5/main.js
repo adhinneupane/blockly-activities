@@ -1,8 +1,9 @@
 import {createTable,column,add_rows,copy_row,mul_row,showTable} from './func-conversions/functions.js'
 
 
-var toolbox = {
-    "kind": "flyoutToolbox",
+const proportions_box = {
+    "kind": "category",
+    "name": "Proportions",
     "contents": [
 	{
 	    "kind": "block",
@@ -32,9 +33,16 @@ var toolbox = {
     ]
 };
 
-var blocklyArea = document.getElementById('blocklyArea');
-var blocklyDiv = document.getElementById('blocklyDiv');
-var workspace = Blockly.inject('blocklyDiv', {toolbox: toolbox});
+const topbox = {
+    "kind": "categoryToolbox",
+    "contents": [
+        proportions_box
+    ]
+}
+
+const blocklyArea = document.getElementById('blocklyArea');
+const blocklyDiv = document.getElementById('blocklyDiv');
+const workspace = Blockly.inject('blocklyDiv', {toolbox: topbox});
 
 function reloadScreen(){
     // if a canvas exists, then remove it
@@ -50,7 +58,7 @@ document.getElementById('p5Run').onclick = function() {
 
 function runCode(){
     reloadScreen()
-    var code = Blockly.JavaScript.workspaceToCode(workspace);
+    let code = Blockly.JavaScript.workspaceToCode(workspace);
     try {
 	// non changing code | main part 
 	const s = ( sketch) => 
