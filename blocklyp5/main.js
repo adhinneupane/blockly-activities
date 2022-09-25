@@ -29,7 +29,11 @@ const proportions_box = {
 	        "kind": "block",
 	        "type" :"show_table"
 	    },
-	        
+	    {
+            "kind": "block",
+            "type": "controls_repeat"
+        },
+
         ]
     };
 
