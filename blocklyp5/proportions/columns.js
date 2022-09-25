@@ -9,7 +9,7 @@ Blockly.Blocks['input_header'] = {
       this.setPreviousStatement(true, null);
       this.setNextStatement(true, null);
       this.setColour(270);
-   this.setTooltip(" Set the column Name, value in a table object. \n Type: Object Property \n Example: [Object].input (heightInFeet)(6)");
+   this.setTooltip("Add a column with the given name to the table, and use the given value as the initial value for this column.");
    this.setHelpUrl("");
     }
 };

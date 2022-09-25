@@ -5,7 +5,7 @@ Blockly.Blocks['show_table'] = {
       this.setInputsInline(true);
       this.setPreviousStatement(true, null);
       this.setColour(260);
-      this.setTooltip(" Displays output on the screen. \n Type: Object Property \n Example: [Object].show");
+      this.setTooltip("Show the table.");
    this.setHelpUrl("");
     }
 };

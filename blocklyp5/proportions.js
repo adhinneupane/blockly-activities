@@ -2,7 +2,7 @@ import {createTable,column,add_rows,copy_row,mul_row,showTable} from './func-con
 
 
 const proportions_box = {
-    "kind": "category",
+    "kind": "flyoutToolbox",
     "name": "Proportions",
     "contents": [
 	    {
@@ -46,7 +46,7 @@ const proportions_box = {
 
     const blocklyArea = document.getElementById('blocklyArea');
     const blocklyDiv = document.getElementById('blocklyDiv');
-    const workspace = Blockly.inject('blocklyDiv', {toolbox: topbox});
+    const workspace = Blockly.inject('blocklyDiv', {toolbox: proportions_box});
 
     function reloadScreen(){
         // if a canvas exists, then remove it

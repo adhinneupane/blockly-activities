@@ -5,7 +5,7 @@ Blockly.Blocks['create_table'] = {
 	this.setInputsInline(false);
 	this.setNextStatement(true, null);
 	this.setColour(230);
-	this.setTooltip(" Define an object of type table. \n Type: Object \n Example: Table");
+	this.setTooltip("Create an empty table");
 	this.setHelpUrl("");
     }
 }
