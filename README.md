@@ -2,18 +2,17 @@
 
 # Blockly + p5
 
-### Interactive Bellringers for Introduction to Computing Courses
+### Math activities based on blockly and p5
 
 1.  
    ```
-   git clone https://git.brbytes.org/ashutoshneupane/ICT-blockly-p5.git
+   git clone https://git.brbytes.org/falegre/blockly-activities.git
    ```
     
 2. 
    ```
-   cd ICT-blockly-p5
-   cd blocklyp5
-   python3 -m http.server
+   cd blockly-activities/blocklyp5
+   ./microserver.sh
    ```
 
 3.  
