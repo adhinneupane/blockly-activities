@@ -64,8 +64,73 @@ const proportions_box = {
     }
 
 
-	const startBlocks = { "blocks": { "languageVersion": 0, "blocks": [ { "type": "create_table", "id": "C5OYl*aI}i8])%!z!~O%", "x": 35, "y": 13, "next": { "block": { "type": "input_header", "id": "$qrtuV6v.:NuvADnR-O8", "fields": { "column": "name", "value": "2" }, "next": { "block": { "type": "show_table", "id": "XYFK5V73j^{N$#$:v!KK" } } } } } ] } }
-    const blocklyArea = document.getElementById('blocklyArea');
+	const startBlocks = {
+		"blocks": {
+			"languageVersion": 0,
+			"blocks": [
+				{
+					"type": "create_table",
+					"id": "C5OYl*aI}i8])%!z!~O%",
+					"x": 115,
+					"y": 171,
+					"next": {
+						"block": {
+							"type": "input_header",
+							"id": "$qrtuV6v.:NuvADnR-O8",
+							"fields": {
+								"column": "caterpillar",
+								"value": "2"
+							},
+							"next": {
+								"block": {
+									"type": "input_header",
+									"id": "mcd@]W/g/2wVOd%%t@g,",
+									"fields": {
+										"column": "leaves",
+										"value": "5"
+									},
+									"next": {
+										"block": {
+											"type": "mul_row",
+											"id": "Xo9.VqDRnUl.f}Qjmq6B",
+											"fields": {
+												"multiplier": "2"
+											},
+											"next": {
+												"block": {
+													"type": "copy_row",
+													"id": "](97Z{Hg[@sT8*TWp-/n",
+													"fields": {
+														"row_to_be_copied": "1"
+													},
+													"next": {
+														"block": {
+															"type": "copy_row",
+															"id": "G-n?F@l0ygWfWU*)H9}O",
+															"fields": {
+																"row_to_be_copied": "1"
+															},
+															"next": {
+																"block": {
+																	"type": "show_table",
+																	"id": "XYFK5V73j^{N$#$:v!KK"
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			]
+		}
+	}
+	const blocklyArea = document.getElementById('blocklyArea');
     const blocklyDiv = document.getElementById('blocklyDiv');
     const workspace = Blockly.inject('blocklyDiv', {toolbox: proportions_box});
 	Blockly.serialization.workspaces.load(startBlocks,workspace);
@@ -85,6 +150,7 @@ const proportions_box = {
     function runCode(){
         reloadScreen()
         let code = Blockly.JavaScript.workspaceToCode(workspace);
+		
 		// get dimensions of p5 canvas div
 		// getScreen()
         try {
@@ -94,7 +160,7 @@ const proportions_box = {
 	              {
 		              sketch.setup = () => 
 		                  { 
-			                  let canvas = sketch.createCanvas(canvasLength,canvasLength); 
+			                  let canvas = sketch.createCanvas(800,800); 
 			                  sketch.noLoop();
 			                  canvas.parent('canvasArea')
 		                  };

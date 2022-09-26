@@ -66,32 +66,36 @@
             </div>
           </li>
         </ul>
-        <form class="form-inline my-2 my-lg-0">
-          <button 
-            id="p5Run" 
-            type="button" 
-            href="#scrollspyHeading1" 
-            class="btn btn-primary navbar-btn" 
-            style="margin-right: 10px;">
-            Run
-          </button>
-          <button type="button"  class="btn btn-secondary navbar-btn">
-            Reset
-          </button>
-        </form>
       </div>
     </nav>
 
     <table>
       <tr>
+
+        <td> 
+          <div style="margin: 20px 20px 20px 20px;">
+            <button 
+              id="p5Run" 
+              type="button" 
+              class="btn btn-primary navbar-btn" 
+              style="margin-right: 10px; margin-left: 10px;">
+              Run
+            </button>
+            <button type="button"  class="btn btn-secondary navbar-btn">
+              Reset
+            </button>
+          </div>
+        <div id="scrollable" style="overflow-y:scroll">
+          <div id="canvasArea" 
+          style="border: 2px rgb(231, 227, 227) solid; height: 500px; width: 500px;">
+          </div>
+        </div>
+        </td>
         <td>
           <div id="blocklyDiv" 
-               style="position: relative; border: 2px rgb(243, 239, 239) solid; height: 550px; width: 800px;">
+               style="position: relative; border: 2px rgb(243, 239, 239) solid; height: 650px; width: 1000px;">
         </td>
-        <td>
-          <div id="canvasArea" 
-               style="border: 2px rgb(231, 227, 227) solid; height: 450px; width: 500px;"></div>
-        </td>
+      </tr>
     </table>
 
 
