@@ -1,4 +1,4 @@
-import {createTable,column,add_rows,copy_row,mul_row,showTable} from './functions.js'
+import {createTable,column,add_row,add_rows,copy_row,div_row,mul_row,showTable} from './functions.js'
 
 
 const proportions_box = {
@@ -15,6 +15,10 @@ const proportions_box = {
 	    },
 	    {
 	        "kind": "block",
+	        "type" :"add_row"
+	    },
+	    {
+	        "kind": "block",
 	        "type" :"copy_row"
 	    },
 	    {
@@ -26,13 +30,17 @@ const proportions_box = {
 	        "type" : "mul_row"
 	    },
 	    {
-            "kind": "block",
-            "type": "controls_repeat"
-        },
+	        "kind": "block",
+	        "type" : "div_row"
+	    },
 	    {
 	        "kind": "block",
 	        "type" :"show_table"
 	    },
+	    {
+            "kind": "block",
+            "type": "controls_repeat"
+        },
 
         ]
     };

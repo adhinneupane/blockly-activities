@@ -19,11 +19,27 @@ const column = (columnName, value) => {
     }
 
     let selRow = r > 0
-	? t.getRow(r-1)
-	: t.addRow()
+	    ? t.getRow(r-1)
+	    : t.addRow()
     
     selRow.set(columnName,value)
 
+}
+
+const add_row = (rownum) => {
+    const t = globalThis.table
+    const nrows = t.getRowCount()
+
+    if(nrows < 1) return;
+    if(rownum < 1 || rownum > nrows) return;
+
+    const selRow = t.getRow(rownum-1)
+    const lastRow = t.getRow(nrows-1)
+    const newRow = t.addRow()
+    
+    for(let i = 0; i < t.getColumnCount(); i++) {
+	    newRow.set(i, selRow.get(i) + lastRow.get(i))
+    }
 }
 
 const add_rows = (number) => {
@@ -36,14 +52,14 @@ const add_rows = (number) => {
     if(rmin < 0) { rmin = 0 }
     
     for(let c=0; c<ncols;c++) {
-	newRow.set(c,0)
+	    newRow.set(c,0)
     }
     
     for(let r = rmin; r < nrows; r++) {
-	let selRow = t.getRow(r)
-	for(let i = 0; i < ncols; i++) {
-	    newRow.set(i,newRow.get(i) + selRow.get(i))
-	}
+	    let selRow = t.getRow(r)
+	    for(let i = 0; i < ncols; i++) {
+	        newRow.set(i,newRow.get(i) + selRow.get(i))
+	    }
     }
 }
 
@@ -53,7 +69,18 @@ const copy_row = (rownum) => {
     const newRow = t.addRow()
     
     for(let i = 0; i < t.getColumnCount(); i++) {
-	newRow.set(i,selRow.get(i))
+	    newRow.set(i,selRow.get(i))
+    }
+}
+
+const div_row = (value) => {
+    const t = globalThis.table
+    const nrows = t.getRowCount()
+    const lastRow = t.getRow(nrows-1)
+    const newRow = t.addRow()
+    
+    for(let i = 0; i < t.getColumnCount(); i++) {
+	    newRow.set(i,lastRow.get(i) / value)
     }
 }
 
@@ -64,7 +91,7 @@ const mul_row = (value) => {
     const newRow = t.addRow()
     
     for(let i = 0; i < t.getColumnCount(); i++) {
-	newRow.set(i,value * lastRow.get(i))
+	    newRow.set(i,value * lastRow.get(i))
     }
 }
 
@@ -105,8 +132,10 @@ const showTable = (param) => {
 
 export {
     createTable,
+    add_row,
     add_rows,
     copy_row,
+    div_row,
     mul_row,
     column,
     showTable
