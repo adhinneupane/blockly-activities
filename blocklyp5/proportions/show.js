@@ -12,7 +12,7 @@ Blockly.Blocks['show_table'] = {
 
 Blockly.JavaScript['show_table'] = function(block) {
   //  var code = show();
-   code = 'showTable(sketch);';
+   code = 'showTable(sketch,450,450);';
    return code;
 }
 

@@ -68,10 +68,11 @@ const mul_row = (value) => {
     }
 }
 
-const showTable = (param) => {
+const showTable = (param, height, width) => {
+    let canvasHeight = height;
+    let canvasWidth = width; 
     let cgap = 0 
     let rgap = 0
-    
     const t = globalThis.table
     const nrows = t.rows.length
     const ncols = t.columns.length
@@ -81,7 +82,7 @@ const showTable = (param) => {
     console.log("nrows",nrows)
     console.log("ncols",ncols)
     
-    param.text("row", 20 + cgap, 20)
+    param.text("row", 0.045 * canvasHeight + 0.01 * canvasWidth, 0.045 * canvasHeight)
     cgap += 100
     param.text(t.columns[0], 20 + cgap , 20)
     for(let i=1; i<ncols; i++) {
