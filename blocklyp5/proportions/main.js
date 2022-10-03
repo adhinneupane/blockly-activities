@@ -1,28 +1,10 @@
 import {createTable,column,add_row,add_rows,copy_row,div_row,mul_row,showTable} from './functions.js'
 
+function showCanvas(){
+	document.getElementById('p5Canvas').className = 'collapse show'
+}
 
-// function getScreen(){
-// 	let canvasHeight = window.outerHeight/2; 
-// 	var canvasWidth = window.outerWidth/3;
-// 	let canvasArea = document.getElementById('canvasArea');
-// 	canvasArea.style.height = canvasHeight + 2; // border 
-// 	canvasArea.style.width = canvasWidth + 2; // border 
-// }
-// canvasArea Element
-
-
-
-$(document).on('click', '#p5Run', function() {
-	$(this).attr('id', 'expanded');
-	console.log("this will be there")
-  });
-$(document).on('click', '#expanded', function() {
-	document.getElementById("p5Canvas").className='collapse show'
-});
-$(document).on('click', '#hide', function() {
-	document.getElementById("p5Canvas").className='collapse';
-	this.remove(this)
-});
+document.getElementById('p5Run').addEventListener("click",showCanvas)
 
 const proportions_box = {
     "kind": "flyoutToolbox",
@@ -175,8 +157,15 @@ document.getElementById('p5Run').onclick = function() {
 	hidebutton.className = 'btn btn-light'
 	if (document.getElementById('hide') == null ){
 		document.getElementById('leftcol').appendChild(hidebutton);
+		hidebutton.addEventListener('click', hideCanvas)
 	}
 };
+
+function hideCanvas(){
+	document.getElementById('p5Canvas').className = 'collapse'
+	document.getElementById('hide').remove()
+
+}
 
 function runCode(){
 	reloadScreen()
