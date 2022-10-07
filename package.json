@@ -1,5 +1,6 @@
 {
   "dependencies": {
-    "express": "^4.18.1"
+    "express": "^4.18.1",
+    "writefile": "^0.2.8"
   }
 }
