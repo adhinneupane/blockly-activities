@@ -1,8 +1,6 @@
 import {createTable,column,add_row,add_rows,copy_row,div_row,mul_row,showTable} from './functions.js'
 
-function showCanvas(){
-	document.getElementById('p5Canvas').className = 'collapse show'
-}
+
 
 const proportions_box = {
     "kind": "flyoutToolbox",
@@ -123,84 +121,89 @@ const startBlocks = {
 	}
 }
 
-const blocklyArea = document.getElementById('blocklyArea');
-const blocklyDiv = document.getElementById('blocklyDiv');
+const selectDiv = document.getElementById('selectDiv');
 
-const workspace = Blockly.inject('blocklyDiv', {toolbox: proportions_box,  zoom:
+const workspace = Blockly.inject('selectDiv', {toolbox: proportions_box,  zoom:
 	{controls: true,
 		wheel: false,
 		startScale: 1.0,
 		maxScale: 3,
 		minScale: 0.3,
 		scaleSpeed: 1.2,
-		pinch: true},
-trashcan: true});
+		pinch: true,
+       },
+trashcan: true,
+grid: {
+    spacing: 20,
+    length: 1,
+    colour: '#888',
+    snap: true
+}});
+
 Blockly.serialization.workspaces.load(startBlocks,workspace);
 
-function reloadScreen(){
-	// if a canvas exists, then remove it
-	let node = document.getElementById('defaultCanvas0');
-	if (node != null){
-		node.remove()
-	}
-}
+var template1 = {};
+var contents = [];
+template1.contents = contents; 
+const saveBlocksbutton = document.getElementById('randomid')
+const selectedBlocks = [];
+saveBlocksbutton.addEventListener('click', (event) => {
+    const streamBlocks = workspace.getAllBlocks(true);
+    streamBlocks.forEach(Element => selectedBlocks.push(Element.type));
+    selectedBlocks.forEach(Element => {
+        let singleblock = {
+            kind : "block",
+            type : '' + Element
+        }; 
+        template1.contents.push(singleblock);
+        console.log(JSON.stringify(template1));
+        })
+});
 
-document.getElementById('p5Run').onclick = function() {
-	runCode();
-	showCanvas();
-	const hidebutton = document.createElement("button");
-	hidebutton.innerHTML = 'Hide Canvas'
-	hidebutton.id = 'hide'
-	hidebutton.className = 'btn btn-light'
-	if (document.getElementById('hide') == null ){
-		document.getElementById('leftcol').appendChild(hidebutton);
-		hidebutton.addEventListener('click', hideCanvas)
-	}
-};
+const template_box = {
+    "kind": "flyoutToolbox",
+    "name": "Template1",
+    "contents": [
+	    {
+	        "kind": "block",
+	        "type":"create_table"
+	    },
+	    {
+	        "kind": "block",
+	        "type" :"input_header"
+	    },
+	    {
+	        "kind": "block",
+	        "type" :"add_row"
+	    },
+	    {
+	        "kind": "block",
+	        "type" :"copy_row"
+	    },
+	    {
+	        "kind": "block",
+	        "type" :"add_rows"
+	    },
+	    {
+	        "kind": "block",
+	        "type" : "mul_row"
+	    },
+	    {
+	        "kind": "block",
+	        "type" : "div_row"
+	    },
+	    {
+	        "kind": "block",
+	        "type" :"show_table"
+	    },
+	    {
+            "kind": "block",
+            "type": "controls_repeat"
+        },
 
-function hideCanvas(){
-	document.getElementById('p5Canvas').className = 'collapse'
-	document.getElementById('hide').remove()
+        ]
+    };
 
-}
 
-function runCode(){
-	reloadScreen()
-	const canvasLength = (document.getElementById('canvasSizes')).value
-	const p5fontsize = parseInt((document.getElementById('fontSizes')).value)
-	let code = Blockly.JavaScript.workspaceToCode(workspace);
-	
-	// get dimensions of p5 canvas div
-	// getScreen()
-	try {
-		// non changing code | main part 
-		const s = ( sketch) => 
-				{
-					sketch.setup = () => 
-						{ 
-							let canvas = sketch.createCanvas(canvasLength,canvasLength); 
-							sketch.noLoop();
-							canvas.parent('canvasArea');
-							console.log(typeof(p5fontsize),"value", p5fontsize)
-							sketch.textSize(p5fontsize);
-						};
-					sketch.draw = () => 
-						{	
-							// Adding user generated code to p5 program
-							sketch.background(255);
-							try{
-								// execute Blockly generated p5 code
-								eval(code);
-								}
-							catch(e){
-								alert(e);
-							}
-						}
 
-				}; 
-		// create canvas on screen
-		const drawp5 = new p5(s, document.getElementById("canvasArea"));
-	} catch (e) {
-		console.log(e);
-	}
-}
+

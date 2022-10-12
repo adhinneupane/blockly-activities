@@ -50,6 +50,8 @@ app.get('/home', function (req, res) {
   res.sendFile('/Users/admin/blockly-activities/blocklyp5/proportions/index.html')
 })
 
-app.listen(3000)
+app.get('/tasks', function(req,res){
+    res.sendFile('/Users/admin/blockly-activities/blocklyp5/proportions/tasks.html')
+})
 
-
+app.listen(8000)

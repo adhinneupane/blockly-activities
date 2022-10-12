@@ -22,14 +22,22 @@
             </li>
           </ul>
         </div>
-
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <a class="nav-link dropdown-toggle" style="margin-right: 5px;" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Settings
             </a>
-           <ul>
-          </ul>
             <ul id="canvasSize" class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              
+
+              <li><a class="dropdown-item" href="http://localhost:8000/tasks">
+                Create a New Task + 
+              </a> </li>
+              <li><a class="dropdown-item" href="#">
+                Choose Task 
+                <select id="templates" class="form-select" aria-label="Default select example">
+                <option value="1" selected="selected" >Task 1</option>
+                <option value="2">Task 2</option>
+                <option value="3">Task 3</option>
+              </select>  </a> </li>
+
               <li><a class="dropdown-item" href="#">
                 Size of Output Screen
                 <select id="canvasSizes" class="form-select" aria-label="Default select example">
