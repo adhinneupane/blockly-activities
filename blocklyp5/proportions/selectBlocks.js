@@ -1,7 +1,6 @@
 import {createTable,column,add_row,add_rows,copy_row,div_row,mul_row,showTable} from './functions.js'
 
 
-
 const proportions_box = {
     "kind": "flyoutToolbox",
     "name": "Proportions",
@@ -141,13 +140,12 @@ grid: {
 }});
 
 Blockly.serialization.workspaces.load(startBlocks,workspace);
-
-var template1 = {};
-var contents = [];
-template1.contents = contents; 
 const saveBlocksbutton = document.getElementById('randomid')
-const selectedBlocks = [];
 saveBlocksbutton.addEventListener('click', (event) => {
+	const selectedBlocks = [];
+	var template1 = {};
+	var contents = [];
+	template1.contents = contents; 
     const streamBlocks = workspace.getAllBlocks(true);
     streamBlocks.forEach(Element => selectedBlocks.push(Element.type));
     selectedBlocks.forEach(Element => {
@@ -156,8 +154,27 @@ saveBlocksbutton.addEventListener('click', (event) => {
             type : '' + Element
         }; 
         template1.contents.push(singleblock);
-        console.log(JSON.stringify(template1));
         })
+		const body =  template1;
+		const dataToSend = JSON.stringify(template1);
+		console.log("should contain name", 	(JSON.parse(dataToSend)).name = "randomname")
+		console.log(dataToSend) // <--- JSON array of selected blocks. 
+		fetch('http://localhost:8000/save',{
+			headers: {
+				'Accept': 'application/json',
+				'Content-Type': 'application/json'
+			  },
+			method: 'POST', 
+			body: dataToSend
+		}).then(response => {
+			// handle the response
+			console.log('here')
+			console.log(response);
+		})
+		.catch(error => {
+			// handle the error
+			console.log(error);
+		});     
 });
 
 const template_box = {
