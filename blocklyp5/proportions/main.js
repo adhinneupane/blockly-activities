@@ -154,7 +154,7 @@ document.getElementById('settings').onclick = function() {
 				  },
 				method: 'GET', 
 			}).then(res => {
-				console.log(res.json());
+				console.log(res)
 			})
 			.catch(error => {
 				console.log(error);

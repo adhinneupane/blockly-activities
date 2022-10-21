@@ -6,7 +6,8 @@ const fs = require('fs')
 
 var express = require('express')
 var app = express()
-const path = require('path')
+const path = require('path');
+const { resolveNaptr } = require('dns');
 app.use(express.static(path.join(__dirname, '/blocklyp5/proportions/')))
 
 app.get('/home', function (req, res) {
