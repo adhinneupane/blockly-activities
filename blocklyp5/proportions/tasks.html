@@ -4,7 +4,7 @@
   </head>
 
   <body>  
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light" >
       <div class="container-fluid">
         <a class="navbar-brand" style="padding-left: 10px" href="#">
           <img src="https://www.brbytes.org/images/Logos/brbytes.png" width="150" height="50" alt="">
@@ -13,27 +13,26 @@
           <span class="navbar-toggler-icon"></span>
         </button>
     </nav>
-
+    <h2 style="text-align:center">Drag and Drop Items before saving them as a template</h2>
     <table>
         <tr>
             <td>
-
-                
-
                 <div>
-                   <h2>
-                       Drag and drop items to save them as a new template <button id='randomid' class="btn btn-primary" type="button" >save</button>
-                   </h2> 
+                  <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon3">New Configuration Name</span>
+                    <input type="text" id="template-name" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+                    <button type="submit" href="http://localhost:8000/tasks" id='save-button' class="btn btn-primary" type="button" >Save as Template</button>
+                  </div>
+                  
                 </div>
             </td>
             <td>
-
             </td>
         </tr>
       <tr>
         <td style="vertical-align: top;">
           <div id="selectDiv" 
-               style="position: relative; border: 2px rgb(243, 239, 239) solid; height: 650px; width: 1250px;">
+               style="position: relative; border: 2px rgb(243, 239, 239) solid; height: 650px; width: 1400px;">
             </div>
         </td>
         <td>

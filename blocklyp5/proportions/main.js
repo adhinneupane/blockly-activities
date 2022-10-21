@@ -4,6 +4,8 @@ function showCanvas(){
 	document.getElementById('p5Canvas').className = 'collapse show'
 }
 
+
+
 const proportions_box = {
     "kind": "flyoutToolbox",
     "name": "Proportions",
@@ -143,6 +145,21 @@ function reloadScreen(){
 	if (node != null){
 		node.remove()
 	}
+}
+document.getElementById('settings').onclick = function() {
+	fetch('http://localhost:8000/gettasks',{
+				headers: {
+					'Accept': 'application/json',
+					'Content-Type': 'application/json'
+				  },
+				method: 'GET', 
+			}).then(res => {
+				console.log(res.json());
+			})
+			.catch(error => {
+				console.log(error);
+			});
+
 }
 
 document.getElementById('p5Run').onclick = function() {

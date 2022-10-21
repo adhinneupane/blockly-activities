@@ -139,47 +139,53 @@ grid: {
     snap: true
 }});
 
+
 Blockly.serialization.workspaces.load(startBlocks,workspace);
-const saveBlocksbutton = document.getElementById('randomid')
+const saveBlocksbutton = document.getElementById('save-button')
 saveBlocksbutton.addEventListener('click', (event) => {
-	const selectedBlocks = [];
-	var template1 = {};
-	var contents = [];
-	template1.contents = contents; 
-    const streamBlocks = workspace.getAllBlocks(true);
-    streamBlocks.forEach(Element => selectedBlocks.push(Element.type));
-    selectedBlocks.forEach(Element => {
-        let singleblock = {
-            kind : "block",
-            type : '' + Element
-        }; 
-        template1.contents.push(singleblock);
-        })
-		const body =  template1;
-		const dataToSend = JSON.stringify(template1);
-		console.log("should contain name", 	(JSON.parse(dataToSend)).name = "randomname")
-		console.log(dataToSend) // <--- JSON array of selected blocks. 
-		fetch('http://localhost:8000/save',{
-			headers: {
-				'Accept': 'application/json',
-				'Content-Type': 'application/json'
-			  },
-			method: 'POST', 
-			body: dataToSend
-		}).then(response => {
-			// handle the response
-			console.log('here')
-			console.log(response);
-		})
-		.catch(error => {
-			// handle the error
-			console.log(error);
-		});     
+	const templatename = document.getElementById('template-name').value
+	if (templatename == ''){
+		alert("Please enter a template name")
+	}
+	else {
+		const selectedBlocks = [];
+		var template = {};
+		var contents = [];
+		template.contents = contents; 
+		const streamBlocks = workspace.getAllBlocks(true);
+		streamBlocks.forEach(Element => selectedBlocks.push(Element.type));
+		selectedBlocks.forEach(Element => {
+			let singleblock = {
+				kind : "block",
+				type : '' + Element
+			}; 
+			template.contents.push(singleblock);
+			})
+			const body =  template;
+	
+			template.name = templatename;
+			const blocksJson = JSON.stringify(template); 
+			console.log(blocksJson)// <--- JSON string of selected blocks. 
+			fetch('http://localhost:8000/save',{
+				headers: {
+					'Accept': 'application/json',
+					'Content-Type': 'application/json'
+				  },
+				method: 'POST', 
+				body: blocksJson
+			}).then(response => {
+				console.log(response);
+			})
+			.catch(error => {
+				console.log(error);
+			});
+	}     
+	window.location.href='http://localhost:8000/home'
 });
 
 const template_box = {
     "kind": "flyoutToolbox",
-    "name": "Template1",
+    "name": "template",
     "contents": [
 	    {
 	        "kind": "block",

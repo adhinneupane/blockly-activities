@@ -22,21 +22,21 @@
             </li>
           </ul>
         </div>
-            <a class="nav-link dropdown-toggle" style="margin-right: 5px;" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <a id="settings" class="nav-link dropdown-toggle" style="margin-right: 5px;" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Settings
             </a>
             <ul id="canvasSize" class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-
-              <li><a class="dropdown-item" href="http://localhost:8000/tasks">
-                Create a New Task + 
-              </a> </li>
               <li><a class="dropdown-item" href="#">
-                Choose Task 
+                Choose Template 
                 <select id="templates" class="form-select" aria-label="Default select example">
                 <option value="1" selected="selected" >Task 1</option>
                 <option value="2">Task 2</option>
                 <option value="3">Task 3</option>
               </select>  </a> </li>
+              <li><a class="dropdown-item" href="http://localhost:8000/tasks">
+                Create a New Template + 
+              </a> </li>
+
 
               <li><a class="dropdown-item" href="#">
                 Size of Output Screen
@@ -56,7 +56,7 @@
 
 
               <li><hr class="dropdown-divider"></li>
-              <button type="button" class="btn btn-primary" style="position: relative; margin-right:70px; float:right; margin-left: 20px">Apply</button>
+              <button type="button"  class="btn btn-primary" style="position: relative; margin-right:70px; float:right; margin-left: 20px">Apply</button>
             </ul>
       </div>
     </nav>
