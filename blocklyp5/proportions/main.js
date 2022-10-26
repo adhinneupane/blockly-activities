@@ -4,8 +4,6 @@ function showCanvas(){
 	document.getElementById('p5Canvas').className = 'collapse show'
 }
 
-
-
 const proportions_box = {
     "kind": "flyoutToolbox",
     "name": "Proportions",
@@ -146,23 +144,28 @@ function reloadScreen(){
 		node.remove()
 	}
 }
-document.getElementById('settings').onclick = function() {
-	fetch('http://localhost:8000/gettasks',{
-				headers: {
-					'Accept': 'application/json',
-					'Content-Type': 'application/json'
-				  },
-				method: 'GET', 
-			}).then(res => {
-				console.log(res)
-			})
-			.catch(error => {
-				console.log(error);
-			});
 
+var populate=[]
+
+function fetchData(){
+	var temp1
+	fetch('http://localhost:8000/gettasks',{
+				method: 'POST',
+			}).then(res => {
+			temp1 = res.json()
+			temp1.then((data)=>populate.push(data))
+			})
+	// document.getElementById()
+	console.log(typeof(populate),populate)
 }
 
+document.getElementById('settings').onclick = function(){
+	fetchData();
+}
+
+
 document.getElementById('p5Run').onclick = function() {
+	console.log(populate[0])
 	runCode();
 	showCanvas();
 	const hidebutton = document.createElement("button");
@@ -178,7 +181,6 @@ document.getElementById('p5Run').onclick = function() {
 function hideCanvas(){
 	document.getElementById('p5Canvas').className = 'collapse'
 	document.getElementById('hide').remove()
-
 }
 
 function runCode(){

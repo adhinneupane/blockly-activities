@@ -18,7 +18,7 @@ app.get('/tasks', function(req,res){
     res.sendFile('/Users/admin/blockly-activities/blocklyp5/proportions/tasks.html')
 })
 
-app.get('/gettasks', function(req,res){
+app.post('/gettasks', function(req,res){
   const templates = []
   fs.readdir('/Users/admin/blockly-activities/templates/', function (err, files) {
     
