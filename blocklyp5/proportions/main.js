@@ -153,7 +153,7 @@ function fetchData(){
 				method: 'POST',
 			}).then(res => {
 			temp1 = res.json()
-			temp1.then((data)=>populate.push(data))
+			temp1.then((data)=>populate[0] = (data))
 			})
 	// document.getElementById()
 	console.log(typeof(populate),populate)
@@ -163,9 +163,8 @@ document.getElementById('settings').onclick = function(){
 	fetchData();
 }
 
-
 document.getElementById('p5Run').onclick = function() {
-	console.log(populate[0])
+	console.log(populate[0]);
 	runCode();
 	showCanvas();
 	const hidebutton = document.createElement("button");
