@@ -3,7 +3,6 @@ const http = require('http');
 const buffer = require('buffer')
 const fs = require('fs')
 
-
 var express = require('express')
 var app = express()
 const path = require('path');
@@ -33,6 +32,17 @@ app.post('/gettasks', function(req,res){
     console.log(templates)
     res.send(JSON.stringify(templates))
   });
+})
+
+app.post('/serveblocks', function(req,res){
+  let templateJson = []
+  let fileName = 'caterpillar' + '.json'
+  console.log(fileName)
+  fs.readFile('/Users/admin/blockly-activities/templates/'+fileName, 'utf8', function(err, data){
+    // Display the file content
+    console.log(data);
+    res.send(data)
+});
 })
 
 app.use(express.json());

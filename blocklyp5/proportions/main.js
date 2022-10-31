@@ -4,6 +4,8 @@ function showCanvas(){
 	document.getElementById('p5Canvas').className = 'collapse show'
 }
 
+
+
 const proportions_box = {
     "kind": "flyoutToolbox",
     "name": "Proportions",
@@ -47,6 +49,7 @@ const proportions_box = {
 
         ]
     };
+
 
 const topbox = {
 	"kind": "categoryToolbox",
@@ -126,7 +129,7 @@ const startBlocks = {
 const blocklyArea = document.getElementById('blocklyArea');
 const blocklyDiv = document.getElementById('blocklyDiv');
 
-const workspace = Blockly.inject('blocklyDiv', {toolbox: proportions_box,  zoom:
+let workspace = Blockly.inject('blocklyDiv', {toolbox: proportions_box,  zoom:
 	{controls: true,
 		wheel: false,
 		startScale: 1.0,
@@ -159,12 +162,91 @@ function fetchData(){
 	console.log(typeof(populate),populate)
 }
 
+document.body.onload = function fetchandPopulate(){
+fetchData()
+}
+
+function optionExists ( searchItem, listitems )
+{
+    var optionExists = false,
+        optionsLength = listitems.length;
+    while ( optionsLength-- )
+    {
+        if ( listitems.options[ optionsLength ].value === searchItem )
+        {
+            optionExists = true;
+            break;
+        }
+    }
+    return optionExists;
+}
+
+
 document.getElementById('settings').onclick = function(){
 	fetchData();
+	console.log(populate[0])
+	console.log(populate[0][0])
+	for (let i=0; i<= (populate[0]).length; i ++) {
+		let listitem = new Option(populate[0][i],populate[0][i]);
+		const templates = document.getElementById('templates')
+		if (optionExists( populate[0][i], document.getElementById('templates') )===false){
+			templates.add(listitem,undefined)
+		}
+	}
+}
+
+var blocksArray=[];
+
+function changeBlockly(){
+	console.log("im here");
+	fetchBlocks();
+	console.log("array is",blocksArray[0]);
+	
+	// changeBlocks();
+}
+
+document.getElementById('apply').addEventListener('click',changeBlockly);
+
+function changeBlocks(param){
+	let menu = document.getElementById('blocklyDiv');
+	menu.removeChild(menu.lastElementChild);
+	workspace = Blockly.inject('blocklyDiv', {toolbox: param,  zoom:
+		{controls: true,
+			wheel: false,
+			startScale: 1.0,
+			maxScale: 3,
+			minScale: 0.3,
+			scaleSpeed: 1.2,
+			pinch: true},
+	trashcan: true});
+	Blockly.serialization.workspaces.load(startBlocks,workspace);
+}
+
+function fetchBlocks(){
+	let selected = document.getElementById('templates').value
+	console.log("selected value",selected)
+	fetch('http://localhost:8000/serveblocks',{
+				method: 'POST',
+				body: {
+					'fileName': selected
+				}
+			}).then(res => {
+			let temp2 = res.json();
+			temp2.then((data)=>  blocksArray[0] = (data));
+			})
+	console.log("im here")
 }
 
 document.getElementById('p5Run').onclick = function() {
-	console.log(populate[0]);
+	var temp3 = {
+		"kind":"flyoutToolbox",
+		"name": "Proportions",
+		"contents" : blocksArray[0]
+	}
+	console.log(temp3);
+	console.log("blocklarrayis",blocksArray[0]);
+	
+	changeBlocks(temp3);
 	runCode();
 	showCanvas();
 	const hidebutton = document.createElement("button");
@@ -179,7 +261,7 @@ document.getElementById('p5Run').onclick = function() {
 
 function hideCanvas(){
 	document.getElementById('p5Canvas').className = 'collapse'
-	document.getElementById('hide').remove()
+	document.getElementById('hide').remove();
 }
 
 function runCode(){
@@ -187,7 +269,6 @@ function runCode(){
 	const canvasLength = (document.getElementById('canvasSizes')).value
 	const p5fontsize = parseInt((document.getElementById('fontSizes')).value)
 	let code = Blockly.JavaScript.workspaceToCode(workspace);
-	
 	// get dimensions of p5 canvas div
 	// getScreen()
 	try {
