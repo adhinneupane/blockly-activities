@@ -2,7 +2,6 @@
 const http = require('http');
 const buffer = require('buffer')
 const fs = require('fs')
-
 var express = require('express')
 var app = express()
 const path = require('path');
@@ -20,7 +19,6 @@ app.get('/tasks', function(req,res){
 app.post('/gettasks', function(req,res){
   const templates = []
   fs.readdir('/Users/admin/blockly-activities/templates/', function (err, files) {
-    
     if (err) {
         return console.log('Unable to scan directory: ' + err);
     } 
@@ -34,12 +32,10 @@ app.post('/gettasks', function(req,res){
   });
 })
 
+app.use(express.json());
 app.post('/serveblocks', function(req,res){
-  let templateJson = []
-  let fileName = 'caterpillar' + '.json'
-  console.log(fileName)
-  fs.readFile('/Users/admin/blockly-activities/templates/'+fileName, 'utf8', function(err, data){
-    // Display the file content
+  let fileName = ((req.body).name) + '.json'
+  fs.readFile('/Users/admin/blockly-activities/templates/'+ fileName, 'utf8', function(err, data){
     console.log(data);
     res.send(data)
 });
@@ -48,6 +44,7 @@ app.post('/serveblocks', function(req,res){
 app.use(express.json());
 app.post('/save', function(req,res){
     const body = req.body
+    console.log("request body from save",req.body)
     res.json("status:saved");
     fs.writeFile('templates/' + (JSON.stringify(body.name)).replaceAll('"','') + '.json', JSON.stringify(body.contents), 'utf8', (err)=>
     console.log("file saved")

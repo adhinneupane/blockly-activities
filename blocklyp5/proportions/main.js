@@ -4,8 +4,6 @@ function showCanvas(){
 	document.getElementById('p5Canvas').className = 'collapse show'
 }
 
-
-
 const proportions_box = {
     "kind": "flyoutToolbox",
     "name": "Proportions",
@@ -48,8 +46,7 @@ const proportions_box = {
         },
 
         ]
-    };
-
+};
 
 const topbox = {
 	"kind": "categoryToolbox",
@@ -162,9 +159,7 @@ function fetchData(){
 	console.log(typeof(populate),populate)
 }
 
-document.body.onload = function fetchandPopulate(){
-fetchData()
-}
+document.body.onload = fetchData()
 
 function optionExists ( searchItem, listitems )
 {
@@ -181,9 +176,9 @@ function optionExists ( searchItem, listitems )
     return optionExists;
 }
 
-
 document.getElementById('settings').onclick = function(){
 	fetchData();
+	fetchBlocks();
 	console.log(populate[0])
 	console.log(populate[0][0])
 	for (let i=0; i<= (populate[0]).length; i ++) {
@@ -198,14 +193,19 @@ document.getElementById('settings').onclick = function(){
 var blocksArray=[];
 
 function changeBlockly(){
-	console.log("im here");
+	console.log("code ran");
 	fetchBlocks();
-	console.log("array is",blocksArray[0]);
-	
-	// changeBlocks();
+	console.log(blocksArray[0])
+	// var temp3 = {
+	// 	"kind":"flyoutToolbox",
+	// 	"name": "Proportions",
+	// 	"contents" : blocksArray[0]
+	// }	
+	// changeBlocks(temp3);
+	// // changeBlocks();
 }
 
-document.getElementById('apply').addEventListener('click',changeBlockly);
+document.getElementById('apply').addEventListener('click',fetchBlocks);
 
 function changeBlocks(param){
 	let menu = document.getElementById('blocklyDiv');
@@ -223,30 +223,28 @@ function changeBlocks(param){
 }
 
 function fetchBlocks(){
-	let selected = document.getElementById('templates').value
-	console.log("selected value",selected)
+	var obj = {
+		name : document.getElementById('templates').value
+	}; 
 	fetch('http://localhost:8000/serveblocks',{
+				headers: {
+					'Accept': 'application/json',
+					'Content-Type': 'application/json'
+				},
 				method: 'POST',
-				body: {
-					'fileName': selected
-				}
+				body: JSON.stringify(obj)
 			}).then(res => {
 			let temp2 = res.json();
 			temp2.then((data)=>  blocksArray[0] = (data));
 			})
-	console.log("im here")
 }
 
+document.getElementById('test').addEventListener('click', function() {
+	console.log(blocksArray[0]);
+})
+
 document.getElementById('p5Run').onclick = function() {
-	var temp3 = {
-		"kind":"flyoutToolbox",
-		"name": "Proportions",
-		"contents" : blocksArray[0]
-	}
-	console.log(temp3);
-	console.log("blocklarrayis",blocksArray[0]);
-	
-	changeBlocks(temp3);
+	console.log(blocksArray[0])
 	runCode();
 	showCanvas();
 	const hidebutton = document.createElement("button");

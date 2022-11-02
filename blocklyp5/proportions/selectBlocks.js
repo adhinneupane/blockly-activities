@@ -1,6 +1,5 @@
 import {createTable,column,add_row,add_rows,copy_row,div_row,mul_row,showTable} from './functions.js'
 
-
 const proportions_box = {
     "kind": "flyoutToolbox",
     "name": "Proportions",
