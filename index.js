@@ -27,7 +27,7 @@ app.post('/gettasks', function(req,res){
         templates[key] = file.replaceAll('.json','')
         key = key + 1; 
     });
-    console.log(templates)
+    console.log("1",templates)
     res.send(JSON.stringify(templates))
   });
 })
@@ -36,7 +36,7 @@ app.use(express.json());
 app.post('/serveblocks', function(req,res){
   let fileName = ((req.body).name) + '.json'
   fs.readFile('/Users/admin/blockly-activities/templates/'+ fileName, 'utf8', function(err, data){
-    console.log(data);
+    console.log("2",data);
     res.send(data)
 });
 })
@@ -44,10 +44,9 @@ app.post('/serveblocks', function(req,res){
 app.use(express.json());
 app.post('/save', function(req,res){
     const body = req.body
-    console.log("request body from save",req.body)
     res.json("status:saved");
     fs.writeFile('templates/' + (JSON.stringify(body.name)).replaceAll('"','') + '.json', JSON.stringify(body.contents), 'utf8', (err)=>
-    console.log("file saved")
+    console.log("file has not been saved")
     ); // write it back 
 })
 
