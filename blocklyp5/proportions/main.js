@@ -248,9 +248,6 @@ function fetchBlocks(){
 			})
 }
 
-
-
-
 document.getElementById('p5Run').onclick = function() {
 	console.log(blocksArray[0])
 	runCode();
