@@ -37,8 +37,13 @@ app.post('/serveblocks', function(req,res){
   let fileName = ((req.body).name) + '.json'
   fs.readFile('/Users/admin/blockly-activities/templates/'+ fileName, 'utf8', function(err, data){
     console.log("2",data);
+    res.set({
+      "Content-Type": "application/json",
+      "Access-Control-Allow-Origin": "*",
+    });
     res.send(data)
-});
+    });
+
 })
 
 app.use(express.json());

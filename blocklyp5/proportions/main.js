@@ -205,7 +205,16 @@ function changeBlockly(){
 	// // changeBlocks();
 }
 
-document.getElementById('apply').addEventListener('click',fetchBlocks);
+document.getElementById('apply').addEventListener('click', function() {
+	fetchBlocks
+	console.log(blocksArray[0]);
+	var temp3 = {
+		"kind":"flyoutToolbox",
+		"name": "Replaced",
+		"contents" : blocksArray[0]
+	}	
+	changeBlocks(temp3);
+})
 
 function changeBlocks(param){
 	let menu = document.getElementById('blocklyDiv');
@@ -239,15 +248,8 @@ function fetchBlocks(){
 			})
 }
 
-document.getElementById('test').addEventListener('click', function() {
-	console.log(blocksArray[0]);
-	var temp3 = {
-		"kind":"flyoutToolbox",
-		"name": "Replaced",
-		"contents" : blocksArray[0]
-	}	
-	changeBlocks(temp3);
-})
+
+
 
 document.getElementById('p5Run').onclick = function() {
 	console.log(blocksArray[0])
