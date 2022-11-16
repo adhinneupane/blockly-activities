@@ -2,9 +2,7 @@
 <html lang="en">
   <head>
   </head>
-
   <body>  
-    
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container-fluid">
         <a class="navbar-brand" style="padding-left: 10px" href="#">
@@ -13,8 +11,6 @@
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-
-
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
@@ -25,34 +21,31 @@
             <a id="settings" class="nav-link dropdown-toggle" style="margin-right: 5px;" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Settings
             </a>
-            <ul id="canvasSize" class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+            <ul id="templateselect" class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
               <li><a class="dropdown-item" href="#">
                 Choose Template 
-                <select id="templates" class="form-select" aria-label="Default select example">
-              </select>  </a> </li>
+                <select id="templates" class="form-select">
+                  <option value="allblocks" selected="selected" >allblocks</option>
+               </select>  </a> </li>
               <li><a class="dropdown-item" href="http://localhost:8000/tasks">
                 Create a New Template + 
               </a> </li>
-
-
               <li><a class="dropdown-item" href="#">
                 Size of Output Screen
-                <select id="canvasSizes" class="form-select" aria-label="Default select example">
+                <select id="canvasSizes" class="form-select" >
                 <option value="400" selected="selected" >Small</option>
                 <option value="500">Medium</option>
-                <option value="600">Large</option>
+                <option value="1000">Large</option>
               </select>  </a> </li>
-             
               <li><a class="dropdown-item" href="#">   
                 Size of P5 font 
-                <select id="fontSizes" class="form-select" aria-label="Default select example">
+                <select id="fontSizes" class="form-select" >
                 <option value=10 >10</option>
                 <option value=20 selected="selected">20</option>
                 <option value=30>30</option>
               </select>  </a> </li>
               <li><hr class="dropdown-divider"></li>
               <button type="button" id="apply" class="btn btn-primary" style="position: relative; margin-right:70px; float:right; margin-left: 20px">Apply</button>
-              <button type="button" id="test">click</button>
             </ul>
       </div>
     </nav>
@@ -68,9 +61,9 @@
                 </button>
               </div>
 
-              <div class="collapse" id="p5Canvas" style="overflow-y:scroll">
+              <div class="collapse" id="p5Canvas" style="height:500px; overflow-y:auto; overflow-x:auto">
                 <div id="canvasArea" 
-                style="border: 2px rgb(231, 227, 227) solid; margin-top: 10px; height: 500px - 20px; width: 500px;">
+                style="position:relative; border: 2px rgb(231, 227, 227) solid; margin-top: 10px; height: 500px; width: 500px; overflow-y:auto ; overflow-x:auto" >
               </div>
         </td>
         <td style="vertical-align: top;">
@@ -78,7 +71,6 @@
                style="position: relative; border: 2px rgb(243, 239, 239) solid; height: 650px; width: 1300px;">
         </td>
       </tr>
-
     </table>
 
 
