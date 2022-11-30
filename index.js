@@ -42,6 +42,7 @@ app.post('/serveblocks', function(req,res){
       "Access-Control-Allow-Origin": "*",
     });
     res.send(data)
+    console.log("toclient",data)
     });
 
 })

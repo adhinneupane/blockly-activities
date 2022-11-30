@@ -208,7 +208,7 @@ function changeBlockly(){
 document.getElementById('apply').addEventListener('click', function() {
 	fetchBlocks
 	console.log(blocksArray[0]);
-	var temp3 = {
+	const temp3 = {
 		"kind":"flyoutToolbox",
 		"name": "Replaced",
 		"contents" : blocksArray[0]
@@ -219,6 +219,7 @@ document.getElementById('apply').addEventListener('click', function() {
 function changeBlocks(param){
 	let menu = document.getElementById('blocklyDiv');
 	menu.removeChild(menu.lastElementChild);
+	console.log("param",param)
 	workspace = Blockly.inject('blocklyDiv', {toolbox: param,  zoom:
 		{controls: true,
 			wheel: false,
@@ -235,6 +236,7 @@ function fetchBlocks(){
 	var obj = {
 		name : document.getElementById('templates').value
 	}; 
+	console.log("value",obj)
 	fetch('http://localhost:8000/serveblocks',{
 				headers: {
 					'Accept': 'application/json',
