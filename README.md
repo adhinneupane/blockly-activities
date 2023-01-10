@@ -6,7 +6,7 @@ Frustration free math based coding activities for introduction to coding courses
 
 Features: 
 
-1. Hidden view for debugging free experience.
+1. Debug-free experience.
 2. Create custom exercises for each exercise.
 3. Provide part answers to complex solutions. 
 
