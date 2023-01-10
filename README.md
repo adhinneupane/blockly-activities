@@ -7,7 +7,7 @@ Frustration free math based coding activities for introduction to coding courses
 Features: 
 
 1. Debug-free experience.
-2. Create custom exercises for each exercise.
+2. Create custom exercises for each lesson.
 3. Provide part answers to complex solutions. 
 
 ### Math activities 
