@@ -9,16 +9,16 @@ const { resolveNaptr } = require('dns');
 app.use(express.static(path.join(__dirname, '/blocklyp5/proportions/')))
 
 app.get('/home', function (req, res) {
-  res.sendFile('/Users/admin/blockly-activities/blocklyp5/proportions/index.html')
+  res.sendFile(path.join(__dirname,'/blocklyp5/proportions/index.html'))
 })
 
 app.get('/tasks', function(req,res){
-    res.sendFile('/Users/admin/blockly-activities/blocklyp5/proportions/tasks.html')
+    res.sendFile(path.join(__dirname,'/blocklyp5/proportions/tasks.html'))
 })
 
 app.post('/gettasks', function(req,res){
   const templates = []
-  fs.readdir('/Users/admin/blockly-activities/templates/', function (err, files) {
+  fs.readdir(path.join(__dirname,'/templates/'), function (err, files) {
     if (err) {
         return console.log('Unable to scan directory: ' + err);
     } 
@@ -27,7 +27,6 @@ app.post('/gettasks', function(req,res){
         templates[key] = file.replaceAll('.json','')
         key = key + 1; 
     });
-    console.log("1",templates)
     res.send(JSON.stringify(templates))
   });
 })
@@ -36,13 +35,11 @@ app.use(express.json());
 app.post('/serveblocks', function(req,res){
   let fileName = ((req.body).name) + '.json'
   fs.readFile('/Users/admin/blockly-activities/templates/'+ fileName, 'utf8', function(err, data){
-    console.log("2",data);
     res.set({
       "Content-Type": "application/json",
       "Access-Control-Allow-Origin": "*",
     });
     res.send(data)
-    console.log("toclient",data)
     });
 
 })

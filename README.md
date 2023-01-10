@@ -1,24 +1,24 @@
 
 
-# Blockly + p5
+# Blockly Activities
+
+Frustration free math based coding activities for introduction to coding courses. 
+
+Features: 
+
+1. Hidden view for debugging free experience.
+2. Create custom exercises for each exercise.
+3. Provide part answers to complex solutions. 
 
 ### Math activities based on blockly and p5
 
-1.  
-   ```
-   git clone https://git.brbytes.org/falegre/blockly-activities.git
-   ```
-    
-2. 
+
    ```
    cd blockly-activities/blocklyp5
-   ./microserver.sh
+   npm install
+   node index.js
    ```
 
-3.  
-   ```
-   visit localhost:8000
-   ```
 
 ## Composibility / Abstraction
 

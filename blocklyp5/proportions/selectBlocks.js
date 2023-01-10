@@ -173,7 +173,6 @@ saveBlocksbutton.addEventListener('click', (event) => {
 				method: 'POST', 
 				body: blocksJson
 			}).then(response => {
-				console.log(response);
 				console.log(response.json())
 			})
 			.catch(error => {
