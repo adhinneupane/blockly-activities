@@ -84,10 +84,15 @@ function runCode(){
 
 ## Adding New Blocks
 
-1. Define Block UI and add it as a file in Blocks. 
-2. Write a p5 code for the block and export it as a Function. 
+1. Define Block UI and add it as a file in Blocks. Use blockly developer tools: https://developers.google.com/blockly/guides/create-custom-blocks/blockly-developer-tools
+2. Write a p5 code for the block and export it as a Function. https://developers.google.com/blockly/guides/create-custom-blocks/blockly-developer-tools
 3. Use this function to manipulate user inputs collected from blocks. 
-4. Append this to variable code ++ after each block. 
-5. code ++ is executed alongside non changing p5 program part. 
+4. Append this to code ++ after each block. 
+5. code is executed and results are available on Canvas. 
+
+(For 3-5 follow in-line comments in code) 
 
 
+### Author:
+Ashutosh Neupane
+adhinneupane2020@github.com 
