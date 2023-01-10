@@ -2,7 +2,7 @@
 
 # Blockly Activities
 
-Frustration free math based coding activities for introduction to coding courses. 
+Frustration free math based coding activities for introduction to coding courses. Built atop NodeJS with Blockly and P5. 
 
 Features: 
 
@@ -10,7 +10,7 @@ Features:
 2. Create custom exercises for each exercise.
 3. Provide part answers to complex solutions. 
 
-### Math activities based on blockly and p5
+### Math activities 
 
 
    ```
